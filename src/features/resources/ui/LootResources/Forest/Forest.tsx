@@ -1,4 +1,5 @@
 import { resourcesSlice } from '@features/resources/model';
+import { Button } from '@shared/Button/Button';
 import { useAppDispatch } from '@store';
 import { useCallback } from 'react';
 
@@ -7,5 +8,5 @@ export const Forest = () => {
 
   const chopWood = useCallback(() => dispatch(resourcesSlice.actions.chopWood()), [dispatch, resourcesSlice]);
 
-  return <button onClick={chopWood}>Forest</button>;
+  return <Button onClick={chopWood}>Forest</Button>;
 };
