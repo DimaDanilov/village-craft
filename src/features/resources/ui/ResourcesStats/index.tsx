@@ -1,2 +1,2 @@
-export * from './LootResources';
+export * from './ResourceCards';
 export * from './ResourcesStats';
