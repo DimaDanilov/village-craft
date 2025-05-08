@@ -15,6 +15,8 @@ interface MarketModalProps {
 
 export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) => {
   const dispatch = useAppDispatch();
+  const woodCount = useAppSelector(resourcesSlice.selectors.selectWoodCount);
+  const stoneCount = useAppSelector(resourcesSlice.selectors.selectStoneCount);
   const error = useAppSelector(resourcesSlice.selectors.selectResourcesError);
 
   const closeMarket = useCallback(() => {
@@ -51,7 +53,9 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
               </div>
             </td>
             <td className="w-1/3 px-6">
-              <Button onClick={sellWood}>Sell</Button>
+              <Button disabled={woodCount <= 0} onClick={sellWood}>
+                Sell
+              </Button>
             </td>
             <td className="w-1/3 px-6">
               <div className="flex flex-row justify-center items-center gap-1">
@@ -68,7 +72,9 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
               </div>
             </td>
             <td className="w-1/3 px-6">
-              <Button onClick={sellStone}>Sell</Button>
+              <Button disabled={stoneCount <= 0} onClick={sellStone}>
+                Sell
+              </Button>
             </td>
             <td className="w-1/3 px-6">
               <div className="flex flex-row justify-center items-center gap-1">

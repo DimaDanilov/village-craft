@@ -1,13 +1,11 @@
-import type { MouseEventHandler, ReactNode } from 'react';
+type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
-interface ButtonProps {
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
-  children?: ReactNode;
-}
-
-export const Button = ({ onClick, children }: ButtonProps) => {
+export const Button = ({ children, ...restProps }: ButtonProps) => {
   return (
-    <button className="min-w-30 min-h-10 text-xl bg-amber-600 text-white" onClick={onClick}>
+    <button
+      className="min-w-30 min-h-10 text-xl bg-amber-600 text-white disabled:bg-amber-600/40 cursor-pointer disabled:cursor-not-allowed"
+      {...restProps}
+    >
       {children}
     </button>
   );
