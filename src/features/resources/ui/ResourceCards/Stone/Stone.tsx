@@ -9,9 +9,11 @@ export const Stone = () => {
   const mineStone = useCallback(() => dispatch(resourcesSlice.actions.mineStone()), [dispatch, resourcesSlice]);
 
   return (
-    <div>
-      <h1>Stone Component</h1>
-      <h2>Test Count: {stoneCount}</h2>
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-row gap-1 items-center">
+        <span className="text-2xl">Stone:</span>
+        <span className="text-2xl">{stoneCount}</span>
+      </div>
       <button onClick={mineStone}>Mine Stone</button>
     </div>
   );

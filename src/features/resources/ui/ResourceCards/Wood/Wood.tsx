@@ -9,9 +9,11 @@ export const Wood = () => {
   const chopWood = useCallback(() => dispatch(resourcesSlice.actions.chopWood()), [dispatch, resourcesSlice]);
 
   return (
-    <div>
-      <h1 className="text-3xl">Wood Component</h1>
-      <h2>Test Count: {woodCount}</h2>
+    <div className='flex flex-col gap-3'>
+      <div className="flex flex-row gap-1 items-center">
+        <span className="text-2xl">Wood:</span>
+        <span className="text-2xl">{woodCount}</span>
+      </div>
       <button onClick={chopWood}>Chop Wood</button>
     </div>
   );
