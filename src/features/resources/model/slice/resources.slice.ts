@@ -35,5 +35,8 @@ export const resourcesSlice = createSlice({
     mineStone: (state) => {
       state.stone.count += 1;
     },
+    sellItems: (state) => {
+      state.coins.count += 1;
+    },
   },
 });
