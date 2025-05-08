@@ -1,5 +1,4 @@
-import { Stone } from '@features/resources/ui/Stone/Stone';
-import { Wood } from '@features/resources/ui/Wood/Wood';
+import { Stone, Wood } from '@features/resources/ui';
 import { store } from '@store';
 import { Provider } from 'react-redux';
 

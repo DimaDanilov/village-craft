@@ -1,2 +1,1 @@
-export * from './ResourceCards';
 export * from './ResourcesPanel';
