@@ -1,3 +1,4 @@
-import type { RootState } from "../../../../store/store";
+import type { ResourcesState } from "../slice/resources.slice";
 
-export const selectCount = (state: RootState) => state.resources.value
+export const selectWoodCount = (state: ResourcesState) => state.wood.count;
+export const selectStoneCount = (state: ResourcesState) => state.stone.count;

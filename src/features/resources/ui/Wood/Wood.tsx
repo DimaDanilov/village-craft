@@ -1,15 +1,14 @@
 import { useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../store";
-import { selectCount } from "../../model/selectors/resources.selectors";
 import { resourcesSlice } from "../../model/slice/resources.slice";
 
 export const Wood = () => {
-  const woodCount = useAppSelector(selectCount);
+  const woodCount = useAppSelector(resourcesSlice.selectors.selectWoodCount);
   const dispatch = useAppDispatch();
 
   const chopWood = useCallback(
-    () => dispatch(resourcesSlice.actions.increment()),
-    [dispatch]
+    () => dispatch(resourcesSlice.actions.chopWood()),
+    [dispatch, resourcesSlice]
   );
 
   return (

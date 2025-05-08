@@ -1,28 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
+import type { StonePile, WoodPile } from "../types/resources.types";
+import {
+  selectStoneCount,
+  selectWoodCount,
+} from "../selectors/resources.selectors";
 
-interface ResourcesState {
-  value: number
+export interface ResourcesState {
+  wood: WoodPile;
+  stone: StonePile;
 }
 
 const initialState: ResourcesState = {
-  value: 0,
-}
+  wood: {
+    count: 0,
+  },
+  stone: {
+    count: 0,
+  },
+};
 
 export const resourcesSlice = createSlice({
-  name: 'resources',
+  name: "resources",
   initialState,
+  selectors: {
+    selectWoodCount,
+    selectStoneCount,
+  },
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    chopWood: (state) => {
+      state.wood.count += 1;
     },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+    mineStone: (state) => {
+      state.stone.count += 1;
     },
   },
-})
-
-export const { increment, decrement, incrementByAmount } = resourcesSlice.actions
+});
