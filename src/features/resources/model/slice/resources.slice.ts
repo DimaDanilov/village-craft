@@ -1,9 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { StonePile, WoodPile } from "../types/resources.types";
-import {
-  selectStoneCount,
-  selectWoodCount,
-} from "../selectors/resources.selectors";
+import { createSlice } from '@reduxjs/toolkit';
+import type { StonePile, WoodPile } from '../types/resources.types';
+import { selectStoneCount, selectWoodCount } from '../selectors/resources.selectors';
 
 export interface ResourcesState {
   wood: WoodPile;
@@ -20,7 +17,7 @@ const initialState: ResourcesState = {
 };
 
 export const resourcesSlice = createSlice({
-  name: "resources",
+  name: 'resources',
   initialState,
   selectors: {
     selectWoodCount,
