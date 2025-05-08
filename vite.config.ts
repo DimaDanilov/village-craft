@@ -9,7 +9,9 @@ export default defineConfig({
     alias: {
       '@': '/src',
       '@app': '/src/app',
+      '@assets': '/src/assets',
       '@features': '/src/features',
+      '@shared': '/src/shared',
       '@store': '/src/store',
     },
   },
