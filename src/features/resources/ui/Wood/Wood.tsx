@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../store';
-import { resourcesSlice } from '../../model/slice/resources.slice';
+import { useAppDispatch, useAppSelector } from '@store';
+import { resourcesSlice } from '@features/resources/model';
 
 export const Wood = () => {
   const woodCount = useAppSelector(resourcesSlice.selectors.selectWoodCount);

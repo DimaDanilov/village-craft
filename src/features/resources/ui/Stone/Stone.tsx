@@ -1,6 +1,6 @@
+import { resourcesSlice } from '@features/resources/model';
+import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../../store';
-import { resourcesSlice } from '../../model/slice/resources.slice';
 
 export const Stone = () => {
   const stoneCount = useAppSelector(resourcesSlice.selectors.selectStoneCount);
