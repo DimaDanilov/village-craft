@@ -1,10 +1,11 @@
-import { StoneStats, WoodStats } from './ResourceCards';
+import { CoinsStats, StoneStats, WoodStats } from './ResourceCards';
 
 export const ResourcesStats = () => {
   return (
     <div className="flex flex-col gap-1 border-3 border-amber-300 rounded-2xl px-10 py-6">
       <WoodStats />
       <StoneStats />
+      <CoinsStats />
     </div>
   );
 };

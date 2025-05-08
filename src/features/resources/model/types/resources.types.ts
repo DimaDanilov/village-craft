@@ -5,3 +5,7 @@ export interface WoodPile {
 export interface StonePile {
   count: number;
 }
+
+export interface CoinsStorage {
+  count: number;
+}
