@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 function App() {
   return (
     <Provider store={store}>
-      <div>
+      <div className="w-5/6 flex flex-col mx-auto">
         <Wood />
         <Stone />
       </div>

@@ -10,7 +10,7 @@ export const Wood = () => {
 
   return (
     <div>
-      <h1>Wood Component</h1>
+      <h1 className="text-3xl">Wood Component</h1>
       <h2>Test Count: {woodCount}</h2>
       <button onClick={chopWood}>Chop Wood</button>
     </div>
