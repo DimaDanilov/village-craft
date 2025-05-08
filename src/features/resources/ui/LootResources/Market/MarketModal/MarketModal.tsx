@@ -4,6 +4,9 @@ import { Modal } from '@shared/Modal/Modal';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
+import WoodImageSrc from '@assets/Wood.png';
+import StoneImageSrc from '@assets/Stone.png';
+import CoinsImageSrc from '@assets/Coins.png';
 
 interface MarketModalProps {
   isModalOpen: boolean;
@@ -30,12 +33,52 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
   );
 
   return (
-    <Modal title="Market" isOpen={isModalOpen} onClose={closeMarket}>
-      {error && <div className="mb-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>}
-      <div className="flex flex-col gap-2">
-        <Button onClick={sellWood}>Sell Wood</Button>
-        <Button onClick={sellStone}>Sell Stone</Button>
-      </div>
+    <Modal title="Market" error={error} isOpen={isModalOpen} onClose={closeMarket}>
+      <table className="mx-auto text-center">
+        <thead>
+          <tr>
+            <th className="w-1/3 px-6">Sell</th>
+            <th className="w-1/3 px-6"></th>
+            <th className="w-1/3 px-6">Receive</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="w-1/3 px-6">
+              <div className="flex flex-row justify-center items-center gap-1">
+                <span className="text-[40px]">1</span>
+                <img src={WoodImageSrc} width="90px" />
+              </div>
+            </td>
+            <td className="w-1/3 px-6">
+              <Button onClick={sellWood}>Sell</Button>
+            </td>
+            <td className="w-1/3 px-6">
+              <div className="flex flex-row justify-center items-center gap-1">
+                <span className="text-[40px]">1</span>
+                <img src={CoinsImageSrc} width="90px" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className="w-1/3 px-6">
+              <div className="flex flex-row justify-center items-center gap-1">
+                <span className="text-[40px]">1</span>
+                <img src={StoneImageSrc} width="90px" />
+              </div>
+            </td>
+            <td className="w-1/3 px-6">
+              <Button onClick={sellStone}>Sell</Button>
+            </td>
+            <td className="w-1/3 px-6">
+              <div className="flex flex-row justify-center items-center gap-1">
+                <span className="text-[40px]">1</span>
+                <img src={CoinsImageSrc} width="90px" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </Modal>
   );
 };
