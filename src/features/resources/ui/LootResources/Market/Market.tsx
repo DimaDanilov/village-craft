@@ -1,4 +1,4 @@
-import { resourcesSlice } from '@features/resources/model';
+import { clearResourcesError } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { useCallback, useState } from 'react';
 import { MarketModal } from './MarketModal';
@@ -9,7 +9,7 @@ export const Market = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openMarket = useCallback(() => {
-    dispatch(resourcesSlice.actions.clearError());
+    dispatch(clearResourcesError());
     setIsModalOpen(true);
   }, [dispatch]);
 
