@@ -1,15 +1,18 @@
 import type { AxeLevel, PickaxeLevel } from '../types';
 
-export const AxeLevelEfficiency: Record<AxeLevel, number> = {
-  1: 1,
-  2: 3,
-  3: 5,
-  4: 10,
+export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
+export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
+
+export const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
+  '1': 1,
+  '2': 3,
+  '3': 5,
+  '4': 10,
 };
 
-export const PickaxeLevelEfficiency: Record<PickaxeLevel, number> = {
-  1: 1,
-  2: 2,
-  3: 3,
-  4: 5,
+export const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 5,
 };
