@@ -1,4 +1,4 @@
-import { clearResourcesError, resourcesSlice } from '@features/resources/model';
+import { clearResourcesError } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { Modal } from '@shared/Modal/Modal';
 import { useAppDispatch, useAppSelector } from '@store';
@@ -8,6 +8,7 @@ import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import {
   AXE_LEVEL_EFFICIENCY,
+  clearInstrumentsError,
   instrumentsSlice,
   isInstrumentUpgradeAvailable,
   PICKAXE_LEVEL_EFFICIENCY,
@@ -33,10 +34,10 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
   const onUpgradeAxe = useCallback(() => dispatch(upgradeAxe()), [dispatch, upgradeAxe]);
   const onUpgradePickaxe = useCallback(() => dispatch(upgradePickaxe()), [dispatch, upgradePickaxe]);
 
-  const error = useAppSelector(resourcesSlice.selectors.selectResourcesError);
+  const error = useAppSelector(instrumentsSlice.selectors.selectInstrumentsError);
 
   const onCloseMarket = useCallback(() => {
-    dispatch(clearResourcesError());
+    dispatch(clearInstrumentsError());
     setIsModalOpen(false);
   }, [dispatch, clearResourcesError]);
 
@@ -102,7 +103,7 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
             <td className="w-1/3 px-6">
               {isPickaxeUpgradeAvailable ? (
                 <div className="flex flex-col gap-1 items-center">
-                  <img src={AxeImageSrc} width="80px" />
+                  <img src={PickaxeImageSrc} width="80px" />
                   <span className="text-xl">level {pickaxeNextLevel}</span>
                   <span className="text-sm">Stone: {PICKAXE_LEVEL_EFFICIENCY[pickaxeNextLevel]}</span>
                 </div>

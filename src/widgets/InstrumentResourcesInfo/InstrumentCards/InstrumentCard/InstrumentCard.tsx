@@ -1,5 +1,7 @@
+import type { AxeLevel, PickaxeLevel } from '@features/instruments/model';
+
 interface InstrumentCardProps {
-  instrumentLevel: number;
+  instrumentLevel: AxeLevel | PickaxeLevel;
   imageSrc: string;
 }
 
