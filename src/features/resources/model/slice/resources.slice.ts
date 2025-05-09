@@ -36,11 +36,13 @@ export const resourcesSlice = createSlice({
     selectResourcesError,
   },
   reducers: {
-    chopWood: (state) => {
-      state.resources.wood.count += 1;
+    /* Use chopWoodWithAxe in component instead */
+    _chopWood: (state, action: PayloadAction<{ count: number }>) => {
+      state.resources.wood.count += action.payload.count;
     },
-    mineStone: (state) => {
-      state.resources.stone.count += 1;
+    /* Use mineStoneWithPickaxe in component instead */
+    _mineStone: (state, action: PayloadAction<{ count: number }>) => {
+      state.resources.stone.count += action.payload.count;
     },
     sellWood: (state, action: PayloadAction<{ woodCount: number }>) => {
       const { woodCount } = action.payload;
