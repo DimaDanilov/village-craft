@@ -36,6 +36,8 @@
       "@shared/*": ["./src/shared/*"],
       "@store": ["./src/store"],
       "@store/*": ["./src/store/*"],
+      "@widgets": ["./src/widgets"],
+      "@widgets/*": ["./src/widgets/*"],
       "@/*": ["./src/*"]
     }
   },
