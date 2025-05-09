@@ -1,6 +1,6 @@
-import { InstrumentsStats } from '@features/instruments/ui';
-import { LootResources, ResourcesStats } from '@features/resources/ui';
+import { LootResources } from '@features/resources/ui';
 import { store } from '@store';
+import { InstrumentResourcesInfo } from '@widgets';
 import { Provider } from 'react-redux';
 
 function App() {
@@ -8,13 +8,8 @@ function App() {
     <Provider store={store}>
       <div className="w-5/6 flex flex-col mx-auto my-6">
         <div className="flex flex-row justify-between">
-          <div>
-            <LootResources />
-          </div>
-          <div className="w-3/12 flex flex-row">
-            <InstrumentsStats />
-            <ResourcesStats />
-          </div>
+          <LootResources />
+          <InstrumentResourcesInfo />
         </div>
       </div>
     </Provider>

@@ -1,2 +1,1 @@
 export * from './LootResources';
-export * from './ResourcesStats';

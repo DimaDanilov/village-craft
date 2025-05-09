@@ -13,6 +13,7 @@ export default defineConfig({
       '@features': '/src/features',
       '@shared': '/src/shared',
       '@store': '/src/store',
+      '@widgets': '/src/widgets',
     },
   },
 });
