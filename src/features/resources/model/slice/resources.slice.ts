@@ -1,6 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { CoinsStorage, StonePile, WoodPile } from '../types';
 import { selectCoinsCount, selectResourcesError, selectStoneCount, selectWoodCount } from '../selectors';
+import { isSellAvailable } from '../tools';
 
 export interface ResourcesState {
   resources: {
@@ -46,8 +47,12 @@ export const resourcesSlice = createSlice({
     },
     sellWood: (state, action: PayloadAction<{ woodCount: number }>) => {
       const { woodCount } = action.payload;
+      const isSellWoodAvailable = isSellAvailable({
+        currentResourcesAmount: state.resources.wood.count,
+        amountToSell: woodCount,
+      });
 
-      if (state.resources.wood.count < woodCount) {
+      if (!isSellWoodAvailable) {
         state.error = 'Not enough wood to sell';
         return;
       }
@@ -58,8 +63,12 @@ export const resourcesSlice = createSlice({
     },
     sellStone: (state, action: PayloadAction<{ stoneCount: number }>) => {
       const { stoneCount } = action.payload;
+      const isSellStoneAvailable = isSellAvailable({
+        currentResourcesAmount: state.resources.stone.count,
+        amountToSell: stoneCount,
+      });
 
-      if (state.resources.stone.count < stoneCount) {
+      if (!isSellStoneAvailable) {
         state.error = 'Not enough stone to sell';
         return;
       }

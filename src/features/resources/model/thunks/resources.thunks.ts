@@ -1,8 +1,8 @@
 import type { AppThunk } from '@store';
 import { resourcesSlice } from '../slice';
 import {
-  AxeLevelEfficiency,
-  PickaxeLevelEfficiency,
+  AXE_LEVEL_EFFICIENCY,
+  PICKAXE_LEVEL_EFFICIENCY,
   selectAxeLevel,
   selectPickaxeLevel,
 } from '@features/instruments/model';
@@ -10,13 +10,13 @@ import {
 export const chopWoodWithAxe = (): AppThunk => (dispatch, getState) => {
   const instrumentState = getState().instruments;
   const axeLevel = selectAxeLevel(instrumentState);
-  const woodChopedWithAxe = AxeLevelEfficiency[axeLevel];
+  const woodChopedWithAxe = AXE_LEVEL_EFFICIENCY[axeLevel];
   dispatch(resourcesSlice.actions._chopWood({ count: woodChopedWithAxe }));
 };
 
 export const mineStoneWithPickaxe = (): AppThunk => (dispatch, getState) => {
   const instrumentState = getState().instruments;
   const pickaxeLevel = selectPickaxeLevel(instrumentState);
-  const stoneMinedWithPickaxe = PickaxeLevelEfficiency[pickaxeLevel];
+  const stoneMinedWithPickaxe = PICKAXE_LEVEL_EFFICIENCY[pickaxeLevel];
   dispatch(resourcesSlice.actions._mineStone({ count: stoneMinedWithPickaxe }));
 };
