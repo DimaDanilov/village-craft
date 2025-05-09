@@ -1,6 +1,6 @@
 import { resourcesSlice } from '@features/resources/model';
 import { useAppSelector } from '@store';
-import StoneImageSrc from '@assets/Stone.png';
+import StoneImageSrc from '@assets/resources/Stone.png';
 
 export const StoneStats = () => {
   const stoneCount = useAppSelector(resourcesSlice.selectors.selectStoneCount);

@@ -4,9 +4,9 @@ import { Modal } from '@shared/Modal/Modal';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-import WoodImageSrc from '@assets/Wood.png';
-import StoneImageSrc from '@assets/Stone.png';
-import CoinsImageSrc from '@assets/Coins.png';
+import WoodImageSrc from '@assets/resources/Wood.png';
+import StoneImageSrc from '@assets/resources/Stone.png';
+import CoinsImageSrc from '@assets/resources/Coins.png';
 
 interface MarketModalProps {
   isModalOpen: boolean;

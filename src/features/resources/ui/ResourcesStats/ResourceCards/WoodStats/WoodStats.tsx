@@ -1,6 +1,6 @@
 import { useAppSelector } from '@store';
 import { resourcesSlice } from '@features/resources/model';
-import WoodImageSrc from '@assets/Wood.png';
+import WoodImageSrc from '@assets/resources/Wood.png';
 
 export const WoodStats = () => {
   const woodCount = useAppSelector(resourcesSlice.selectors.selectWoodCount);

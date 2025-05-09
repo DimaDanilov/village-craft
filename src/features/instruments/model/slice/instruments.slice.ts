@@ -9,10 +9,10 @@ export interface InstrumentsState {
 
 const initialState: InstrumentsState = {
   axe: {
-    level: 0,
+    level: 1,
   },
   pickaxe: {
-    level: 0,
+    level: 1,
   },
 };
 

@@ -1,6 +1,6 @@
 import { resourcesSlice } from '@features/resources/model';
 import { useAppSelector } from '@store';
-import CoinsImageSrc from '@assets/Coins.png';
+import CoinsImageSrc from '@assets/resources/Coins.png';
 
 export const CoinsStats = () => {
   const coinsCount = useAppSelector(resourcesSlice.selectors.selectCoinsCount);
