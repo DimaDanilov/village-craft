@@ -68,8 +68,10 @@ export const resourcesSlice = createSlice({
       state.resources.coins.count += stoneCount;
       state.error = undefined;
     },
-    clearError: (state) => {
+    clearResourcesError: (state) => {
       state.error = undefined;
     },
   },
 });
+
+export const { sellWood, sellStone, clearResourcesError } = resourcesSlice.actions;

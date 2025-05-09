@@ -1,4 +1,4 @@
-import { resourcesSlice } from '@features/resources/model';
+import { clearResourcesError, resourcesSlice, sellStone, sellWood } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { Modal } from '@shared/Modal/Modal';
 import { useAppDispatch, useAppSelector } from '@store';
@@ -19,23 +19,16 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
   const stoneCount = useAppSelector(resourcesSlice.selectors.selectStoneCount);
   const error = useAppSelector(resourcesSlice.selectors.selectResourcesError);
 
-  const closeMarket = useCallback(() => {
-    dispatch(resourcesSlice.actions.clearError());
+  const onCloseMarket = useCallback(() => {
+    dispatch(clearResourcesError());
     setIsModalOpen(false);
-  }, [dispatch]);
+  }, [dispatch, clearResourcesError]);
 
-  const sellWood = useCallback(
-    () => dispatch(resourcesSlice.actions.sellWood({ woodCount: 1 })),
-    [dispatch, resourcesSlice],
-  );
-
-  const sellStone = useCallback(
-    () => dispatch(resourcesSlice.actions.sellStone({ stoneCount: 1 })),
-    [dispatch, resourcesSlice],
-  );
+  const onSellWood = useCallback(() => dispatch(sellWood({ woodCount: 1 })), [dispatch, sellWood]);
+  const onSellStone = useCallback(() => dispatch(sellStone({ stoneCount: 1 })), [dispatch, sellStone]);
 
   return (
-    <Modal title="Market" error={error} isOpen={isModalOpen} onClose={closeMarket}>
+    <Modal title="Market" error={error} isOpen={isModalOpen} onClose={onCloseMarket}>
       <table className="mx-auto text-center">
         <thead>
           <tr>
@@ -53,7 +46,7 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
               </div>
             </td>
             <td className="w-1/3 px-6">
-              <Button disabled={woodCount <= 0} onClick={sellWood}>
+              <Button disabled={woodCount <= 0} onClick={onSellWood}>
                 Sell
               </Button>
             </td>
@@ -72,7 +65,7 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
               </div>
             </td>
             <td className="w-1/3 px-6">
-              <Button disabled={stoneCount <= 0} onClick={sellStone}>
+              <Button disabled={stoneCount <= 0} onClick={onSellStone}>
                 Sell
               </Button>
             </td>

@@ -1,7 +1,10 @@
+export type AxeLevel = 1 | 2 | 3 | 4;
+export type PickaxeLevel = 1 | 2 | 3 | 4;
+
 export interface AxeInstrument {
-  level: number;
+  level: AxeLevel;
 }
 
 export interface PickaxeInstrument {
-  level: number;
+  level: PickaxeLevel;
 }
