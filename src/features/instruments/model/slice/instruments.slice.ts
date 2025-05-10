@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AxeInstrument, PickaxeInstrument } from '../types';
 import { selectAxeLevel, selectInstrumentsError, selectPickaxeLevel } from '../selectors';
-import { isInstrumentUpgradeAvailable } from '../tools';
+import { isInstrumentNextLevelExist } from '../tools';
 import { AXE_UPGRADE_COST, PICKAXE_UPGRADE_COST } from '../constants';
 
 export interface InstrumentsState {
@@ -29,23 +30,21 @@ export const instrumentsSlice = createSlice({
   initialState,
   selectors: { selectAxeLevel, selectPickaxeLevel, selectInstrumentsError },
   reducers: {
-    upgradeAxe: (state) => {
+    _upgradeAxe: (state) => {
       const nextLevel = (Number(state.instruments.axe.level) + 1).toString();
-
-      if (!isInstrumentUpgradeAvailable(nextLevel, AXE_UPGRADE_COST)) {
-        state.error = 'Can`t upgrade axe';
-        return;
+      if (isInstrumentNextLevelExist(nextLevel, AXE_UPGRADE_COST)) {
+        state.instruments.axe.level = nextLevel;
       }
-      state.instruments.axe.level = nextLevel;
     },
-    upgradePickaxe: (state) => {
+    _upgradePickaxe: (state) => {
       const nextLevel = (Number(state.instruments.pickaxe.level) + 1).toString();
-
-      if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_UPGRADE_COST)) {
-        state.error = 'Can`t upgrade pickaxe';
-        return;
+      if (isInstrumentNextLevelExist(nextLevel, PICKAXE_UPGRADE_COST)) {
+        state.instruments.pickaxe.level = nextLevel;
       }
-      state.instruments.pickaxe.level = nextLevel;
+    },
+    setInstrumentsError: (state, action: PayloadAction<string>) => {
+      const { payload } = action;
+      state.error = payload;
     },
     clearInstrumentsError: (state) => {
       state.error = undefined;
@@ -53,4 +52,4 @@ export const instrumentsSlice = createSlice({
   },
 });
 
-export const { upgradeAxe, upgradePickaxe, clearInstrumentsError } = instrumentsSlice.actions;
+export const { setInstrumentsError, clearInstrumentsError } = instrumentsSlice.actions;

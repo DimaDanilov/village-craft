@@ -7,7 +7,7 @@ import {
   instrumentsSlice,
   isInstrumentNextLevelExist,
   isInstrumentUpgradeAvailable,
-  upgradeAxe,
+  UpgradeAxeWithResources,
 } from '@features/instruments/model';
 import type { AxeLevel, InstrumentCost } from '@features/instruments/model';
 import { ForgeTableBodyRow } from './ForgeTableBodyRow';
@@ -28,7 +28,7 @@ export const ForgeTableAxeUpgradeRow = () => {
 
   const axeNextLevelPrice: InstrumentCost | undefined = isNextLevelExist ? AXE_UPGRADE_COST[axeNextLevel] : undefined;
 
-  const onUpgradeAxe = useCallback(() => dispatch(upgradeAxe()), [dispatch, upgradeAxe]);
+  const onUpgradeAxe = useCallback(() => dispatch(UpgradeAxeWithResources()), [dispatch, UpgradeAxeWithResources]);
 
   return (
     <ForgeTableBodyRow

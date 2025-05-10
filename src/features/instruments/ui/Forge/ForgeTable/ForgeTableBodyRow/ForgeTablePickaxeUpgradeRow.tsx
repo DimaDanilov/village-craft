@@ -7,7 +7,7 @@ import {
   isInstrumentUpgradeAvailable,
   PICKAXE_LEVEL_EFFICIENCY,
   PICKAXE_UPGRADE_COST,
-  upgradePickaxe,
+  UpgradePickaxeWithResources,
 } from '@features/instruments/model';
 import type { PickaxeLevel, InstrumentCost } from '@features/instruments/model';
 
@@ -33,7 +33,10 @@ export const ForgeTablePickaxeUpgradeRow = () => {
     ? PICKAXE_UPGRADE_COST[pickaxeNextLevel]
     : undefined;
 
-  const onUpgradePickaxe = useCallback(() => dispatch(upgradePickaxe()), [dispatch, upgradePickaxe]);
+  const onUpgradePickaxe = useCallback(
+    () => dispatch(UpgradePickaxeWithResources()),
+    [dispatch, UpgradePickaxeWithResources],
+  );
 
   return (
     <ForgeTableBodyRow
