@@ -1,4 +1,4 @@
-import { selectAllResources } from '@features/resources/model';
+import { resourcesSlice, selectAllResources } from '@features/resources/model';
 import type { AppThunk } from '@store';
 import { selectAxeLevel, selectPickaxeLevel } from '../selectors';
 import { AXE_UPGRADE_COST, PICKAXE_UPGRADE_COST } from '../constants';
@@ -18,6 +18,7 @@ export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
     instrumentsSlice.actions.setInstrumentsError('Can`t upgrade axe');
     return;
   }
+  dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: AXE_UPGRADE_COST[nextLevel] }));
   dispatch(instrumentsSlice.actions._upgradeAxe());
 };
 
@@ -34,5 +35,6 @@ export const UpgradePickaxeWithResources = (): AppThunk => (dispatch, getState) 
     instrumentsSlice.actions.setInstrumentsError('Can`t upgrade pickaxe');
     return;
   }
+  dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: PICKAXE_UPGRADE_COST[nextLevel] }));
   dispatch(instrumentsSlice.actions._upgradePickaxe());
 };
