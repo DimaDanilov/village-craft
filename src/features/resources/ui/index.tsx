@@ -1,1 +1,3 @@
-export * from './LootResources';
+export * from './Forest';
+export * from './Market';
+export * from './Mines';

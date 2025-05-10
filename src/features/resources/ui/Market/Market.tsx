@@ -20,6 +20,7 @@ export const Market = () => {
         imageSrc={LOCATIONS_IMAGES.market}
         title="Market"
         description="Sell your resources to earn money."
+        cardCategory="service"
       />
       <MarketModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>

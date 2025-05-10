@@ -21,6 +21,7 @@ export const Forge = () => {
         imageSrc={LOCATIONS_IMAGES.forge}
         title="Forge"
         description="Upgrade your instruments to collect resources more easily."
+        cardCategory="service"
       />
       <ForgeModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>

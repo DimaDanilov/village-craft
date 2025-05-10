@@ -14,6 +14,7 @@ export const Mines = () => {
       imageSrc={LOCATIONS_IMAGES.mines}
       title="Mines"
       description="Mine stone with your pickaxe."
+      cardCategory="resource"
     />
   );
 };

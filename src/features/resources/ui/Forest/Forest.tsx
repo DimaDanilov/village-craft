@@ -14,6 +14,7 @@ export const Forest = () => {
       imageSrc={LOCATIONS_IMAGES.forest}
       title="Forest"
       description="Forest full of high trees. Nice place to chop wood with axe."
+      cardCategory="resource"
     />
   );
 };
