@@ -8,7 +8,7 @@ interface DeckCardProps {
 export const DeckCard = ({ onClick, imageSrc, title, description }: DeckCardProps) => {
   return (
     <div
-      className="flex flex-col w-60 bg-orange-300 text-amber-700 border-1 border-amber-500 rounded-2xl cursor-pointer"
+      className="flex flex-col w-60 bg-orange-300 text-amber-700 border-1 border-amber-500 rounded-2xl transition ease-in-out hover:scale-105 select-none cursor-pointer"
       onClick={onClick}
     >
       <img className="rounded-t-2xl" src={imageSrc} alt={title} />
