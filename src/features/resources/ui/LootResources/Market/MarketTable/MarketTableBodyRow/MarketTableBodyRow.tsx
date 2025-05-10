@@ -1,0 +1,41 @@
+import { Button } from '@shared/Button/Button';
+
+interface MarketTableBodyRowProps {
+  sellAmount: number;
+  receiveAmount: number;
+  sellItemImageSrc: string;
+  receiveItemImageSrc: string;
+  onSell: () => void;
+  sellBtnDisabled: boolean;
+}
+
+export const MarketTableBodyRow = ({
+  sellAmount,
+  receiveAmount,
+  sellItemImageSrc,
+  receiveItemImageSrc,
+  onSell,
+  sellBtnDisabled,
+}: MarketTableBodyRowProps) => {
+  return (
+    <tr>
+      <td className="w-1/3 px-6">
+        <div className="flex flex-row justify-center items-center gap-1">
+          <span className="text-[40px]">{sellAmount}</span>
+          <img src={sellItemImageSrc} width="90px" />
+        </div>
+      </td>
+      <td className="w-1/3 px-6">
+        <Button disabled={sellBtnDisabled} onClick={onSell}>
+          Sell
+        </Button>
+      </td>
+      <td className="w-1/3 px-6">
+        <div className="flex flex-row justify-center items-center gap-1">
+          <span className="text-[40px]">{receiveAmount}</span>
+          <img src={receiveItemImageSrc} width="90px" />
+        </div>
+      </td>
+    </tr>
+  );
+};
