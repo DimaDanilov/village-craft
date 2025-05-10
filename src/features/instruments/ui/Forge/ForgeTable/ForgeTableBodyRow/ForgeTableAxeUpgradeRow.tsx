@@ -1,13 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import AxeImageSrc from '@assets/instruments/Axe.png';
 import {
   AXE_LEVEL_EFFICIENCY,
+  AXE_UPGRADE_COST,
+  INSTRUMENTS_IMAGES,
   instrumentsSlice,
   isInstrumentUpgradeAvailable,
   upgradeAxe,
-  type AxeLevel,
 } from '@features/instruments/model';
+import type { AxeLevel, InstrumentCost } from '@features/instruments/model';
 import { ForgeTableBodyRow } from './ForgeTableBodyRow';
 
 export const ForgeTableAxeUpgradeRow = () => {
@@ -17,8 +18,14 @@ export const ForgeTableAxeUpgradeRow = () => {
 
   const isAxeUpgradeAvailable = isInstrumentUpgradeAvailable(axeNextLevel, AXE_LEVEL_EFFICIENCY);
 
-  const axeCurrentLevelEfficiency = AXE_LEVEL_EFFICIENCY[axeLevel];
-  const axeNextLevelEfficiency = isAxeUpgradeAvailable ? AXE_LEVEL_EFFICIENCY[axeNextLevel] : undefined;
+  const axeCurrentLevelEfficiency: number = AXE_LEVEL_EFFICIENCY[axeLevel];
+  const axeNextLevelEfficiency: number | undefined = isAxeUpgradeAvailable
+    ? AXE_LEVEL_EFFICIENCY[axeNextLevel]
+    : undefined;
+
+  const axeNextLevelPrice: InstrumentCost | undefined = isAxeUpgradeAvailable
+    ? AXE_UPGRADE_COST[axeNextLevel]
+    : undefined;
 
   const onUpgradeAxe = useCallback(() => dispatch(upgradeAxe()), [dispatch, upgradeAxe]);
 
@@ -26,9 +33,10 @@ export const ForgeTableAxeUpgradeRow = () => {
     <ForgeTableBodyRow
       instrumentCurrentLevel={axeLevel}
       instrumentCurrentLevelEfficiency={axeCurrentLevelEfficiency}
-      instrumentImageSrc={AxeImageSrc}
+      instrumentImageSrc={INSTRUMENTS_IMAGES.axe}
       instrumentNextLevel={axeNextLevel}
       instrumentNextLevelEfficiency={axeNextLevelEfficiency}
+      instrumentNextLevelPrice={axeNextLevelPrice}
       isUpgradeAvailable={isAxeUpgradeAvailable}
       onUpgrade={onUpgradeAxe}
     />

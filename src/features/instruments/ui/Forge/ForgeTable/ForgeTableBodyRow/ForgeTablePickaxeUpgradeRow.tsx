@@ -1,13 +1,15 @@
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import {
+  INSTRUMENTS_IMAGES,
   instrumentsSlice,
   isInstrumentUpgradeAvailable,
   PICKAXE_LEVEL_EFFICIENCY,
+  PICKAXE_UPGRADE_COST,
   upgradePickaxe,
-  type PickaxeLevel,
 } from '@features/instruments/model';
+import type { PickaxeLevel, InstrumentCost } from '@features/instruments/model';
+
 import { ForgeTableBodyRow } from './ForgeTableBodyRow';
 
 export const ForgeTablePickaxeUpgradeRow = () => {
@@ -17,8 +19,14 @@ export const ForgeTablePickaxeUpgradeRow = () => {
 
   const isPickaxeUpgradeAvailable = isInstrumentUpgradeAvailable(pickaxeNextLevel, PICKAXE_LEVEL_EFFICIENCY);
 
-  const pickaxeCurrentLevelEfficiency = PICKAXE_LEVEL_EFFICIENCY[pickaxeLevel];
-  const pickaxeNextLevelEfficiency = isPickaxeUpgradeAvailable ? PICKAXE_LEVEL_EFFICIENCY[pickaxeNextLevel] : undefined;
+  const pickaxeCurrentLevelEfficiency: number = PICKAXE_LEVEL_EFFICIENCY[pickaxeLevel];
+  const pickaxeNextLevelEfficiency: number | undefined = isPickaxeUpgradeAvailable
+    ? PICKAXE_LEVEL_EFFICIENCY[pickaxeNextLevel]
+    : undefined;
+
+  const pickaxeNextLevelPrice: InstrumentCost | undefined = isPickaxeUpgradeAvailable
+    ? PICKAXE_UPGRADE_COST[pickaxeNextLevel]
+    : undefined;
 
   const onUpgradePickaxe = useCallback(() => dispatch(upgradePickaxe()), [dispatch, upgradePickaxe]);
 
@@ -26,9 +34,10 @@ export const ForgeTablePickaxeUpgradeRow = () => {
     <ForgeTableBodyRow
       instrumentCurrentLevel={pickaxeLevel}
       instrumentCurrentLevelEfficiency={pickaxeCurrentLevelEfficiency}
-      instrumentImageSrc={PickaxeImageSrc}
+      instrumentImageSrc={INSTRUMENTS_IMAGES.pickaxe}
       instrumentNextLevel={pickaxeNextLevel}
       instrumentNextLevelEfficiency={pickaxeNextLevelEfficiency}
+      instrumentNextLevelPrice={pickaxeNextLevelPrice}
       isUpgradeAvailable={isPickaxeUpgradeAvailable}
       onUpgrade={onUpgradePickaxe}
     />

@@ -1,4 +1,4 @@
-import type { AxeLevel, PickaxeLevel } from '@features/instruments/model';
+import type { AxeLevel, InstrumentCost, PickaxeLevel } from '@features/instruments/model';
 import { Button } from '@shared/Button/Button';
 
 interface ForgeTableBodyRowParams {
@@ -7,6 +7,7 @@ interface ForgeTableBodyRowParams {
   instrumentImageSrc: string;
   instrumentNextLevel: string;
   instrumentNextLevelEfficiency: number | undefined;
+  instrumentNextLevelPrice: InstrumentCost | undefined;
   isUpgradeAvailable: boolean;
   onUpgrade: () => void;
 }
@@ -17,6 +18,7 @@ export const ForgeTableBodyRow = ({
   instrumentImageSrc,
   instrumentNextLevel,
   instrumentNextLevelEfficiency,
+  instrumentNextLevelPrice,
   isUpgradeAvailable,
   onUpgrade,
 }: ForgeTableBodyRowParams) => {
@@ -30,7 +32,7 @@ export const ForgeTableBodyRow = ({
         </div>
       </td>
       <td className="w-1/3 px-6">
-        <span>Free</span>
+        <span>{instrumentNextLevelPrice ? JSON.stringify(instrumentNextLevelPrice) : 'MAX'}</span>
       </td>
       <td className="w-1/3 px-6">
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
