@@ -1,14 +1,24 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { CoinsStorage, StonePile, WoodPile } from '../types';
-import { selectCoinsCount, selectResourcesError, selectStoneCount, selectWoodCount } from '../selectors';
+import {
+  selectAllResources,
+  selectCoinsCount,
+  selectResourcesError,
+  selectStoneCount,
+  selectWoodCount,
+} from '../selectors';
 import { isSellAvailable } from '../tools';
+import type { InstrumentCost } from '@features/instruments/model';
+
+export interface ResourcesInfo {
+  wood: WoodPile;
+  stone: StonePile;
+  coins: CoinsStorage;
+}
 
 export interface ResourcesState {
-  resources: {
-    wood: WoodPile;
-    stone: StonePile;
-    coins: CoinsStorage;
-  };
+  resources: ResourcesInfo;
   error?: string;
 }
 
@@ -31,6 +41,7 @@ export const resourcesSlice = createSlice({
   name: 'resources',
   initialState,
   selectors: {
+    selectAllResources,
     selectWoodCount,
     selectStoneCount,
     selectCoinsCount,
@@ -44,6 +55,13 @@ export const resourcesSlice = createSlice({
     /* Use mineStoneWithPickaxe in component instead */
     _mineStone: (state, action: PayloadAction<{ count: number }>) => {
       state.resources.stone.count += action.payload.count;
+    },
+    _destroyResourcesForUpgrade: (state, action: PayloadAction<{ resourcesToDestroy: InstrumentCost }>) => {
+      const { resourcesToDestroy } = action.payload;
+      Object.entries(resourcesToDestroy).forEach(([resourceKey, resourceAmountToDestroy]) => {
+        const typedKey = resourceKey as keyof ResourcesInfo;
+        state.resources[typedKey].count -= resourceAmountToDestroy;
+      });
     },
     sellWood: (state, action: PayloadAction<{ woodCount: number }>) => {
       const { woodCount } = action.payload;

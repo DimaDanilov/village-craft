@@ -1,9 +1,7 @@
 import { isSellAvailable, resourcesSlice, sellStone } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import StoneImageSrc from '@assets/resources/Stone.png';
-import CoinsImageSrc from '@assets/resources/Coins.png';
-import { COINT_RECEIVED, STONE_SELL_AMOUNT } from '@features/resources/model/constants';
+import { COINT_RECEIVED, RESOURCES_IMAGES, STONE_SELL_AMOUNT } from '@features/resources/model/constants';
 import { MarketTableBodyRow } from './MarketTableBodyRow';
 
 export const MarketTableStoneSellRow = () => {
@@ -18,8 +16,8 @@ export const MarketTableStoneSellRow = () => {
     <MarketTableBodyRow
       sellAmount={STONE_SELL_AMOUNT}
       receiveAmount={COINT_RECEIVED}
-      sellItemImageSrc={StoneImageSrc}
-      receiveItemImageSrc={CoinsImageSrc}
+      sellItemImageSrc={RESOURCES_IMAGES.stone}
+      receiveItemImageSrc={RESOURCES_IMAGES.coins}
       sellBtnDisabled={!isStoneSellAvailable}
       onSell={onSellStone}
     />

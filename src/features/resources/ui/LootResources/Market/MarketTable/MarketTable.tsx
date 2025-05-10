@@ -3,7 +3,7 @@ import { MarketTableStoneSellRow, MarketTableWoodSellRow } from './MarketTableBo
 
 export const MarketTable = () => {
   return (
-    <table className="mx-auto text-center">
+    <table className="text-center border-separate border-spacing-x-8 border-spacing-y-4">
       <thead>
         <MarketTableHeaderRow />
       </thead>

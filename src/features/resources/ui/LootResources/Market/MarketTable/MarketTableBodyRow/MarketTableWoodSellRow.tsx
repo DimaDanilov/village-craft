@@ -1,9 +1,7 @@
 import { isSellAvailable, resourcesSlice, sellWood } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import WoodImageSrc from '@assets/resources/Wood.png';
-import CoinsImageSrc from '@assets/resources/Coins.png';
-import { COINT_RECEIVED, WOOD_SELL_AMOUNT } from '@features/resources/model/constants';
+import { COINT_RECEIVED, RESOURCES_IMAGES, WOOD_SELL_AMOUNT } from '@features/resources/model/constants';
 import { MarketTableBodyRow } from './MarketTableBodyRow';
 
 export const MarketTableWoodSellRow = () => {
@@ -18,8 +16,8 @@ export const MarketTableWoodSellRow = () => {
     <MarketTableBodyRow
       sellAmount={WOOD_SELL_AMOUNT}
       receiveAmount={COINT_RECEIVED}
-      sellItemImageSrc={WoodImageSrc}
-      receiveItemImageSrc={CoinsImageSrc}
+      sellItemImageSrc={RESOURCES_IMAGES.wood}
+      receiveItemImageSrc={RESOURCES_IMAGES.coins}
       sellBtnDisabled={!isWoodSellAvailable}
       onSell={onSellWood}
     />
