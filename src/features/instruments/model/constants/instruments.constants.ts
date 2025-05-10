@@ -17,6 +17,7 @@ export const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '2': 3,
   '3': 5,
   '4': 10,
+  '5': 16,
 };
 
 export const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
@@ -24,6 +25,7 @@ export const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
   '2': 2,
   '3': 3,
   '4': 5,
+  '5': 8,
 };
 
 export const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
@@ -36,23 +38,35 @@ export const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
     stone: 15,
   },
   '4': {
-    wood: 50,
+    wood: 80,
     stone: 40,
+    coins: 30,
+  },
+  '5': {
+    wood: 150,
+    stone: 120,
+    coins: 80,
   },
 };
 
 export const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   '1': {},
   '2': {
-    wood: 10,
+    wood: 15,
   },
   '3': {
-    wood: 20,
-    stone: 15,
+    wood: 30,
+    stone: 25,
   },
   '4': {
-    wood: 50,
-    stone: 40,
+    wood: 120,
+    stone: 55,
+    coins: 50,
+  },
+  '5': {
+    wood: 200,
+    stone: 150,
+    coins: 120,
   },
 };
 
