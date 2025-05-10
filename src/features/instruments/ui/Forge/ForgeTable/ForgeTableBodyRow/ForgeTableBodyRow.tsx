@@ -1,5 +1,6 @@
 import type { AxeLevel, InstrumentCost, PickaxeLevel } from '@features/instruments/model';
 import { Button } from '@shared/Button/Button';
+import { ForgeTableInstrumentPrice } from './ForgeTableInstrumentPrice';
 
 interface ForgeTableBodyRowParams {
   resourceName: string;
@@ -8,7 +9,7 @@ interface ForgeTableBodyRowParams {
   instrumentImageSrc: string;
   instrumentNextLevel: string;
   instrumentNextLevelEfficiency: number | undefined;
-  instrumentNextLevelPrice: InstrumentCost | undefined;
+  instrumentNextLevelCost: InstrumentCost | undefined;
   isNextLevelExist: boolean;
   isUpgradeAvailable: boolean;
   onUpgrade: () => void;
@@ -21,14 +22,14 @@ export const ForgeTableBodyRow = ({
   instrumentImageSrc,
   instrumentNextLevel,
   instrumentNextLevelEfficiency,
-  instrumentNextLevelPrice,
+  instrumentNextLevelCost,
   isNextLevelExist,
   isUpgradeAvailable,
   onUpgrade,
 }: ForgeTableBodyRowParams) => {
   return (
     <tr>
-      <td className="w-1/3 px-6">
+      <td>
         <div className="flex flex-col gap-1 items-center">
           <img src={instrumentImageSrc} width="80px" />
           <span className="text-xl">level {instrumentCurrentLevel}</span>
@@ -37,15 +38,18 @@ export const ForgeTableBodyRow = ({
           </span>
         </div>
       </td>
-      <td className="w-1/3 px-6">
-        <span>{isNextLevelExist ? JSON.stringify(instrumentNextLevelPrice) : 'MAX'}</span>
+      <td>
+        <ForgeTableInstrumentPrice
+          isNextLevelExist={isNextLevelExist}
+          instrumentNextLevelCost={instrumentNextLevelCost}
+        />
       </td>
-      <td className="w-1/3 px-6">
+      <td>
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
           Upgrade
         </Button>
       </td>
-      <td className="w-1/3 px-6">
+      <td>
         {isNextLevelExist ? (
           <div className="flex flex-col gap-1 items-center">
             <img src={instrumentImageSrc} width="80px" />

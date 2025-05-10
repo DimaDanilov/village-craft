@@ -3,11 +3,11 @@ import { ForgeTableAxeUpgradeRow, ForgeTablePickaxeUpgradeRow } from './ForgeTab
 
 export const ForgeTable = () => {
   return (
-    <table className="mx-auto text-center">
+    <table className="text-center border-separate border-spacing-x-8 border-spacing-y-4">
       <thead>
         <ForgeTableHeaderRow />
       </thead>
-      <tbody>
+      <tbody className="gap-6">
         <ForgeTableAxeUpgradeRow />
         <ForgeTablePickaxeUpgradeRow />
       </tbody>

@@ -29,7 +29,7 @@ export const ForgeTablePickaxeUpgradeRow = () => {
     ? PICKAXE_LEVEL_EFFICIENCY[pickaxeNextLevel]
     : undefined;
 
-  const pickaxeNextLevelPrice: InstrumentCost | undefined = isNextLevelExist
+  const pickaxeNextLevelCost: InstrumentCost | undefined = isNextLevelExist
     ? PICKAXE_UPGRADE_COST[pickaxeNextLevel]
     : undefined;
 
@@ -46,7 +46,7 @@ export const ForgeTablePickaxeUpgradeRow = () => {
       instrumentImageSrc={INSTRUMENTS_IMAGES.pickaxe}
       instrumentNextLevel={pickaxeNextLevel}
       instrumentNextLevelEfficiency={pickaxeNextLevelEfficiency}
-      instrumentNextLevelPrice={pickaxeNextLevelPrice}
+      instrumentNextLevelCost={pickaxeNextLevelCost}
       isNextLevelExist={isNextLevelExist}
       isUpgradeAvailable={isPickaxeUpgradeAvailable}
       onUpgrade={onUpgradePickaxe}

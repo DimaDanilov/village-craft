@@ -26,7 +26,7 @@ export const ForgeTableAxeUpgradeRow = () => {
   const axeCurrentLevelEfficiency: number = AXE_LEVEL_EFFICIENCY[axeLevel];
   const axeNextLevelEfficiency: number | undefined = isNextLevelExist ? AXE_LEVEL_EFFICIENCY[axeNextLevel] : undefined;
 
-  const axeNextLevelPrice: InstrumentCost | undefined = isNextLevelExist ? AXE_UPGRADE_COST[axeNextLevel] : undefined;
+  const axeNextLevelCost: InstrumentCost | undefined = isNextLevelExist ? AXE_UPGRADE_COST[axeNextLevel] : undefined;
 
   const onUpgradeAxe = useCallback(() => dispatch(UpgradeAxeWithResources()), [dispatch, UpgradeAxeWithResources]);
 
@@ -38,7 +38,7 @@ export const ForgeTableAxeUpgradeRow = () => {
       instrumentImageSrc={INSTRUMENTS_IMAGES.axe}
       instrumentNextLevel={axeNextLevel}
       instrumentNextLevelEfficiency={axeNextLevelEfficiency}
-      instrumentNextLevelPrice={axeNextLevelPrice}
+      instrumentNextLevelCost={axeNextLevelCost}
       isNextLevelExist={isNextLevelExist}
       isUpgradeAvailable={isAxeUpgradeAvailable}
       onUpgrade={onUpgradeAxe}
