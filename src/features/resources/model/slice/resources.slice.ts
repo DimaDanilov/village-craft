@@ -1,14 +1,23 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { CoinsStorage, StonePile, WoodPile } from '../types';
-import { selectCoinsCount, selectResourcesError, selectStoneCount, selectWoodCount } from '../selectors';
+import {
+  selectAllResources,
+  selectCoinsCount,
+  selectResourcesError,
+  selectStoneCount,
+  selectWoodCount,
+} from '../selectors';
 import { isSellAvailable } from '../tools';
 
+export interface ResourcesInfo {
+  wood: WoodPile;
+  stone: StonePile;
+  coins: CoinsStorage;
+}
+
 export interface ResourcesState {
-  resources: {
-    wood: WoodPile;
-    stone: StonePile;
-    coins: CoinsStorage;
-  };
+  resources: ResourcesInfo;
   error?: string;
 }
 
@@ -31,6 +40,7 @@ export const resourcesSlice = createSlice({
   name: 'resources',
   initialState,
   selectors: {
+    selectAllResources,
     selectWoodCount,
     selectStoneCount,
     selectCoinsCount,

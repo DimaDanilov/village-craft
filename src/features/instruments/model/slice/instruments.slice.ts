@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { AxeInstrument, PickaxeInstrument } from '../types';
 import { selectAxeLevel, selectInstrumentsError, selectPickaxeLevel } from '../selectors';
 import { isInstrumentUpgradeAvailable } from '../tools';
-import { AXE_LEVEL_EFFICIENCY, PICKAXE_LEVEL_EFFICIENCY } from '../constants';
+import { AXE_UPGRADE_COST, PICKAXE_UPGRADE_COST } from '../constants';
 
 export interface InstrumentsState {
   instruments: {
@@ -32,7 +32,7 @@ export const instrumentsSlice = createSlice({
     upgradeAxe: (state) => {
       const nextLevel = (Number(state.instruments.axe.level) + 1).toString();
 
-      if (!isInstrumentUpgradeAvailable(nextLevel, AXE_LEVEL_EFFICIENCY)) {
+      if (!isInstrumentUpgradeAvailable(nextLevel, AXE_UPGRADE_COST)) {
         state.error = 'Can`t upgrade axe';
         return;
       }
@@ -40,7 +40,8 @@ export const instrumentsSlice = createSlice({
     },
     upgradePickaxe: (state) => {
       const nextLevel = (Number(state.instruments.pickaxe.level) + 1).toString();
-      if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_LEVEL_EFFICIENCY)) {
+
+      if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_UPGRADE_COST)) {
         state.error = 'Can`t upgrade pickaxe';
         return;
       }

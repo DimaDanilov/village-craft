@@ -2,23 +2,27 @@ import type { AxeLevel, InstrumentCost, PickaxeLevel } from '@features/instrumen
 import { Button } from '@shared/Button/Button';
 
 interface ForgeTableBodyRowParams {
+  resourceName: string;
   instrumentCurrentLevel: AxeLevel | PickaxeLevel;
   instrumentCurrentLevelEfficiency: number;
   instrumentImageSrc: string;
   instrumentNextLevel: string;
   instrumentNextLevelEfficiency: number | undefined;
   instrumentNextLevelPrice: InstrumentCost | undefined;
+  isNextLevelExist: boolean;
   isUpgradeAvailable: boolean;
   onUpgrade: () => void;
 }
 
 export const ForgeTableBodyRow = ({
+  resourceName,
   instrumentCurrentLevel,
   instrumentCurrentLevelEfficiency,
   instrumentImageSrc,
   instrumentNextLevel,
   instrumentNextLevelEfficiency,
   instrumentNextLevelPrice,
+  isNextLevelExist,
   isUpgradeAvailable,
   onUpgrade,
 }: ForgeTableBodyRowParams) => {
@@ -28,11 +32,13 @@ export const ForgeTableBodyRow = ({
         <div className="flex flex-col gap-1 items-center">
           <img src={instrumentImageSrc} width="80px" />
           <span className="text-xl">level {instrumentCurrentLevel}</span>
-          <span className="text-sm">Wood: {instrumentCurrentLevelEfficiency}</span>
+          <span className="text-sm">
+            {resourceName}: {instrumentCurrentLevelEfficiency}
+          </span>
         </div>
       </td>
       <td className="w-1/3 px-6">
-        <span>{instrumentNextLevelPrice ? JSON.stringify(instrumentNextLevelPrice) : 'MAX'}</span>
+        <span>{isNextLevelExist ? JSON.stringify(instrumentNextLevelPrice) : 'MAX'}</span>
       </td>
       <td className="w-1/3 px-6">
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
@@ -40,11 +46,13 @@ export const ForgeTableBodyRow = ({
         </Button>
       </td>
       <td className="w-1/3 px-6">
-        {isUpgradeAvailable ? (
+        {isNextLevelExist ? (
           <div className="flex flex-col gap-1 items-center">
             <img src={instrumentImageSrc} width="80px" />
             <span className="text-xl">level {instrumentNextLevel}</span>
-            <span className="text-sm">Wood: {instrumentNextLevelEfficiency}</span>
+            <span className="text-sm">
+              {resourceName}: {instrumentNextLevelEfficiency}
+            </span>
           </div>
         ) : (
           <span>MAX</span>
