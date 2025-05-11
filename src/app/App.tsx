@@ -21,11 +21,11 @@ function App() {
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <h1 className={`text-2xl font-bold ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>Service</h1>
+              <h1 className={`text-2xl font-bold ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>Services</h1>
               <div className="grid grid-cols-2 gap-4">
                 <Market />
                 <Forge />
-              </div>{' '}
+              </div>
             </div>
           </div>
           <InstrumentResourcesInfo />
