@@ -2,6 +2,7 @@ import { LOCATIONS_IMAGES, mineStoneWithPickaxe, resourcesSlice } from '@feature
 import { DeckCard } from '@shared/DeckCard/DeckCard';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
+import PickaxeIcon from '@assets/icons/Pickaxe.svg?react';
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ export const Mines = () => {
       title="Mines"
       description="Mine stone with your pickaxe."
       cardCategory="resource"
+      ResourceIconComponent={PickaxeIcon}
       resourceCount={stoneAmount}
     />
   );

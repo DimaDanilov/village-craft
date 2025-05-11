@@ -1,17 +1,25 @@
 import { selectCardPalette } from './tools';
 import type { DeckCardCategory, DeckCardPalette } from './types';
-import AxeIcon from '@assets/icons/Axe.svg?react';
 
 interface DeckCardProps {
   onClick?: () => void;
-  resourceCount?: number;
   imageSrc: string;
   title: string;
   description: string;
   cardCategory: DeckCardCategory;
+  resourceCount?: number;
+  ResourceIconComponent?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
-export const DeckCard = ({ onClick, imageSrc, title, description, cardCategory, resourceCount }: DeckCardProps) => {
+export const DeckCard = ({
+  onClick,
+  imageSrc,
+  title,
+  description,
+  cardCategory,
+  resourceCount,
+  ResourceIconComponent,
+}: DeckCardProps) => {
   const deckCardPalette: DeckCardPalette = selectCardPalette({ cardCategory });
   const { bgColorClassName, textColorClassName, borderColorClassName, iconStrokeColorClassName } = deckCardPalette;
 
@@ -27,9 +35,14 @@ export const DeckCard = ({ onClick, imageSrc, title, description, cardCategory, 
           <p className="text-justify">{description}</p>
         </div>
       </div>
-      {resourceCount !== undefined && (
-        <div className="flex flex-row justify-end items-center mx-3 my-5 gap-2">
-          <AxeIcon stroke="60px" width={40} className={`fill-transparent ${iconStrokeColorClassName}`} />
+      {resourceCount !== undefined && ResourceIconComponent && (
+        <div className="flex flex-row justify-end items-center mx-3 my-5 gap-1">
+          <ResourceIconComponent
+            width={30}
+            height={30}
+            className={`fill-transparent ${iconStrokeColorClassName}`}
+            strokeWidth="60px"
+          />
           <span>{resourceCount}</span>
         </div>
       )}
