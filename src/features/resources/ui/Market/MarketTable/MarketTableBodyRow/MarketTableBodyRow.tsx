@@ -22,7 +22,7 @@ export const MarketTableBodyRow = ({
       <td>
         <div className="flex flex-row justify-center items-center gap-1">
           <span className="text-[40px]">{sellAmount}</span>
-          <img src={sellItemImageSrc} width="90px" />
+          <img src={sellItemImageSrc} width="90px" alt="Sell Item Image" />
         </div>
       </td>
       <td>
@@ -33,7 +33,7 @@ export const MarketTableBodyRow = ({
       <td>
         <div className="flex flex-row justify-center items-center gap-1">
           <span className="text-[40px]">{receiveAmount}</span>
-          <img src={receiveItemImageSrc} width="90px" />
+          <img src={receiveItemImageSrc} width="90px" alt="Receive Item Image" />
         </div>
       </td>
     </tr>

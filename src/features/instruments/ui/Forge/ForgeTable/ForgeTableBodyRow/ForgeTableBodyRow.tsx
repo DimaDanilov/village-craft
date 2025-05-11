@@ -31,7 +31,7 @@ export const ForgeTableBodyRow = ({
     <tr>
       <td>
         <div className="flex flex-col gap-1 items-center">
-          <img src={instrumentImageSrc} width="80px" />
+          <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
           <span className="text-xl">level {instrumentCurrentLevel}</span>
           <span className="text-sm">
             {resourceName}: {instrumentCurrentLevelEfficiency}
@@ -52,7 +52,7 @@ export const ForgeTableBodyRow = ({
       <td>
         {isNextLevelExist ? (
           <div className="flex flex-col gap-1 items-center">
-            <img src={instrumentImageSrc} width="80px" />
+            <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
             <span className="text-xl">level {instrumentNextLevel}</span>
             <span className="text-sm">
               {resourceName}: {instrumentNextLevelEfficiency}
