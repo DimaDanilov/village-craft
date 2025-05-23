@@ -2,7 +2,7 @@ import { isSellAvailable } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { ResourceCard } from '@widgets';
 import { useCallback, useMemo, useState } from 'react';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, WheelEvent } from 'react';
 
 interface MarketTableBodyRowProps {
   maxResourceAmount: number;
@@ -24,6 +24,18 @@ export const MarketTableBodyRow = ({
     if (Number(e.target.value) < maxInputLimit) setResourceAmountToSell(Number(e.target.value));
   }, []);
 
+  const onWheelResourceAmountChange = useCallback(
+    (e: WheelEvent<HTMLInputElement>) => {
+      e.preventDefault();
+      const delta = e.deltaY < 0 ? 1 : -1;
+      setResourceAmountToSell((prev) => {
+        const newValue = prev + delta;
+        return Math.max(1, Math.min(maxInputLimit, newValue));
+      });
+    },
+    [maxInputLimit],
+  );
+
   const isSellBtnDisabled = useMemo(
     () =>
       !isSellAvailable({
@@ -43,7 +55,7 @@ export const MarketTableBodyRow = ({
   return (
     <tr>
       <td>
-        <div className="flex flex-row gap-2 items-center">
+        <div className="flex flex-row gap-2 items-center" onWheel={onWheelResourceAmountChange}>
           <div className="flex flex-col gap-1 items-center">
             <img src={sellItemImageSrc} width="80px" alt="Resource Image" />
             <input
@@ -75,7 +87,9 @@ export const MarketTableBodyRow = ({
         </div>
       </td>
       <td>
-        <ResourceCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} />
+        <div onWheel={onWheelResourceAmountChange}>
+          <ResourceCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} />
+        </div>
       </td>
     </tr>
   );
