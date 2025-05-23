@@ -3,7 +3,7 @@ import { CoinsStats, StoneStats, WoodStats } from './ResourceCards';
 
 export const InstrumentResourcesInfo = () => {
   return (
-    <div className="w-fit h-fit flex flex-row border-2 border-amber-500 rounded-2xl">
+    <div className="w-fit h-fit flex flex-row border-2 border-amber-500 rounded-xl">
       <div className="flex flex-col border-r-2 border-r-amber-500 gap-4 px-10 py-6">
         <AxeStats />
         <PickaxeStats />

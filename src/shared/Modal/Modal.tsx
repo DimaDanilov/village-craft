@@ -19,7 +19,7 @@ export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) =
   return (
     <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="bg-white mt-32 pt-3 pb-8 px-6 rounded-lg shadow-lg w-full max-w-fit"
+        className="bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
         onClick={onStopPropagationClick}
       >
         <div className="flex justify-between">
@@ -36,7 +36,7 @@ export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) =
             </svg>
           </button>
         </div>
-        {error && <div className="my-4 p-2 bg-red-100 text-red-700 rounded">{error}</div>}
+        {error && <div className="my-4 p-2 bg-red-100 text-red-700 rounded-xl">{error}</div>}
         <div className="mt-10">{children}</div>
       </div>
     </div>

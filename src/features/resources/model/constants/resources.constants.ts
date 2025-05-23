@@ -9,10 +9,8 @@ import MinesImageSrc from '@assets/locations/Mines.png';
 import MarketImageSrc from '@assets/locations/Market.png';
 import ForgeImageSrc from '@assets/locations/Forge.png';
 
-export const WOOD_SELL_AMOUNT: number = 1;
-export const STONE_SELL_AMOUNT: number = 1;
-
-export const COINT_RECEIVED: number = 1;
+export const WOOD_TRADE_MULTIPLIER: number = 1;
+export const STONE_TRADE_MULTIPLIER: number = 1;
 
 export const RESOURCES_IMAGES: Record<keyof ResourcesState['resources'], string> = {
   wood: WoodImageSrc,
