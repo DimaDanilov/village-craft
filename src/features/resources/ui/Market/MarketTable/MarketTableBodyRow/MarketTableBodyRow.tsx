@@ -20,10 +20,9 @@ export const MarketTableBodyRow = ({
   const maxInputLimit = maxResourceAmount || 1;
   const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(maxInputLimit);
 
-  const onResourceAmountChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setResourceAmountToSell(Number(e.target.value)),
-    [],
-  );
+  const onResourceAmountChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    if (Number(e.target.value) < maxInputLimit) setResourceAmountToSell(Number(e.target.value));
+  }, []);
 
   const isSellBtnDisabled = useMemo(
     () =>
@@ -44,19 +43,36 @@ export const MarketTableBodyRow = ({
   return (
     <tr>
       <td>
-        <input
-          type="number"
-          min={1}
-          max={maxInputLimit}
-          value={resourceAmountToSell}
-          onChange={onResourceAmountChange}
-        />
-        <ResourceCard resourceCount={resourceAmountToSell} imageSrc={sellItemImageSrc} />
+        <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-col gap-1 items-center">
+            <img src={sellItemImageSrc} width="80px" alt="Resource Image" />
+            <input
+              className="w-20 text-xl text-center"
+              type="number"
+              min={1}
+              max={maxInputLimit}
+              value={resourceAmountToSell}
+              onChange={onResourceAmountChange}
+            />
+          </div>
+          <div className="w-4 flex justify-center">
+            <input
+              type="range"
+              min={1}
+              max={maxInputLimit}
+              value={resourceAmountToSell}
+              onChange={onResourceAmountChange}
+              className="w-20 -rotate-90"
+            />
+          </div>
+        </div>
       </td>
       <td>
-        <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
-          Sell
-        </Button>
+        <div className="flex flex-col gap-3 justify-center items-center">
+          <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
+            Sell
+          </Button>
+        </div>
       </td>
       <td>
         <ResourceCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} />
