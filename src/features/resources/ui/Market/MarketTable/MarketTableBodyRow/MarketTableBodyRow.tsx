@@ -1,40 +1,45 @@
 import { Button } from '@shared/Button/Button';
+import { ResourceCard } from '@widgets';
+import { useCallback, useState } from 'react';
+import type { ChangeEvent } from 'react';
 
 interface MarketTableBodyRowProps {
-  sellAmount: number;
-  receiveAmount: number;
   sellItemImageSrc: string;
   receiveItemImageSrc: string;
-  onSell: () => void;
+  sellAction: (resourceAmountToSell: number) => void;
   sellBtnDisabled: boolean;
 }
 
 export const MarketTableBodyRow = ({
-  sellAmount,
-  receiveAmount,
   sellItemImageSrc,
   receiveItemImageSrc,
-  onSell,
+  sellAction,
   sellBtnDisabled,
 }: MarketTableBodyRowProps) => {
+  const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(1);
+
+  const onResourceAmountChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => setResourceAmountToSell(Number(e.target.value)),
+    [],
+  );
+
+  const onSellClick = useCallback(() => {
+    sellAction(resourceAmountToSell);
+  }, [resourceAmountToSell]);
+
   return (
     <tr>
       <td>
-        <div className="flex flex-row justify-center items-center gap-1">
-          <span className="text-[40px]">{sellAmount}</span>
-          <img src={sellItemImageSrc} width="90px" alt="Sell Item Image" />
-        </div>
+        <input type="number" value={resourceAmountToSell} onChange={onResourceAmountChange} />
+        <ResourceCard resourceCount={resourceAmountToSell} imageSrc={sellItemImageSrc} />
       </td>
       <td>
-        <Button disabled={sellBtnDisabled} onClick={onSell}>
+        <Button disabled={sellBtnDisabled} onClick={onSellClick}>
           Sell
         </Button>
       </td>
       <td>
-        <div className="flex flex-row justify-center items-center gap-1">
-          <span className="text-[40px]">{receiveAmount}</span>
-          <img src={receiveItemImageSrc} width="90px" alt="Receive Item Image" />
-        </div>
+        <ResourceCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} />
       </td>
     </tr>
   );
