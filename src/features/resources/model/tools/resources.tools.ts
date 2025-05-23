@@ -4,5 +4,5 @@ interface IsSellAvailableParams {
 }
 
 export function isSellAvailable({ currentResourcesAmount, amountToSell }: IsSellAvailableParams): boolean {
-  return currentResourcesAmount >= amountToSell;
+  return currentResourcesAmount >= amountToSell && currentResourcesAmount > 0;
 }

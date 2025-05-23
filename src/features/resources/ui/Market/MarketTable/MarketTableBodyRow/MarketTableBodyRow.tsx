@@ -1,26 +1,36 @@
+import { isSellAvailable } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { ResourceCard } from '@widgets';
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { ChangeEvent } from 'react';
 
 interface MarketTableBodyRowProps {
+  maxResourceAmount: number;
   sellItemImageSrc: string;
   receiveItemImageSrc: string;
   sellAction: (resourceAmountToSell: number) => void;
-  sellBtnDisabled: boolean;
 }
 
 export const MarketTableBodyRow = ({
+  maxResourceAmount,
   sellItemImageSrc,
   receiveItemImageSrc,
   sellAction,
-  sellBtnDisabled,
 }: MarketTableBodyRowProps) => {
   const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(1);
 
   const onResourceAmountChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setResourceAmountToSell(Number(e.target.value)),
     [],
+  );
+
+  const isSellBtnDisabled = useMemo(
+    () =>
+      !isSellAvailable({
+        currentResourcesAmount: maxResourceAmount,
+        amountToSell: resourceAmountToSell,
+      }),
+    [maxResourceAmount, resourceAmountToSell],
   );
 
   const onSellClick = useCallback(() => {
@@ -30,11 +40,17 @@ export const MarketTableBodyRow = ({
   return (
     <tr>
       <td>
-        <input type="number" value={resourceAmountToSell} onChange={onResourceAmountChange} />
+        <input
+          type="number"
+          min={1}
+          max={maxResourceAmount || 1}
+          value={resourceAmountToSell}
+          onChange={onResourceAmountChange}
+        />
         <ResourceCard resourceCount={resourceAmountToSell} imageSrc={sellItemImageSrc} />
       </td>
       <td>
-        <Button disabled={sellBtnDisabled} onClick={onSellClick}>
+        <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
           Sell
         </Button>
       </td>
