@@ -1,16 +1,17 @@
-import { isSellAvailable } from '@features/resources/model';
 import { Button } from '@shared/Button/Button';
 import { ResourceCard } from '@widgets';
-import { useCallback, useMemo, useState } from 'react';
-import type { ChangeEvent, WheelEvent } from 'react';
+import {
+  useMarketControlledInputs,
+  useMarketIsSellDisabled,
+  useMarketSellResources,
+  type UseMarketSellResourcesParams,
+} from './hooks';
 
-interface MarketTableBodyRowProps {
-  maxResourceAmount: number;
+type MarketTableBodyRowProps = Pick<UseMarketSellResourcesParams, 'maxResourceAmount' | 'sellAction'> & {
   tradeMultiplier: number;
   sellItemImageSrc: string;
   receiveItemImageSrc: string;
-  sellAction: (resourceAmountToSell: number) => void;
-}
+};
 
 export const MarketTableBodyRow = ({
   maxResourceAmount,
@@ -20,39 +21,19 @@ export const MarketTableBodyRow = ({
   sellAction,
 }: MarketTableBodyRowProps) => {
   const maxInputLimit = maxResourceAmount || 1;
-  const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(maxInputLimit);
+  const { resourceAmountToSell, setResourceAmountToSell, onResourceAmountChange, onWheelResourceAmountChange } =
+    useMarketControlledInputs({
+      maxInputLimit,
+    });
 
-  const onResourceAmountChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) < maxInputLimit) setResourceAmountToSell(Number(e.target.value));
-  }, []);
+  const isSellDisabled = useMarketIsSellDisabled({ maxResourceAmount, resourceAmountToSell });
 
-  const onWheelResourceAmountChange = useCallback(
-    (e: WheelEvent<HTMLInputElement>) => {
-      e.preventDefault();
-      const delta = e.deltaY < 0 ? 1 : -1;
-      setResourceAmountToSell((prev) => {
-        const newValue = prev + delta;
-        return Math.max(1, Math.min(maxInputLimit, newValue));
-      });
-    },
-    [maxInputLimit],
-  );
-
-  const isSellBtnDisabled = useMemo(
-    () =>
-      !isSellAvailable({
-        currentResourcesAmount: maxResourceAmount,
-        amountToSell: resourceAmountToSell,
-      }),
-    [maxResourceAmount, resourceAmountToSell],
-  );
-
-  const onSellClick = useCallback(() => {
-    const resourceAmountLeftAfterTrade = maxResourceAmount - resourceAmountToSell;
-    const newTradeAmountToSet = resourceAmountLeftAfterTrade > 0 ? resourceAmountLeftAfterTrade : 1; // If after trade there is no resources to trade, then set resources to 1 in trade window
-    sellAction(resourceAmountToSell);
-    setResourceAmountToSell(newTradeAmountToSet);
-  }, [resourceAmountToSell]);
+  const onSellResources = useMarketSellResources({
+    maxResourceAmount,
+    resourceAmountToSell,
+    sellAction,
+    setResourceAmountToSell,
+  });
 
   return (
     <tr>
@@ -65,7 +46,7 @@ export const MarketTableBodyRow = ({
               min={1}
               max={maxInputLimit}
               value={resourceAmountToSell}
-              disabled={isSellBtnDisabled}
+              disabled={isSellDisabled}
               onChange={onResourceAmountChange}
               className="w-20 text-xl text-center"
             />
@@ -76,7 +57,7 @@ export const MarketTableBodyRow = ({
               min={1}
               max={maxInputLimit}
               value={resourceAmountToSell}
-              disabled={isSellBtnDisabled}
+              disabled={isSellDisabled}
               onChange={onResourceAmountChange}
               className="w-20 -rotate-90"
             />
@@ -86,7 +67,7 @@ export const MarketTableBodyRow = ({
       <td>
         <div className="flex flex-col gap-2 justify-center items-center">
           <span className="text-lg border-amber-500 bg-white border-2 rounded-xl px-5">x{tradeMultiplier}</span>
-          <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
+          <Button disabled={isSellDisabled} onClick={onSellResources}>
             Sell
           </Button>
         </div>
