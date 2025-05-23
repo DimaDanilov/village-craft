@@ -1,3 +1,4 @@
+export * from './DeckBuildingCard';
 export * from './DeckResourceCard';
 export * from './DeckCardDefault';
 export * from './DeckCardHeader';

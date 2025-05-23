@@ -2,7 +2,7 @@ import { Forge } from '@features/instruments/ui';
 import { Forest } from '@features/resources/ui';
 import { Market } from '@features/resources/ui';
 import { Mines } from '@features/resources/ui';
-import { DECK_CARD_RESOURCE_PALETTE, DECK_CARD_SERVICE_PALETTE } from '@shared/DeckCard';
+import { DECK_CARD_RESOURCE_PALETTE, DECK_CARD_SERVICE_PALETTE, DeckBuildingCard } from '@shared/DeckCard';
 import { store } from '@store';
 import { InstrumentResourcesInfo } from '@widgets';
 import { Provider } from 'react-redux';
@@ -25,6 +25,7 @@ function App() {
               <div className="grid grid-cols-2 gap-4">
                 <Market />
                 <Forge />
+                <DeckBuildingCard />
               </div>
             </div>
           </div>

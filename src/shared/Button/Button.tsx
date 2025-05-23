@@ -3,7 +3,7 @@ type ButtonProps = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButton
 export const Button = ({ children, ...restProps }: ButtonProps) => {
   return (
     <button
-      className="min-w-30 min-h-10 text-xl bg-amber-600 text-white disabled:bg-amber-600/40 rounded-xl cursor-pointer disabled:cursor-not-allowed"
+      className="min-w-30 min-h-10 text-xl px-3 bg-amber-600 text-white disabled:bg-amber-600/40 rounded-xl cursor-pointer disabled:cursor-not-allowed"
       {...restProps}
     >
       {children}

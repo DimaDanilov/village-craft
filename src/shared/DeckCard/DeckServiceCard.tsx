@@ -13,10 +13,8 @@ export const DeckServiceCard = ({ onClick, deckCardInfo, serviceLevel }: DeckSer
 
   return (
     <>
-      {isServiceExists ? (
+      {isServiceExists && (
         <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick} />
-      ) : (
-        <span>{deckCardInfo.title} doesn't exist</span>
       )}
     </>
   );

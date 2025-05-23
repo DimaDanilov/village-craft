@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { ForgeBuilding, MarketBuilding } from '../types';
-import { selectForgeLevel, selectMarketLevel } from '../selectors';
+import { selectForgeLevel, selectIsEveryBuildingBuilt, selectMarketLevel } from '../selectors';
 
 export interface BuildingsState {
   buildings: {
@@ -23,6 +23,6 @@ const initialState: BuildingsState = {
 export const buildingsSlice = createSlice({
   name: 'buildings',
   initialState,
-  selectors: { selectForgeLevel, selectMarketLevel },
+  selectors: { selectForgeLevel, selectMarketLevel, selectIsEveryBuildingBuilt },
   reducers: {},
 });
