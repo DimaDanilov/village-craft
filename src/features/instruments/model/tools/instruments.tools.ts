@@ -5,8 +5,8 @@ export function isInstrumentNextLevelExist<T extends Record<string, InstrumentCo
   nextLevel: K,
   allLevelsCost: T,
 ): nextLevel is Extract<keyof T, K> {
-  const isNextLevelExist = String(nextLevel) in allLevelsCost;
-  return isNextLevelExist;
+  const key = String(nextLevel);
+  return key in allLevelsCost;
 }
 
 export function isResourcesEnoughToUpgradeInstrument<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
