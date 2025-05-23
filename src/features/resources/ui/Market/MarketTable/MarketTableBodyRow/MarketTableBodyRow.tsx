@@ -17,7 +17,8 @@ export const MarketTableBodyRow = ({
   receiveItemImageSrc,
   sellAction,
 }: MarketTableBodyRowProps) => {
-  const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(1);
+  const maxInputLimit = maxResourceAmount || 1;
+  const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(maxInputLimit);
 
   const onResourceAmountChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => setResourceAmountToSell(Number(e.target.value)),
@@ -34,7 +35,10 @@ export const MarketTableBodyRow = ({
   );
 
   const onSellClick = useCallback(() => {
+    const resourceAmountLeftAfterTrade = maxResourceAmount - resourceAmountToSell;
+    const newTradeAmountToSet = resourceAmountLeftAfterTrade > 0 ? resourceAmountLeftAfterTrade : 1; // If after trade there is no resources to trade, then set resources to 1 in trade window
     sellAction(resourceAmountToSell);
+    setResourceAmountToSell(newTradeAmountToSet);
   }, [resourceAmountToSell]);
 
   return (
@@ -43,7 +47,7 @@ export const MarketTableBodyRow = ({
         <input
           type="number"
           min={1}
-          max={maxResourceAmount || 1}
+          max={maxInputLimit}
           value={resourceAmountToSell}
           onChange={onResourceAmountChange}
         />
