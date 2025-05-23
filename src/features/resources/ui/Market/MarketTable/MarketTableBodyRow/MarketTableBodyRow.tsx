@@ -6,6 +6,7 @@ import type { ChangeEvent, WheelEvent } from 'react';
 
 interface MarketTableBodyRowProps {
   maxResourceAmount: number;
+  tradeMultiplier: number;
   sellItemImageSrc: string;
   receiveItemImageSrc: string;
   sellAction: (resourceAmountToSell: number) => void;
@@ -13,6 +14,7 @@ interface MarketTableBodyRowProps {
 
 export const MarketTableBodyRow = ({
   maxResourceAmount,
+  tradeMultiplier,
   sellItemImageSrc,
   receiveItemImageSrc,
   sellAction,
@@ -59,12 +61,13 @@ export const MarketTableBodyRow = ({
           <div className="flex flex-col gap-1 items-center">
             <img src={sellItemImageSrc} width="80px" alt="Resource Image" />
             <input
-              className="w-20 text-xl text-center"
               type="number"
               min={1}
               max={maxInputLimit}
               value={resourceAmountToSell}
+              disabled={isSellBtnDisabled}
               onChange={onResourceAmountChange}
+              className="w-20 text-xl text-center"
             />
           </div>
           <div className="w-4 flex justify-center">
@@ -73,6 +76,7 @@ export const MarketTableBodyRow = ({
               min={1}
               max={maxInputLimit}
               value={resourceAmountToSell}
+              disabled={isSellBtnDisabled}
               onChange={onResourceAmountChange}
               className="w-20 -rotate-90"
             />
@@ -80,7 +84,8 @@ export const MarketTableBodyRow = ({
         </div>
       </td>
       <td>
-        <div className="flex flex-col gap-3 justify-center items-center">
+        <div className="flex flex-col gap-2 justify-center items-center">
+          <span className="text-lg border-amber-500 bg-white border-2 rounded-3xl px-5">x{tradeMultiplier}</span>
           <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
             Sell
           </Button>
