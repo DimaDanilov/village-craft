@@ -1,22 +1,23 @@
 import { DECK_CARD_SERVICE_PALETTE } from './constants';
-import { DeckCardHeader } from './DeckCardHeader';
+import { DeckCardDefault } from './DeckCardDefault';
 import type { DeckCardInfo } from './types';
 
 interface DeckServiceCardProps {
   onClick?: () => void;
   deckCardInfo: DeckCardInfo;
+  serviceLevel: number;
 }
 
-export const DeckServiceCard = ({ onClick, deckCardInfo }: DeckServiceCardProps) => {
-  const { title, description, imageSrc } = deckCardInfo;
-  const { bgColorClassName, textColorClassName, borderColorClassName } = DECK_CARD_SERVICE_PALETTE;
+export const DeckServiceCard = ({ onClick, deckCardInfo, serviceLevel }: DeckServiceCardProps) => {
+  const isServiceExists = serviceLevel > 0;
 
   return (
-    <div
-      className={`flex flex-col justify-between w-60 h-90 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer`}
-      onClick={onClick}
-    >
-      <DeckCardHeader title={title} description={description} imageSrc={imageSrc} />
-    </div>
+    <>
+      {isServiceExists ? (
+        <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick} />
+      ) : (
+        <span>{deckCardInfo.title} doesn't exist</span>
+      )}
+    </>
   );
 };

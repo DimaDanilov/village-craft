@@ -1,5 +1,5 @@
 import { DECK_CARD_RESOURCE_PALETTE } from './constants';
-import { DeckCardHeader } from './DeckCardHeader';
+import { DeckCardDefault } from './DeckCardDefault';
 import type { DeckCardInfo } from './types';
 
 interface DeckResourceCardProps {
@@ -15,16 +15,10 @@ export const DeckResourceCard = ({
   resourceCount,
   ResourceIconComponent,
 }: DeckResourceCardProps) => {
-  const { title, description, imageSrc } = deckCardInfo;
-  const { bgColorClassName, textColorClassName, borderColorClassName, iconStrokeColorClassName } =
-    DECK_CARD_RESOURCE_PALETTE;
+  const { iconStrokeColorClassName } = DECK_CARD_RESOURCE_PALETTE;
 
   return (
-    <div
-      className={`flex flex-col justify-between w-60 h-90 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer`}
-      onClick={onClick}
-    >
-      <DeckCardHeader title={title} description={description} imageSrc={imageSrc} />
+    <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_RESOURCE_PALETTE} onClick={onClick}>
       <div className="flex flex-row justify-end items-center mx-3 my-5 gap-1">
         <ResourceIconComponent
           width={30}
@@ -34,6 +28,6 @@ export const DeckResourceCard = ({
         />
         <span>{resourceCount}</span>
       </div>
-    </div>
+    </DeckCardDefault>
   );
 };
