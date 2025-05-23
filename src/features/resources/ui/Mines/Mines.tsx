@@ -1,8 +1,8 @@
-import { LOCATIONS_IMAGES, mineStoneWithPickaxe, resourcesSlice } from '@features/resources/model';
+import { mineStoneWithPickaxe, resourcesSlice } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import PickaxeIcon from '@assets/icons/Pickaxe.svg?react';
-import { DeckResourceCard } from '@shared/DeckCard';
+import { DECK_CARD_INFOS, DeckResourceCard } from '@shared/DeckCard';
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
@@ -13,9 +13,7 @@ export const Mines = () => {
   return (
     <DeckResourceCard
       onClick={mineStone}
-      imageSrc={LOCATIONS_IMAGES.mines}
-      title="Mines"
-      description="Mine stone with your pickaxe."
+      deckCardInfo={DECK_CARD_INFOS.mines}
       ResourceIconComponent={PickaxeIcon}
       resourceCount={stoneAmount}
     />

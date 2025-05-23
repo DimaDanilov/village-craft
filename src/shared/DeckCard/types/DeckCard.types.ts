@@ -6,3 +6,16 @@ export interface DeckCardPalette {
   iconStrokeColorClassName: string;
   borderColorClassName: string;
 }
+
+export interface DeckCardInfo {
+  imageSrc: string;
+  title: string;
+  description: string;
+}
+
+export interface DeckCardInfos {
+  forest: DeckCardInfo;
+  mines: DeckCardInfo;
+  forge: DeckCardInfo;
+  market: DeckCardInfo;
+}

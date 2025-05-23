@@ -1,14 +1,14 @@
 import { DECK_CARD_SERVICE_PALETTE } from './constants';
 import { DeckCardHeader } from './DeckCardHeader';
+import type { DeckCardInfo } from './types';
 
 interface DeckServiceCardProps {
   onClick?: () => void;
-  imageSrc: string;
-  title: string;
-  description: string;
+  deckCardInfo: DeckCardInfo;
 }
 
-export const DeckServiceCard = ({ onClick, imageSrc, title, description }: DeckServiceCardProps) => {
+export const DeckServiceCard = ({ onClick, deckCardInfo }: DeckServiceCardProps) => {
+  const { title, description, imageSrc } = deckCardInfo;
   const { bgColorClassName, textColorClassName, borderColorClassName } = DECK_CARD_SERVICE_PALETTE;
 
   return (

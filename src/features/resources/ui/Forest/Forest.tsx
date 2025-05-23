@@ -1,8 +1,8 @@
-import { chopWoodWithAxe, LOCATIONS_IMAGES, resourcesSlice } from '@features/resources/model';
+import { chopWoodWithAxe, resourcesSlice } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import AxeIcon from '@assets/icons/Axe.svg?react';
-import { DeckResourceCard } from '@shared/DeckCard';
+import { DECK_CARD_INFOS, DeckResourceCard } from '@shared/DeckCard';
 
 export const Forest = () => {
   const dispatch = useAppDispatch();
@@ -13,9 +13,7 @@ export const Forest = () => {
   return (
     <DeckResourceCard
       onClick={chopWood}
-      imageSrc={LOCATIONS_IMAGES.forest}
-      title="Forest"
-      description="Forest full of high trees. Nice place to chop wood with axe."
+      deckCardInfo={DECK_CARD_INFOS.forest}
       ResourceIconComponent={AxeIcon}
       resourceCount={woodAmount}
     />

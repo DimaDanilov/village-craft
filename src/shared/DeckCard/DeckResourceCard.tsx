@@ -1,23 +1,21 @@
 import { DECK_CARD_RESOURCE_PALETTE } from './constants';
 import { DeckCardHeader } from './DeckCardHeader';
+import type { DeckCardInfo } from './types';
 
 interface DeckResourceCardProps {
   onClick?: () => void;
-  imageSrc: string;
-  title: string;
-  description: string;
+  deckCardInfo: DeckCardInfo;
   resourceCount: number;
   ResourceIconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 export const DeckResourceCard = ({
   onClick,
-  imageSrc,
-  title,
-  description,
+  deckCardInfo,
   resourceCount,
   ResourceIconComponent,
 }: DeckResourceCardProps) => {
+  const { title, description, imageSrc } = deckCardInfo;
   const { bgColorClassName, textColorClassName, borderColorClassName, iconStrokeColorClassName } =
     DECK_CARD_RESOURCE_PALETTE;
 
