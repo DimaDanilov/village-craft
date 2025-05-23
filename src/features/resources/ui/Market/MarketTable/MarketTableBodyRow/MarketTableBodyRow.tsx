@@ -85,7 +85,7 @@ export const MarketTableBodyRow = ({
       </td>
       <td>
         <div className="flex flex-col gap-2 justify-center items-center">
-          <span className="text-lg border-amber-500 bg-white border-2 rounded-3xl px-5">x{tradeMultiplier}</span>
+          <span className="text-lg border-amber-500 bg-white border-2 rounded-xl px-5">x{tradeMultiplier}</span>
           <Button disabled={isSellBtnDisabled} onClick={onSellClick}>
             Sell
           </Button>
