@@ -2,11 +2,10 @@ import type { ResourcesInfo } from '@features/resources/model';
 import type { InstrumentCost } from '../constants';
 
 export function isInstrumentNextLevelExist<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
-  nextLevel: K,
+  _nextLevel: K,
   allLevelsCost: T,
-): nextLevel is Extract<keyof T, K> {
-  const key = String(nextLevel);
-  return key in allLevelsCost;
+): _nextLevel is Extract<keyof T, K> {
+  return String(_nextLevel) in allLevelsCost;
 }
 
 export function isResourcesEnoughToUpgradeInstrument<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
