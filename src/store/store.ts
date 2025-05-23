@@ -1,3 +1,4 @@
+import { buildingsSlice } from '@features/buildings/model';
 import { instrumentsSlice } from '@features/instruments/model';
 import { resourcesSlice } from '@features/resources/model';
 import { configureStore } from '@reduxjs/toolkit';
@@ -5,6 +6,7 @@ import type { Action, ThunkAction } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
+    [buildingsSlice.name]: buildingsSlice.reducer,
     [instrumentsSlice.name]: instrumentsSlice.reducer,
     [resourcesSlice.name]: resourcesSlice.reducer,
   },

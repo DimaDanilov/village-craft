@@ -2,7 +2,7 @@ import { clearResourcesError, LOCATIONS_IMAGES } from '@features/resources/model
 import { useCallback, useState } from 'react';
 import { MarketModal } from './MarketModal';
 import { useAppDispatch } from '@store';
-import { DeckCard } from '@shared/DeckCard/DeckCard';
+import { DeckServiceCard } from '@shared/DeckCard';
 
 export const Market = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +15,11 @@ export const Market = () => {
 
   return (
     <>
-      <DeckCard
+      <DeckServiceCard
         onClick={openMarket}
         imageSrc={LOCATIONS_IMAGES.market}
         title="Market"
         description="Sell your resources to earn money."
-        cardCategory="service"
       />
       <MarketModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>

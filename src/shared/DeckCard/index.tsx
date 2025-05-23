@@ -1,4 +1,4 @@
-export * from './DeckCard';
+export * from './DeckResourceCard';
+export * from './DeckServiceCard';
 export * from './constants';
-export * from './tools';
 export * from './types';
