@@ -11,13 +11,10 @@ import { useAppDispatch, useAppSelector } from '@store';
 import { DECK_CARD_INFOS } from '@widgets';
 import { useCallback } from 'react';
 import { ServiceBuilderTableBodyRow } from './ServiceBuilderTableBodyRow';
-import { resourcesSlice, type ResourcesInfo } from '@features/resources/model';
+import { resourcesSlice } from '@features/resources/model';
+import type { ResourcesInfo } from '@features/resources/model';
 
-interface ServiceBuilderTableForgeRowProps {
-  onCloseModal: () => void;
-}
-
-export const ServiceBuilderTableForgeRow = ({ onCloseModal }: ServiceBuilderTableForgeRowProps) => {
+export const ServiceBuilderTableForgeRow = () => {
   const dispatch = useAppDispatch();
 
   const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
@@ -35,7 +32,6 @@ export const ServiceBuilderTableForgeRow = ({ onCloseModal }: ServiceBuilderTabl
 
   const onBuildForge = useCallback(() => {
     dispatch(UpgradeForgeWithResources());
-    onCloseModal();
   }, [dispatch]);
 
   return (

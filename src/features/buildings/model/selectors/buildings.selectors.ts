@@ -8,3 +8,4 @@ export const selectIsEveryBuildingBuilt = createSelector([(state: BuildingsState
   const isEverythingBuilt = buildingsInfoArray.every((building) => Number(building.level) > 0);
   return isEverythingBuilt;
 });
+export const selectBuildingsError = (state: BuildingsState) => state.error;

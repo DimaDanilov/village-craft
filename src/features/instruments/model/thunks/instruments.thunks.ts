@@ -15,7 +15,7 @@ export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
   const nextLevel = (Number(currentAxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, AXE_UPGRADE_COST, allResources)) {
-    instrumentsSlice.actions.setInstrumentsError('Can`t upgrade axe');
+    dispatch(instrumentsSlice.actions.setInstrumentsError('Can`t upgrade axe'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: AXE_UPGRADE_COST[nextLevel] }));
@@ -32,7 +32,7 @@ export const UpgradePickaxeWithResources = (): AppThunk => (dispatch, getState) 
   const nextLevel = (Number(currentPickaxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_UPGRADE_COST, allResources)) {
-    instrumentsSlice.actions.setInstrumentsError('Can`t upgrade pickaxe');
+    dispatch(instrumentsSlice.actions.setInstrumentsError('Can`t upgrade pickaxe'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: PICKAXE_UPGRADE_COST[nextLevel] }));

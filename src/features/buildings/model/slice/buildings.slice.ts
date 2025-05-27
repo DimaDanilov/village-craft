@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { ForgeBuilding, MarketBuilding } from '../types';
-import { selectForgeLevel, selectIsEveryBuildingBuilt, selectMarketLevel } from '../selectors';
+import { selectBuildingsError, selectForgeLevel, selectIsEveryBuildingBuilt, selectMarketLevel } from '../selectors';
 import { isBuildingNextLevelExist } from '../tools';
 import { FORGE_UPGRADE_COST, MARKET_UPGRADE_COST } from '../constants';
 
@@ -27,7 +27,7 @@ const initialState: BuildingsState = {
 export const buildingsSlice = createSlice({
   name: 'buildings',
   initialState,
-  selectors: { selectForgeLevel, selectMarketLevel, selectIsEveryBuildingBuilt },
+  selectors: { selectForgeLevel, selectMarketLevel, selectIsEveryBuildingBuilt, selectBuildingsError },
   reducers: {
     _upgradeForge: (state) => {
       const nextLevel = (Number(state.buildings.forge.level) + 1).toString();

@@ -23,6 +23,8 @@ export const ServiceBuilderTableBodyRow = ({
   isNextLevelExist,
   buildingNextLevelCost,
 }: ServiceBuilderTableBodyRowProps) => {
+  if (currentLevel !== '0') return;
+
   return (
     <tr>
       <td>

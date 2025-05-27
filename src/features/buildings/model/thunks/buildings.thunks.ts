@@ -15,7 +15,7 @@ export const UpgradeForgeWithResources = (): AppThunk => (dispatch, getState) =>
   const nextLevel = (Number(currentForgeLevel) + 1).toString();
 
   if (!isBuildingUpgradeAvailable(nextLevel, FORGE_UPGRADE_COST, allResources)) {
-    buildingsSlice.actions.setBuildingsError('Can`t upgrade forge');
+    dispatch(buildingsSlice.actions.setBuildingsError('Can`t upgrade forge'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: FORGE_UPGRADE_COST[nextLevel] }));
@@ -32,7 +32,7 @@ export const UpgradeMarketWithResources = (): AppThunk => (dispatch, getState) =
   const nextLevel = (Number(currentMarketLevel) + 1).toString();
 
   if (!isBuildingUpgradeAvailable(nextLevel, MARKET_UPGRADE_COST, allResources)) {
-    buildingsSlice.actions.setBuildingsError('Can`t upgrade market');
+    dispatch(buildingsSlice.actions.setBuildingsError('Can`t upgrade market'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: MARKET_UPGRADE_COST[nextLevel] }));

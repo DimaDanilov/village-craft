@@ -13,11 +13,7 @@ import { useCallback } from 'react';
 import { ServiceBuilderTableBodyRow } from './ServiceBuilderTableBodyRow';
 import { resourcesSlice, type ResourcesInfo } from '@features/resources/model';
 
-interface ServiceBuilderTableMarketRowProps {
-  onCloseModal: () => void;
-}
-
-export const ServiceBuilderTableMarketRow = ({ onCloseModal }: ServiceBuilderTableMarketRowProps) => {
+export const ServiceBuilderTableMarketRow = () => {
   const dispatch = useAppDispatch();
 
   const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
@@ -35,7 +31,6 @@ export const ServiceBuilderTableMarketRow = ({ onCloseModal }: ServiceBuilderTab
 
   const onBuildMarket = useCallback(() => {
     dispatch(UpgradeMarketWithResources());
-    onCloseModal();
   }, [dispatch]);
 
   return (
