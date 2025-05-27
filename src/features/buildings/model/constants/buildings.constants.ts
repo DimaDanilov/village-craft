@@ -17,7 +17,7 @@ export const FORGE_UPGRADE_COST: ForgeUpgradeCostRecord = {
 export const MARKET_UPGRADE_COST: MarketUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 50,
-    stone: 30,
+    wood: 80,
+    stone: 50,
   },
 };
