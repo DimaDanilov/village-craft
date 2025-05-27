@@ -5,6 +5,7 @@ export interface DeckCardPalette {
   textColorClassName: string;
   iconStrokeColorClassName: string;
   borderColorClassName: string;
+  fillColorClassName: string;
 }
 
 export interface DeckCardInfo {
