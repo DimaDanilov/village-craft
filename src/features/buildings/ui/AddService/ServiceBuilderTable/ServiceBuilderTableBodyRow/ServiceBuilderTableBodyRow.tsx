@@ -1,4 +1,6 @@
 import { Button } from '@shared/Button/Button';
+import { ServiceBuilderTableBuildingPrice } from './ServiceBuilderTableBuildingPrice';
+import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
 
 interface ServiceBuilderTableBodyRowProps {
   buildingTitle: string;
@@ -6,6 +8,9 @@ interface ServiceBuilderTableBodyRowProps {
   buildingImageSrc: string;
   onBuild: () => void;
   isBuildDisabled: boolean;
+  currentLevel: BuildingLevel;
+  isNextLevelExist: boolean;
+  buildingNextLevelCost: BuildingCost | undefined;
 }
 
 export const ServiceBuilderTableBodyRow = ({
@@ -14,6 +19,9 @@ export const ServiceBuilderTableBodyRow = ({
   buildingImageSrc,
   onBuild,
   isBuildDisabled,
+  currentLevel,
+  isNextLevelExist,
+  buildingNextLevelCost,
 }: ServiceBuilderTableBodyRowProps) => {
   return (
     <tr>
@@ -24,7 +32,13 @@ export const ServiceBuilderTableBodyRow = ({
         </div>
       </td>
       <td>{buildingDescription}</td>
-      <td></td>
+      <td>
+        <ServiceBuilderTableBuildingPrice
+          currentLevel={currentLevel}
+          isNextLevelExist={isNextLevelExist}
+          buildingNextLevelCost={buildingNextLevelCost}
+        />
+      </td>
       <td>
         <Button onClick={onBuild} disabled={isBuildDisabled}>
           Build {buildingTitle}

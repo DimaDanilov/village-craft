@@ -6,12 +6,12 @@ import { isInstrumentUpgradeAvailable } from '../tools';
 import { instrumentsSlice } from '../slice';
 
 export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourceState = getState().resources;
-  const instrumentState = getState().instruments;
+  const resourcesState = getState().resources;
+  const instrumentsState = getState().instruments;
 
-  const allResources = selectAllResources(resourceState);
+  const allResources = selectAllResources(resourcesState);
 
-  const currentAxeLevel = selectAxeLevel(instrumentState);
+  const currentAxeLevel = selectAxeLevel(instrumentsState);
   const nextLevel = (Number(currentAxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, AXE_UPGRADE_COST, allResources)) {
@@ -23,12 +23,12 @@ export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
 };
 
 export const UpgradePickaxeWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourceState = getState().resources;
-  const instrumentState = getState().instruments;
+  const resourcesState = getState().resources;
+  const instrumentsState = getState().instruments;
 
-  const allResources = selectAllResources(resourceState);
+  const allResources = selectAllResources(resourcesState);
 
-  const currentPickaxeLevel = selectPickaxeLevel(instrumentState);
+  const currentPickaxeLevel = selectPickaxeLevel(instrumentsState);
   const nextLevel = (Number(currentPickaxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_UPGRADE_COST, allResources)) {
