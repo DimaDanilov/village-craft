@@ -2,7 +2,7 @@ import { chopWoodWithAxe, resourcesSlice } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import AxeIcon from '@assets/icons/Axe.svg?react';
-import { DECK_CARD_INFOS, DeckResourceCard } from '@shared/DeckCard';
+import { DECK_CARD_INFOS, DeckResourceCard } from '@widgets';
 
 export const Forest = () => {
   const dispatch = useAppDispatch();

@@ -2,8 +2,8 @@ import { clearResourcesError } from '@features/resources/model';
 import { useCallback, useState } from 'react';
 import { MarketModal } from './MarketModal';
 import { useAppDispatch, useAppSelector } from '@store';
-import { DECK_CARD_INFOS, DeckServiceCard } from '@shared/DeckCard';
 import { buildingsSlice } from '@features/buildings/model';
+import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
 
 export const Market = () => {
   const dispatch = useAppDispatch();
