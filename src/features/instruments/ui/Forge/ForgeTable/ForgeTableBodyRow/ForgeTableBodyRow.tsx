@@ -3,7 +3,7 @@ import { Button } from '@shared/Button/Button';
 import { ForgeTableInstrumentPrice } from './ForgeTableInstrumentPrice';
 
 interface ForgeTableBodyRowParams {
-  resourceName: string;
+  resourceImageSrc: string;
   instrumentCurrentLevel: AxeLevel | PickaxeLevel;
   instrumentCurrentLevelEfficiency: number;
   instrumentImageSrc: string;
@@ -16,7 +16,7 @@ interface ForgeTableBodyRowParams {
 }
 
 export const ForgeTableBodyRow = ({
-  resourceName,
+  resourceImageSrc,
   instrumentCurrentLevel,
   instrumentCurrentLevelEfficiency,
   instrumentImageSrc,
@@ -32,10 +32,11 @@ export const ForgeTableBodyRow = ({
       <td>
         <div className="flex flex-col gap-1 items-center">
           <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
+          <div className="flex flex-row items-center gap-1">
+            <img src={resourceImageSrc} width="40px" alt="Resource Image" />
+            <span>: {instrumentCurrentLevelEfficiency}</span>
+          </div>
           <span className="text-xl">level {instrumentCurrentLevel}</span>
-          <span className="text-sm">
-            {resourceName}: {instrumentCurrentLevelEfficiency}
-          </span>
         </div>
       </td>
       <td>
@@ -53,10 +54,11 @@ export const ForgeTableBodyRow = ({
         {isNextLevelExist ? (
           <div className="flex flex-col gap-1 items-center">
             <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
+            <div className="flex flex-row items-center gap-1">
+              <img src={resourceImageSrc} width="40px" alt="Resource Image" />
+              <span>: {instrumentNextLevelEfficiency}</span>
+            </div>
             <span className="text-xl">level {instrumentNextLevel}</span>
-            <span className="text-sm">
-              {resourceName}: {instrumentNextLevelEfficiency}
-            </span>
           </div>
         ) : (
           <span>MAX</span>

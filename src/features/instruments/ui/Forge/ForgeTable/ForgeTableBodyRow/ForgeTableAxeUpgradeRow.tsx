@@ -11,7 +11,7 @@ import {
 } from '@features/instruments/model';
 import type { AxeLevel, InstrumentCost } from '@features/instruments/model';
 import { ForgeTableBodyRow } from './ForgeTableBodyRow';
-import { resourcesSlice } from '@features/resources/model';
+import { RESOURCES_IMAGES, resourcesSlice } from '@features/resources/model';
 import type { ResourcesInfo } from '@features/resources/model';
 
 export const ForgeTableAxeUpgradeRow = () => {
@@ -32,7 +32,7 @@ export const ForgeTableAxeUpgradeRow = () => {
 
   return (
     <ForgeTableBodyRow
-      resourceName="Wood"
+      resourceImageSrc={RESOURCES_IMAGES.wood}
       instrumentCurrentLevel={axeLevel}
       instrumentCurrentLevelEfficiency={axeCurrentLevelEfficiency}
       instrumentImageSrc={INSTRUMENTS_IMAGES.axe}
