@@ -19,7 +19,7 @@ export const DeckResourceCard = ({
 
   return (
     <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_RESOURCE_PALETTE} onClick={onClick}>
-      <div className="flex flex-row justify-end items-center mx-3 my-5 gap-1">
+      <div className="flex flex-row justify-end items-center mx-3 mt-5 gap-1">
         <ResourceIconComponent
           width={30}
           height={30}

@@ -14,7 +14,11 @@ export const DeckServiceCard = ({ onClick, deckCardInfo, serviceLevel }: DeckSer
   return (
     <>
       {isServiceExists && (
-        <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick} />
+        <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick}>
+          <div className="flex justify-end mx-3">
+            <span>level: {serviceLevel}</span>
+          </div>
+        </DeckCardDefault>
       )}
     </>
   );

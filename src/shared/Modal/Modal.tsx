@@ -22,7 +22,7 @@ export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) =
         className="bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
         onClick={onStopPropagationClick}
       >
-        <div className="flex justify-between">
+        <div className="min-w-80 flex justify-between">
           <h2 className="text-2xl">{title}</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700 cursor-pointer">
             <svg
