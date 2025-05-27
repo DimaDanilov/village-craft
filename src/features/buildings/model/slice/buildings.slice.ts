@@ -24,5 +24,12 @@ export const buildingsSlice = createSlice({
   name: 'buildings',
   initialState,
   selectors: { selectForgeLevel, selectMarketLevel, selectIsEveryBuildingBuilt },
-  reducers: {},
+  reducers: {
+    upgradeForge: (state) => {
+      state.buildings.forge.level += 1;
+    },
+    upgradeMarket: (state) => {
+      state.buildings.market.level += 1;
+    },
+  },
 });
