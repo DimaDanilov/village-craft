@@ -23,4 +23,4 @@ export const LOCATIONS_IMAGES = {
   mines: MinesImageSrc,
   market: MarketImageSrc,
   forge: ForgeImageSrc,
-};
+} as const;

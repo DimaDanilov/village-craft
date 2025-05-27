@@ -3,12 +3,15 @@ import { RESOURCES_IMAGES } from '@features/resources/model';
 import type { ResourcesInfo } from '@features/resources/model';
 import { ResourceCard } from '@widgets';
 
-interface ForgeTableInstrumentPrice {
+interface ForgeTableInstrumentPriceProps {
   isNextLevelExist: boolean;
   instrumentNextLevelCost?: InstrumentCost;
 }
 
-export const ForgeTableInstrumentPrice = ({ isNextLevelExist, instrumentNextLevelCost }: ForgeTableInstrumentPrice) => {
+export const ForgeTableInstrumentPrice = ({
+  isNextLevelExist,
+  instrumentNextLevelCost,
+}: ForgeTableInstrumentPriceProps) => {
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
       ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
@@ -17,5 +20,9 @@ export const ForgeTableInstrumentPrice = ({ isNextLevelExist, instrumentNextLeve
           return <ResourceCard resourceCount={resourcesCost} imageSrc={resourceImageSrc} />;
         })
       : [];
-  return isNextLevelExist ? <span className="grid grid-cols-2 gap-4">{instrumentCostMaterialsCards}</span> : <span>MAX</span>;
+  return isNextLevelExist ? (
+    <span className="grid grid-cols-2 gap-4">{instrumentCostMaterialsCards}</span>
+  ) : (
+    <span>MAX</span>
+  );
 };

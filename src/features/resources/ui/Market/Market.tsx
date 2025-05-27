@@ -1,12 +1,14 @@
-import { clearResourcesError, LOCATIONS_IMAGES } from '@features/resources/model';
+import { clearResourcesError } from '@features/resources/model';
 import { useCallback, useState } from 'react';
 import { MarketModal } from './MarketModal';
-import { useAppDispatch } from '@store';
-import { DeckCard } from '@shared/DeckCard/DeckCard';
+import { useAppDispatch, useAppSelector } from '@store';
+import { buildingsSlice } from '@features/buildings/model';
+import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
 
 export const Market = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const marketLevel = useAppSelector(buildingsSlice.selectors.selectMarketLevel);
 
   const openMarket = useCallback(() => {
     dispatch(clearResourcesError());
@@ -15,13 +17,7 @@ export const Market = () => {
 
   return (
     <>
-      <DeckCard
-        onClick={openMarket}
-        imageSrc={LOCATIONS_IMAGES.market}
-        title="Market"
-        description="Sell your resources to earn money."
-        cardCategory="service"
-      />
+      <DeckServiceCard onClick={openMarket} deckCardInfo={DECK_CARD_INFOS.market} serviceLevel={Number(marketLevel)} />
       <MarketModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );

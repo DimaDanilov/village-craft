@@ -15,13 +15,13 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
 
   const error = useAppSelector(instrumentsSlice.selectors.selectInstrumentsError);
 
-  const onCloseMarket = useCallback(() => {
+  const onCloseForge = useCallback(() => {
     dispatch(clearInstrumentsError());
     setIsModalOpen(false);
   }, [dispatch, clearInstrumentsError]);
 
   return (
-    <Modal title="Forge" error={error} isOpen={isModalOpen} onClose={onCloseMarket}>
+    <Modal title="Forge" error={error} isOpen={isModalOpen} onClose={onCloseForge}>
       <ForgeTable />
     </Modal>
   );

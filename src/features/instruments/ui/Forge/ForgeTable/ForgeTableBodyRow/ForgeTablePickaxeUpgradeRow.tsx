@@ -12,7 +12,7 @@ import {
 import type { PickaxeLevel, InstrumentCost } from '@features/instruments/model';
 
 import { ForgeTableBodyRow } from './ForgeTableBodyRow';
-import { resourcesSlice } from '@features/resources/model';
+import { RESOURCES_IMAGES, resourcesSlice } from '@features/resources/model';
 import type { ResourcesInfo } from '@features/resources/model';
 
 export const ForgeTablePickaxeUpgradeRow = () => {
@@ -40,7 +40,7 @@ export const ForgeTablePickaxeUpgradeRow = () => {
 
   return (
     <ForgeTableBodyRow
-      resourceName="Stone"
+      resourceImageSrc={RESOURCES_IMAGES.stone}
       instrumentCurrentLevel={pickaxeLevel}
       instrumentCurrentLevelEfficiency={pickaxeCurrentLevelEfficiency}
       instrumentImageSrc={INSTRUMENTS_IMAGES.pickaxe}

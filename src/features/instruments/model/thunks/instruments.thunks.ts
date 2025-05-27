@@ -6,16 +6,16 @@ import { isInstrumentUpgradeAvailable } from '../tools';
 import { instrumentsSlice } from '../slice';
 
 export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourceState = getState().resources;
-  const instrumentState = getState().instruments;
+  const resourcesState = getState().resources;
+  const instrumentsState = getState().instruments;
 
-  const allResources = selectAllResources(resourceState);
+  const allResources = selectAllResources(resourcesState);
 
-  const currentAxeLevel = selectAxeLevel(instrumentState);
+  const currentAxeLevel = selectAxeLevel(instrumentsState);
   const nextLevel = (Number(currentAxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, AXE_UPGRADE_COST, allResources)) {
-    instrumentsSlice.actions.setInstrumentsError('Can`t upgrade axe');
+    dispatch(instrumentsSlice.actions.setInstrumentsError('Can`t upgrade axe'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: AXE_UPGRADE_COST[nextLevel] }));
@@ -23,16 +23,16 @@ export const UpgradeAxeWithResources = (): AppThunk => (dispatch, getState) => {
 };
 
 export const UpgradePickaxeWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourceState = getState().resources;
-  const instrumentState = getState().instruments;
+  const resourcesState = getState().resources;
+  const instrumentsState = getState().instruments;
 
-  const allResources = selectAllResources(resourceState);
+  const allResources = selectAllResources(resourcesState);
 
-  const currentPickaxeLevel = selectPickaxeLevel(instrumentState);
+  const currentPickaxeLevel = selectPickaxeLevel(instrumentsState);
   const nextLevel = (Number(currentPickaxeLevel) + 1).toString();
 
   if (!isInstrumentUpgradeAvailable(nextLevel, PICKAXE_UPGRADE_COST, allResources)) {
-    instrumentsSlice.actions.setInstrumentsError('Can`t upgrade pickaxe');
+    dispatch(instrumentsSlice.actions.setInstrumentsError('Can`t upgrade pickaxe'));
     return;
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: PICKAXE_UPGRADE_COST[nextLevel] }));
