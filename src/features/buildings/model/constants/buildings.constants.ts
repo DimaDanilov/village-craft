@@ -9,7 +9,8 @@ export type MarketUpgradeCostRecord = Record<MarketLevel, BuildingCost>;
 export const FORGE_UPGRADE_COST: ForgeUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 10,
+    wood: 15,
+    stone: 10,
   },
 };
 
