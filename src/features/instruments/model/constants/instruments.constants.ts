@@ -1,16 +1,12 @@
-import type { ResourcesState } from '@features/resources/model';
-import type { AxeLevel, PickaxeLevel } from '../types';
 import type { InstrumentsState } from '../slice';
 import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
-
-export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
-export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
-
-export type InstrumentCost = Partial<Record<keyof ResourcesState['resources'], number>>;
-
-export type AxeUpgradeCostRecord = Record<AxeLevel, InstrumentCost>;
-export type PickaxeUpgradeCostRecord = Record<PickaxeLevel, InstrumentCost>;
+import type {
+  AxeLevelEfficiencyRecord,
+  AxeUpgradeCostRecord,
+  PickaxeLevelEfficiencyRecord,
+  PickaxeUpgradeCostRecord,
+} from '../types';
 
 export const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '1': 1,

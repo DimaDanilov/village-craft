@@ -5,11 +5,13 @@ import { selectAxeLevel, selectInstrumentsError, selectPickaxeLevel } from '../s
 import { isInstrumentNextLevelExist } from '../tools';
 import { AXE_UPGRADE_COST, PICKAXE_UPGRADE_COST } from '../constants';
 
+export interface InstrumentInfo {
+  axe: AxeInstrument;
+  pickaxe: PickaxeInstrument;
+}
+
 export interface InstrumentsState {
-  instruments: {
-    axe: AxeInstrument;
-    pickaxe: PickaxeInstrument;
-  };
+  instruments: InstrumentInfo;
   error?: string;
 }
 

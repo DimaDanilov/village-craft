@@ -1,11 +1,11 @@
 import {
   buildingsSlice,
-  GATE_TO_THE_FUTURE_UPGRADE_COST,
   isBuildingNextLevelExist,
   isBuildingUpgradeAvailable,
-  UpgradeGateToTheFutureWithResources,
+  UpgradeBuildingWithResources,
   type BuildingCost,
   type GateToTheFutureLevel,
+  BUILDING_UPGRADE_COST,
 } from '@features/buildings/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { DECK_CARD_INFOS } from '@widgets';
@@ -23,20 +23,20 @@ export const ServiceBuilderTableGateToTheFutureRow = () => {
   );
   const gateToTheFutureNextLevel: string = String(Number(gateToTheFutureLevel) + 1);
 
-  const isNextLevelExist = isBuildingNextLevelExist(gateToTheFutureNextLevel, GATE_TO_THE_FUTURE_UPGRADE_COST);
+  const isNextLevelExist = isBuildingNextLevelExist(gateToTheFutureNextLevel, BUILDING_UPGRADE_COST.gateToTheFuture);
   const isGateToTheFutureUpgradeAvailable = isBuildingUpgradeAvailable(
     gateToTheFutureNextLevel,
-    GATE_TO_THE_FUTURE_UPGRADE_COST,
+    BUILDING_UPGRADE_COST.gateToTheFuture,
     allResources,
   );
   const isBuildGateToTheFutureDisabled = Number(gateToTheFutureLevel) >= 1 || !isGateToTheFutureUpgradeAvailable;
 
   const gateToTheFutureNextLevelCost: BuildingCost | undefined = isNextLevelExist
-    ? GATE_TO_THE_FUTURE_UPGRADE_COST[gateToTheFutureNextLevel]
+    ? BUILDING_UPGRADE_COST.gateToTheFuture[gateToTheFutureNextLevel]
     : undefined;
 
   const onBuildGateToTheFuture = useCallback(() => {
-    dispatch(UpgradeGateToTheFutureWithResources());
+    dispatch(UpgradeBuildingWithResources('gateToTheFuture'));
   }, [dispatch]);
 
   return (

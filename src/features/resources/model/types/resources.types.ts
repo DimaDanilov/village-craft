@@ -1,3 +1,7 @@
+import type { ResourcesInfo } from '../slice';
+
+export type ResourceName = keyof ResourcesInfo;
+
 export interface WoodPile {
   count: number;
 }

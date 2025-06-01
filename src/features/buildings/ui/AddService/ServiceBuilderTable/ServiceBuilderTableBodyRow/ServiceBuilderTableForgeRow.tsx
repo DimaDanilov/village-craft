@@ -1,11 +1,11 @@
 import {
   buildingsSlice,
-  FORGE_UPGRADE_COST,
   isBuildingNextLevelExist,
   isBuildingUpgradeAvailable,
-  UpgradeForgeWithResources,
+  UpgradeBuildingWithResources,
   type BuildingCost,
   type ForgeLevel,
+  BUILDING_UPGRADE_COST,
 } from '@features/buildings/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { DECK_CARD_INFOS } from '@widgets';
@@ -22,16 +22,16 @@ export const ServiceBuilderTableForgeRow = () => {
   const forgeLevel: ForgeLevel = useAppSelector(buildingsSlice.selectors.selectForgeLevel);
   const forgeNextLevel: string = String(Number(forgeLevel) + 1);
 
-  const isNextLevelExist = isBuildingNextLevelExist(forgeNextLevel, FORGE_UPGRADE_COST);
-  const isForgeUpgradeAvailable = isBuildingUpgradeAvailable(forgeNextLevel, FORGE_UPGRADE_COST, allResources);
+  const isNextLevelExist = isBuildingNextLevelExist(forgeNextLevel, BUILDING_UPGRADE_COST.forge);
+  const isForgeUpgradeAvailable = isBuildingUpgradeAvailable(forgeNextLevel, BUILDING_UPGRADE_COST.forge, allResources);
   const isBuildForgeDisabled = Number(forgeLevel) >= 1 || !isForgeUpgradeAvailable;
 
   const forgeNextLevelCost: BuildingCost | undefined = isNextLevelExist
-    ? FORGE_UPGRADE_COST[forgeNextLevel]
+    ? BUILDING_UPGRADE_COST.forge[forgeNextLevel]
     : undefined;
 
   const onBuildForge = useCallback(() => {
-    dispatch(UpgradeForgeWithResources());
+    dispatch(UpgradeBuildingWithResources('forge'));
   }, [dispatch]);
 
   return (
