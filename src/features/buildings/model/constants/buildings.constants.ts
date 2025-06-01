@@ -21,3 +21,12 @@ export const MARKET_UPGRADE_COST: MarketUpgradeCostRecord = {
     stone: 50,
   },
 };
+
+export const GATE_TO_THE_FUTURE_UPGRADE_COST: MarketUpgradeCostRecord = {
+  '0': {},
+  '1': {
+    wood: 10,
+    stone: 10,
+    coins: 10,
+  },
+};

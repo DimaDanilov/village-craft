@@ -40,9 +40,16 @@ export const MARKET_INFO: DeckCardInfo = {
   description: 'Sell your resources to earn money.',
 } as const;
 
+export const GATE_TO_THE_FUTURE_INFO: DeckCardInfo = {
+  imageSrc: LOCATIONS_IMAGES.gateToTheFuture,
+  title: 'Gate To The Future',
+  description: 'Enter the future and reach your final goal in the new world.',
+} as const;
+
 export const DECK_CARD_INFOS: DeckCardInfos = {
   forest: FOREST_INFO,
   mines: MINES_INFO,
   forge: FORGE_INFO,
   market: MARKET_INFO,
+  gateToTheFuture: GATE_TO_THE_FUTURE_INFO,
 };

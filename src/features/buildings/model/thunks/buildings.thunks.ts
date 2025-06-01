@@ -1,7 +1,7 @@
 import { resourcesSlice, selectAllResources } from '@features/resources/model';
 import type { AppThunk } from '@store';
-import { selectForgeLevel, selectMarketLevel } from '../selectors';
-import { FORGE_UPGRADE_COST, MARKET_UPGRADE_COST } from '../constants';
+import { selectForgeLevel, selectGateToTheFutureLevel, selectMarketLevel } from '../selectors';
+import { FORGE_UPGRADE_COST, GATE_TO_THE_FUTURE_UPGRADE_COST, MARKET_UPGRADE_COST } from '../constants';
 import { buildingsSlice } from '../slice';
 import { isBuildingUpgradeAvailable } from '../tools';
 
@@ -37,4 +37,25 @@ export const UpgradeMarketWithResources = (): AppThunk => (dispatch, getState) =
   }
   dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: MARKET_UPGRADE_COST[nextLevel] }));
   dispatch(buildingsSlice.actions._upgradeMarket());
+};
+
+export const UpgradeGateToTheFutureWithResources = (): AppThunk => (dispatch, getState) => {
+  const resourcesState = getState().resources;
+  const buildingsState = getState().buildings;
+
+  const allResources = selectAllResources(resourcesState);
+
+  const currentGateToTheFutureLevel = selectGateToTheFutureLevel(buildingsState);
+  const nextLevel = (Number(currentGateToTheFutureLevel) + 1).toString();
+
+  if (!isBuildingUpgradeAvailable(nextLevel, GATE_TO_THE_FUTURE_UPGRADE_COST, allResources)) {
+    dispatch(buildingsSlice.actions.setBuildingsError('Can`t upgrade gate to the future'));
+    return;
+  }
+  dispatch(
+    resourcesSlice.actions._destroyResourcesForUpgrade({
+      resourcesToDestroy: GATE_TO_THE_FUTURE_UPGRADE_COST[nextLevel],
+    }),
+  );
+  dispatch(buildingsSlice.actions._upgradeGateToTheFuture());
 };

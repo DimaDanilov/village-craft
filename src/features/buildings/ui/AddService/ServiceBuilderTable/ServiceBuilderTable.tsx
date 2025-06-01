@@ -1,5 +1,9 @@
 import { ServiceBuilderTableHeaderRow } from './ServiceBuilderTableHeaderRow';
-import { ServiceBuilderTableForgeRow, ServiceBuilderTableMarketRow } from './ServiceBuilderTableBodyRow';
+import {
+  ServiceBuilderTableForgeRow,
+  ServiceBuilderTableGateToTheFutureRow,
+  ServiceBuilderTableMarketRow,
+} from './ServiceBuilderTableBodyRow';
 
 export const ServiceBuilderTable = () => {
   return (
@@ -10,6 +14,7 @@ export const ServiceBuilderTable = () => {
       <tbody>
         <ServiceBuilderTableForgeRow />
         <ServiceBuilderTableMarketRow />
+        <ServiceBuilderTableGateToTheFutureRow />
       </tbody>
     </table>
   );

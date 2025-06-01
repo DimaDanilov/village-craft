@@ -8,6 +8,7 @@ import ForestImageSrc from '@assets/locations/Forest.png';
 import MinesImageSrc from '@assets/locations/Mines.png';
 import MarketImageSrc from '@assets/locations/Market.png';
 import ForgeImageSrc from '@assets/locations/Forge.png';
+import GateToTheFutureImageSrc from '@assets/locations/Gate_to_the_future.png';
 
 export const WOOD_TRADE_MULTIPLIER: number = 1;
 export const STONE_TRADE_MULTIPLIER: number = 1;
@@ -23,4 +24,5 @@ export const LOCATIONS_IMAGES = {
   mines: MinesImageSrc,
   market: MarketImageSrc,
   forge: ForgeImageSrc,
+  gateToTheFuture: GateToTheFutureImageSrc,
 } as const;

@@ -19,4 +19,5 @@ export interface DeckCardInfos {
   mines: DeckCardInfo;
   forge: DeckCardInfo;
   market: DeckCardInfo;
+  gateToTheFuture: DeckCardInfo;
 }
