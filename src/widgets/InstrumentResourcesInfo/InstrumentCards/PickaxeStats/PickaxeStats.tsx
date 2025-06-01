@@ -3,6 +3,6 @@ import { INSTRUMENTS_IMAGES, instrumentsSlice } from '@features/instruments/mode
 import { InstrumentCard } from '../InstrumentCard';
 
 export const PickaxeStats = () => {
-  const pickaxeLevel = useAppSelector(instrumentsSlice.selectors.selectPickaxeLevel);
+  const pickaxeLevel = useAppSelector((state) => instrumentsSlice.selectors.selectInstrumentLevel(state, 'pickaxe'));
   return <InstrumentCard instrumentLevel={pickaxeLevel} imageSrc={INSTRUMENTS_IMAGES.pickaxe} />;
 };

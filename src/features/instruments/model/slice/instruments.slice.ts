@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AxeInstrument, PickaxeInstrument } from '../types';
-import { selectAxeLevel, selectInstrumentsError, selectPickaxeLevel } from '../selectors';
+import type { AxeInstrument, InstrumentName, PickaxeInstrument } from '../types';
+import { selectInstrumentLevel, selectInstrumentsError } from '../selectors';
 import { isInstrumentNextLevelExist } from '../tools';
-import { AXE_UPGRADE_COST, PICKAXE_UPGRADE_COST } from '../constants';
+import { INSTRUMENT_UPGRADE_COST } from '../constants';
 
 export interface InstrumentInfo {
   axe: AxeInstrument;
@@ -30,18 +30,15 @@ const initialState: InstrumentsState = {
 export const instrumentsSlice = createSlice({
   name: 'instruments',
   initialState,
-  selectors: { selectAxeLevel, selectPickaxeLevel, selectInstrumentsError },
+  selectors: { selectInstrumentLevel, selectInstrumentsError },
   reducers: {
-    _upgradeAxe: (state) => {
-      const nextLevel = (Number(state.instruments.axe.level) + 1).toString();
-      if (isInstrumentNextLevelExist(nextLevel, AXE_UPGRADE_COST)) {
-        state.instruments.axe.level = nextLevel;
-      }
-    },
-    _upgradePickaxe: (state) => {
-      const nextLevel = (Number(state.instruments.pickaxe.level) + 1).toString();
-      if (isInstrumentNextLevelExist(nextLevel, PICKAXE_UPGRADE_COST)) {
-        state.instruments.pickaxe.level = nextLevel;
+    _upgradeInstrument: (state, action: PayloadAction<{ instrumentName: InstrumentName }>) => {
+      const { instrumentName } = action.payload;
+      const currentLevel = state.instruments[instrumentName].level;
+      const nextLevel = (Number(currentLevel) + 1).toString();
+      const isNextLevelExist = isInstrumentNextLevelExist(nextLevel, INSTRUMENT_UPGRADE_COST[instrumentName]);
+      if (isNextLevelExist) {
+        state.instruments[instrumentName].level = nextLevel;
       }
     },
     setInstrumentsError: (state, action: PayloadAction<string>) => {

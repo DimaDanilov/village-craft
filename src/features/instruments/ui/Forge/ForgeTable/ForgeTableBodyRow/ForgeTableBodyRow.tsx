@@ -1,43 +1,41 @@
-import type { AxeLevel, InstrumentCost, PickaxeLevel } from '@features/instruments/model';
+import {
+  UpgradeInstrumentWithResources,
+  useInstrumentUpgradeCost,
+  useInstrumentUpgradeEfficiency,
+} from '@features/instruments/model';
+import type { InstrumentName } from '@features/instruments/model';
 import { Button } from '@shared/Button/Button';
 import { ForgeTableInstrumentPrice } from './ForgeTableInstrumentPrice';
+import { useCallback } from 'react';
+import { useAppDispatch } from '@store';
+import { ForgeTableNextLevelInstrument } from './ForgeTableNextLevelInstrument';
+import { ForgeTableCurrentLevelInstrument } from './ForgeTableCurrentLevelInstrument';
 
 interface ForgeTableBodyRowParams {
-  resourceImageSrc: string;
-  instrumentCurrentLevel: AxeLevel | PickaxeLevel;
-  instrumentCurrentLevelEfficiency: number;
-  instrumentImageSrc: string;
-  instrumentNextLevel: string;
-  instrumentNextLevelEfficiency: number | undefined;
-  instrumentNextLevelCost: InstrumentCost | undefined;
-  isNextLevelExist: boolean;
-  isUpgradeAvailable: boolean;
-  onUpgrade: () => void;
+  instrumentName: InstrumentName;
 }
 
-export const ForgeTableBodyRow = ({
-  resourceImageSrc,
-  instrumentCurrentLevel,
-  instrumentCurrentLevelEfficiency,
-  instrumentImageSrc,
-  instrumentNextLevel,
-  instrumentNextLevelEfficiency,
-  instrumentNextLevelCost,
-  isNextLevelExist,
-  isUpgradeAvailable,
-  onUpgrade,
-}: ForgeTableBodyRowParams) => {
+export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) => {
+  const { isNextLevelExist, instrumentCurrentLevel, instrumentNextLevel, instrumentNextLevelCost, isUpgradeAvailable } =
+    useInstrumentUpgradeCost(instrumentName);
+  const { instrumentCurrentLevelEfficiency, instrumentNextLevelEfficiency } =
+    useInstrumentUpgradeEfficiency(instrumentName);
+
+  const dispatch = useAppDispatch();
+
+  const onUpgrade = useCallback(
+    () => dispatch(UpgradeInstrumentWithResources(instrumentName)),
+    [dispatch, UpgradeInstrumentWithResources],
+  );
+
   return (
     <tr>
       <td>
-        <div className="flex flex-col gap-1 items-center">
-          <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
-          <div className="flex flex-row items-center gap-1">
-            <img src={resourceImageSrc} width="40px" alt="Resource Image" />
-            <span>: {instrumentCurrentLevelEfficiency}</span>
-          </div>
-          <span className="text-xl">level {instrumentCurrentLevel}</span>
-        </div>
+        <ForgeTableCurrentLevelInstrument
+          instrumentName={instrumentName}
+          instrumentCurrentLevel={instrumentCurrentLevel}
+          instrumentCurrentLevelEfficiency={instrumentCurrentLevelEfficiency}
+        />
       </td>
       <td>
         <ForgeTableInstrumentPrice
@@ -51,18 +49,12 @@ export const ForgeTableBodyRow = ({
         </Button>
       </td>
       <td>
-        {isNextLevelExist ? (
-          <div className="flex flex-col gap-1 items-center">
-            <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
-            <div className="flex flex-row items-center gap-1">
-              <img src={resourceImageSrc} width="40px" alt="Resource Image" />
-              <span>: {instrumentNextLevelEfficiency}</span>
-            </div>
-            <span className="text-xl">level {instrumentNextLevel}</span>
-          </div>
-        ) : (
-          <span>MAX</span>
-        )}
+        <ForgeTableNextLevelInstrument
+          instrumentName={instrumentName}
+          isNextLevelExist={isNextLevelExist}
+          instrumentNextLevel={instrumentNextLevel}
+          instrumentNextLevelEfficiency={instrumentNextLevelEfficiency}
+        />
       </td>
     </tr>
   );

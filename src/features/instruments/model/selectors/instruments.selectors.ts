@@ -1,5 +1,6 @@
 import type { InstrumentsState } from '../slice';
+import type { InstrumentName } from '../types';
 
-export const selectAxeLevel = (state: InstrumentsState) => state.instruments.axe.level;
-export const selectPickaxeLevel = (state: InstrumentsState) => state.instruments.pickaxe.level;
+export const selectInstrumentLevel = (state: InstrumentsState, instrumentName: InstrumentName) =>
+  state.instruments[instrumentName].level;
 export const selectInstrumentsError = (state: InstrumentsState) => state.error;

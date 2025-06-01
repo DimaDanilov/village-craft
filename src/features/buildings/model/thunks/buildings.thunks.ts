@@ -15,13 +15,13 @@ export const UpgradeBuildingWithResources =
 
     const currentBuildingLevel = selectBuildingLevel(buildingsState, buildingName);
     const nextLevel = (Number(currentBuildingLevel) + 1).toString();
-    const isUpgradeAvailable = isBuildingUpgradeAvailable(nextLevel, BUILDING_UPGRADE_COST[buildingName], allResources);
+    const buildingUpgradeCostList = BUILDING_UPGRADE_COST[buildingName];
+    const isUpgradeAvailable = isBuildingUpgradeAvailable(nextLevel, buildingUpgradeCostList, allResources);
 
     if (!isUpgradeAvailable) {
       dispatch(buildingsSlice.actions.setBuildingsError(`Can't upgrade ${buildingName}`));
       return;
     }
-    const buildingUpgradeCostList = BUILDING_UPGRADE_COST[buildingName];
     const buildingNextLevelCost = buildingUpgradeCostList[nextLevel];
 
     dispatch(

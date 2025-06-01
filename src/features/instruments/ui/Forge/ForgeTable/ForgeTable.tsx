@@ -1,5 +1,5 @@
 import { ForgeTableHeaderRow } from './ForgeTableHeaderRow';
-import { ForgeTableAxeUpgradeRow, ForgeTablePickaxeUpgradeRow } from './ForgeTableBodyRow';
+import { ForgeTableBodyRow } from './ForgeTableBodyRow';
 
 export const ForgeTable = () => {
   return (
@@ -8,8 +8,8 @@ export const ForgeTable = () => {
         <ForgeTableHeaderRow />
       </thead>
       <tbody>
-        <ForgeTableAxeUpgradeRow />
-        <ForgeTablePickaxeUpgradeRow />
+        <ForgeTableBodyRow instrumentName="axe" />
+        <ForgeTableBodyRow instrumentName="pickaxe" />
       </tbody>
     </table>
   );

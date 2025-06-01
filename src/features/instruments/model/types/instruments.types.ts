@@ -6,10 +6,14 @@ export type InstrumentName = keyof InstrumentInfo;
 export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
 export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
 
+export type InstrumentLevelEfficiencyRecord = AxeLevelEfficiencyRecord | PickaxeLevelEfficiencyRecord;
+
 export type InstrumentCost = Partial<Record<ResourceName, number>>;
 
 export type AxeUpgradeCostRecord = Record<AxeLevel, InstrumentCost>;
 export type PickaxeUpgradeCostRecord = Record<PickaxeLevel, InstrumentCost>;
+
+export type InstrumentUpgradeCostRecord = AxeUpgradeCostRecord | PickaxeUpgradeCostRecord;
 
 export type AxeLevel = '1' | '2' | '3' | '4' | '5';
 export type PickaxeLevel = '1' | '2' | '3' | '4' | '5';
