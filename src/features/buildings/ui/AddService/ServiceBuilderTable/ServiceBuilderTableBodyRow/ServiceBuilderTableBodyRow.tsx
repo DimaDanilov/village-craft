@@ -1,49 +1,45 @@
 import { Button } from '@shared/Button/Button';
 import { ServiceBuilderTableBuildingPrice } from './ServiceBuilderTableBuildingPrice';
-import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
+import { UpgradeBuildingWithResources, useBuildingUpgradePrice } from '@features/buildings/model';
+import type { BuildingName } from '@features/buildings/model';
+import { DECK_CARD_INFOS } from '@widgets';
+import { useCallback } from 'react';
+import { useAppDispatch } from '@store';
 
 interface ServiceBuilderTableBodyRowProps {
-  buildingTitle: string;
-  buildingDescription: string;
-  buildingImageSrc: string;
-  onBuild: () => void;
-  isBuildDisabled: boolean;
-  currentLevel: BuildingLevel;
-  isNextLevelExist: boolean;
-  buildingNextLevelCost: BuildingCost | undefined;
+  buildingName: BuildingName;
 }
 
-export const ServiceBuilderTableBodyRow = ({
-  buildingTitle,
-  buildingDescription,
-  buildingImageSrc,
-  onBuild,
-  isBuildDisabled,
-  currentLevel,
-  isNextLevelExist,
-  buildingNextLevelCost,
-}: ServiceBuilderTableBodyRowProps) => {
-  if (currentLevel !== '0') return;
+export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTableBodyRowProps) => {
+  const { title, description, imageSrc } = DECK_CARD_INFOS[buildingName];
+  const { buildingCurrentLevel, buildingNextLevelCost, isUpgradeAvailable } = useBuildingUpgradePrice(buildingName);
+  const isBuildDisabled = buildingCurrentLevel !== '0' || !isUpgradeAvailable;
 
+  const dispatch = useAppDispatch();
+
+  const onBuild = useCallback(() => {
+    dispatch(UpgradeBuildingWithResources(buildingName));
+  }, [dispatch]);
+
+  if (buildingCurrentLevel !== '0') return;
   return (
     <tr>
       <td>
         <div className="w-60 flex flex-col gap-1 justify-center items-center">
-          <img width={300} src={buildingImageSrc} alt="Forge Image" />
-          <span className="text-lg">{buildingTitle}</span>
+          <img width={300} src={imageSrc} alt="Forge Image" />
+          <span className="text-lg">{title}</span>
         </div>
       </td>
-      <td>{buildingDescription}</td>
+      <td>{description}</td>
       <td>
         <ServiceBuilderTableBuildingPrice
-          currentLevel={currentLevel}
-          isNextLevelExist={isNextLevelExist}
+          currentLevel={buildingCurrentLevel}
           buildingNextLevelCost={buildingNextLevelCost}
         />
       </td>
       <td>
         <Button onClick={onBuild} disabled={isBuildDisabled}>
-          Build {buildingTitle}
+          Build {title}
         </Button>
       </td>
     </tr>
