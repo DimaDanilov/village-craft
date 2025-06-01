@@ -3,7 +3,9 @@ import { buildingsSlice } from '@features/buildings/model';
 import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
 
 export const GateToTheFuture = () => {
-  const gateToTheFutureLevel = useAppSelector(buildingsSlice.selectors.selectGateToTheFutureLevel);
+  const gateToTheFutureLevel = useAppSelector((state) =>
+    buildingsSlice.selectors.selectBuildingLevel(state, 'gateToTheFuture'),
+  );
 
   return (
     <>

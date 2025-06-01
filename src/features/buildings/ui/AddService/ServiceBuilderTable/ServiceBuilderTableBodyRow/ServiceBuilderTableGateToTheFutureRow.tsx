@@ -18,8 +18,8 @@ export const ServiceBuilderTableGateToTheFutureRow = () => {
 
   const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
-  const gateToTheFutureLevel: GateToTheFutureLevel = useAppSelector(
-    buildingsSlice.selectors.selectGateToTheFutureLevel,
+  const gateToTheFutureLevel: GateToTheFutureLevel = useAppSelector((state) =>
+    buildingsSlice.selectors.selectBuildingLevel(state, 'gateToTheFuture'),
   );
   const gateToTheFutureNextLevel: string = String(Number(gateToTheFutureLevel) + 1);
 

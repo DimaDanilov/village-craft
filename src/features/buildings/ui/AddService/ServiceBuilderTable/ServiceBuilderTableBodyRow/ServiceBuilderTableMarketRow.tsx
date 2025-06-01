@@ -18,7 +18,9 @@ export const ServiceBuilderTableMarketRow = () => {
 
   const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
-  const marketLevel: MarketLevel = useAppSelector(buildingsSlice.selectors.selectMarketLevel);
+  const marketLevel: MarketLevel = useAppSelector((state) =>
+    buildingsSlice.selectors.selectBuildingLevel(state, 'market'),
+  );
   const marketNextLevel: string = String(Number(marketLevel) + 1);
 
   const isNextLevelExist = isBuildingNextLevelExist(marketNextLevel, BUILDING_UPGRADE_COST.market);

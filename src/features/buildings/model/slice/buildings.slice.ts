@@ -1,13 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { BuildingName, ForgeBuilding, GateToTheFutureBuilding, MarketBuilding } from '../types';
-import {
-  selectBuildingLevel,
-  selectBuildingsError,
-  selectForgeLevel,
-  selectGateToTheFutureLevel,
-  selectIsEveryBuildingBuilt,
-  selectMarketLevel,
-} from '../selectors';
+import { selectBuildingLevel, selectBuildingsError, selectIsEveryBuildingBuilt } from '../selectors';
 import { isBuildingNextLevelExist } from '../tools';
 import { BUILDING_UPGRADE_COST } from '..';
 
@@ -42,9 +35,6 @@ export const buildingsSlice = createSlice({
   initialState,
   selectors: {
     selectBuildingLevel,
-    selectForgeLevel,
-    selectMarketLevel,
-    selectGateToTheFutureLevel,
     selectIsEveryBuildingBuilt,
     selectBuildingsError,
   },

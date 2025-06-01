@@ -19,7 +19,9 @@ export const ServiceBuilderTableForgeRow = () => {
 
   const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
-  const forgeLevel: ForgeLevel = useAppSelector(buildingsSlice.selectors.selectForgeLevel);
+  const forgeLevel: ForgeLevel = useAppSelector((state) =>
+    buildingsSlice.selectors.selectBuildingLevel(state, 'forge'),
+  );
   const forgeNextLevel: string = String(Number(forgeLevel) + 1);
 
   const isNextLevelExist = isBuildingNextLevelExist(forgeNextLevel, BUILDING_UPGRADE_COST.forge);
