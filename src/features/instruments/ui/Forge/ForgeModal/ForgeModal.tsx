@@ -4,7 +4,6 @@ import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { clearInstrumentsError, instrumentsSlice } from '@features/instruments/model';
 import { ForgeTable } from '../ForgeTable';
-import { ResourcesPanel } from '@widgets';
 
 interface ForgeModalProps {
   isModalOpen: boolean;
@@ -22,8 +21,14 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
   }, [dispatch, clearInstrumentsError]);
 
   return (
-    <Modal title="Forge" error={error} isOpen={isModalOpen} onClose={onCloseForge}>
-      <ResourcesPanel />
+    <Modal
+      title="Forge"
+      description="Spend resources to upgrade instrument levels. It will help you gain even more resources"
+      displayResourcesPanel
+      error={error}
+      isOpen={isModalOpen}
+      onClose={onCloseForge}
+    >
       <ForgeTable />
     </Modal>
   );

@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { MarketTable } from '../MarketTable';
-import { ResourcesPanel } from '@widgets';
 
 interface MarketModalProps {
   isModalOpen: boolean;
@@ -22,8 +21,14 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
   }, [dispatch, clearResourcesError]);
 
   return (
-    <Modal title="Market" error={error} isOpen={isModalOpen} onClose={onCloseMarket}>
-      <ResourcesPanel />
+    <Modal
+      title="Market"
+      description="Sell resources and earn money. You can enter amount of resources in the field or scroll your mouse wheel"
+      displayResourcesPanel
+      error={error}
+      isOpen={isModalOpen}
+      onClose={onCloseMarket}
+    >
       <MarketTable />
     </Modal>
   );
