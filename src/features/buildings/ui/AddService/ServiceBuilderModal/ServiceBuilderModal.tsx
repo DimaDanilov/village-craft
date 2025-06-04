@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { ServiceBuilderTable } from '../ServiceBuilderTable';
 import { useAppDispatch, useAppSelector } from '@store';
 import { buildingsSlice, clearBuildingsError } from '@features/buildings/model';
+import { ResourcesPanel } from '@widgets';
 
 interface AddServiceModalProps {
   isModalOpen: boolean;
@@ -22,6 +23,7 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
 
   return (
     <Modal title="Service Builder" error={error} isOpen={isModalOpen} onClose={onCloseServiceBuilder}>
+      <ResourcesPanel />
       <ServiceBuilderTable />
     </Modal>
   );

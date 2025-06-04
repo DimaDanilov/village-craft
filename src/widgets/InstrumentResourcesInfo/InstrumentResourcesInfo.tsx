@@ -10,9 +10,9 @@ export const InstrumentResourcesInfo = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 px-10 py-6">
-        <WoodStats />
-        <StoneStats />
-        <CoinsStats />
+        <WoodStats flexDirection="col" imageWidth="100px" />
+        <StoneStats flexDirection="col" imageWidth="100px" />
+        <CoinsStats flexDirection="col" imageWidth="100px" />
       </div>
     </div>
   );

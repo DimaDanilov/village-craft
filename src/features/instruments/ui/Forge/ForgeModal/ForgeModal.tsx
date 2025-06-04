@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { clearInstrumentsError, instrumentsSlice } from '@features/instruments/model';
 import { ForgeTable } from '../ForgeTable';
+import { ResourcesPanel } from '@widgets';
 
 interface ForgeModalProps {
   isModalOpen: boolean;
@@ -22,6 +23,7 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
 
   return (
     <Modal title="Forge" error={error} isOpen={isModalOpen} onClose={onCloseForge}>
+      <ResourcesPanel />
       <ForgeTable />
     </Modal>
   );
