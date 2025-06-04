@@ -25,9 +25,9 @@ const MARKET_UPGRADE_COST: MarketUpgradeCostRecord = {
 const GATE_TO_THE_FUTURE_UPGRADE_COST: GateToTheFutureUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 10,
-    stone: 10,
-    coins: 10,
+    wood: 500,
+    stone: 300,
+    coins: 800,
   },
 };
 
