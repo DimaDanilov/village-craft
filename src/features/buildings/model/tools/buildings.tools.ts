@@ -1,5 +1,5 @@
 import type { ResourcesInfo } from '@features/resources/model';
-import type { BuildingCost } from '../constants';
+import type { BuildingCost } from '../types';
 
 export function isBuildingNextLevelExist<T extends Record<string, BuildingCost>, K extends PropertyKey>(
   _nextLevel: K,

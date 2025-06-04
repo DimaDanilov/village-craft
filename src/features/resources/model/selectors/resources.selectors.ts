@@ -1,7 +1,7 @@
 import type { ResourcesState } from '../slice';
+import type { ResourceName } from '../types';
 
 export const selectAllResources = (state: ResourcesState) => state.resources;
-export const selectWoodCount = (state: ResourcesState) => state.resources.wood.count;
-export const selectStoneCount = (state: ResourcesState) => state.resources.stone.count;
-export const selectCoinsCount = (state: ResourcesState) => state.resources.coins.count;
+export const selectResourceCount = (state: ResourcesState, resourceName: ResourceName) =>
+  state.resources[resourceName].count;
 export const selectResourcesError = (state: ResourcesState) => state.error;

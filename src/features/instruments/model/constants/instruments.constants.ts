@@ -1,18 +1,18 @@
-import type { ResourcesState } from '@features/resources/model';
-import type { AxeLevel, PickaxeLevel } from '../types';
 import type { InstrumentsState } from '../slice';
 import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
+import type {
+  AxeLevelEfficiencyRecord,
+  AxeUpgradeCostRecord,
+  InstrumentLevelEfficiencyRecord,
+  InstrumentName,
+  InstrumentUpgradeCostRecord,
+  PickaxeLevelEfficiencyRecord,
+  PickaxeUpgradeCostRecord,
+} from '../types';
+import type { ResourceName } from '@features/resources/model';
 
-export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
-export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
-
-export type InstrumentCost = Partial<Record<keyof ResourcesState['resources'], number>>;
-
-export type AxeUpgradeCostRecord = Record<AxeLevel, InstrumentCost>;
-export type PickaxeUpgradeCostRecord = Record<PickaxeLevel, InstrumentCost>;
-
-export const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
+const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '1': 1,
   '2': 3,
   '3': 5,
@@ -20,7 +20,7 @@ export const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '5': 16,
 };
 
-export const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
+const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
   '1': 1,
   '2': 2,
   '3': 3,
@@ -28,7 +28,7 @@ export const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
   '5': 8,
 };
 
-export const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
+const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   '1': {},
   '2': {
     wood: 10,
@@ -49,7 +49,7 @@ export const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   },
 };
 
-export const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
+const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   '1': {},
   '2': {
     wood: 15,
@@ -68,6 +68,21 @@ export const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
     stone: 150,
     coins: 120,
   },
+};
+
+export const INSTRUMENT_LEVEL_EFFICIENCY: Record<InstrumentName, InstrumentLevelEfficiencyRecord> = {
+  axe: AXE_LEVEL_EFFICIENCY,
+  pickaxe: PICKAXE_LEVEL_EFFICIENCY,
+};
+
+export const INSTRUMENT_UPGRADE_COST: Record<InstrumentName, InstrumentUpgradeCostRecord> = {
+  axe: AXE_UPGRADE_COST,
+  pickaxe: PICKAXE_UPGRADE_COST,
+};
+
+export const INSTRUMENT_RESOURCE_MINING: Record<InstrumentName, ResourceName> = {
+  axe: 'wood',
+  pickaxe: 'stone',
 };
 
 export const INSTRUMENTS_IMAGES: Record<keyof InstrumentsState['instruments'], string> = {

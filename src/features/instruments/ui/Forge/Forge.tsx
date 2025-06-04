@@ -8,7 +8,7 @@ import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
 export const Forge = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const forgeLevel = useAppSelector(buildingsSlice.selectors.selectForgeLevel);
+  const forgeLevel = useAppSelector((state) => buildingsSlice.selectors.selectBuildingLevel(state, 'forge'));
 
   const openForge = useCallback(() => {
     dispatch(clearInstrumentsError());

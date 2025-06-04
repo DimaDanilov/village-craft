@@ -8,7 +8,7 @@ import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
 export const Market = () => {
   const dispatch = useAppDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const marketLevel = useAppSelector(buildingsSlice.selectors.selectMarketLevel);
+  const marketLevel = useAppSelector((state) => buildingsSlice.selectors.selectBuildingLevel(state, 'market'));
 
   const openMarket = useCallback(() => {
     dispatch(clearResourcesError());

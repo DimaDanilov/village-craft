@@ -1,4 +1,4 @@
-import { chopWoodWithAxe, resourcesSlice } from '@features/resources/model';
+import { mineResourcesWithInstrument, resourcesSlice } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import AxeIcon from '@assets/icons/Axe.svg?react';
@@ -6,9 +6,9 @@ import { DECK_CARD_INFOS, DeckResourceCard } from '@widgets';
 
 export const Forest = () => {
   const dispatch = useAppDispatch();
-  const woodAmount = useAppSelector(resourcesSlice.selectors.selectWoodCount);
+  const woodAmount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'wood'));
 
-  const chopWood = useCallback(() => dispatch(chopWoodWithAxe()), [dispatch, resourcesSlice]);
+  const chopWood = useCallback(() => dispatch(mineResourcesWithInstrument('wood')), [dispatch, resourcesSlice]);
 
   return (
     <DeckResourceCard

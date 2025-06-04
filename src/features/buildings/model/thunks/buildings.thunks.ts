@@ -1,40 +1,33 @@
 import { resourcesSlice, selectAllResources } from '@features/resources/model';
 import type { AppThunk } from '@store';
-import { selectForgeLevel, selectMarketLevel } from '../selectors';
-import { FORGE_UPGRADE_COST, MARKET_UPGRADE_COST } from '../constants';
+import { selectBuildingLevel } from '../selectors';
 import { buildingsSlice } from '../slice';
 import { isBuildingUpgradeAvailable } from '../tools';
+import { BUILDING_UPGRADE_COST, type BuildingName } from '..';
 
-export const UpgradeForgeWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourcesState = getState().resources;
-  const buildingsState = getState().buildings;
+export const UpgradeBuildingWithResources =
+  (buildingName: BuildingName): AppThunk =>
+  (dispatch, getState) => {
+    const resourcesState = getState().resources;
+    const buildingsState = getState().buildings;
 
-  const allResources = selectAllResources(resourcesState);
+    const allResources = selectAllResources(resourcesState);
 
-  const currentForgeLevel = selectForgeLevel(buildingsState);
-  const nextLevel = (Number(currentForgeLevel) + 1).toString();
+    const currentBuildingLevel = selectBuildingLevel(buildingsState, buildingName);
+    const nextLevel = (Number(currentBuildingLevel) + 1).toString();
+    const buildingUpgradeCostList = BUILDING_UPGRADE_COST[buildingName];
+    const isUpgradeAvailable = isBuildingUpgradeAvailable(nextLevel, buildingUpgradeCostList, allResources);
 
-  if (!isBuildingUpgradeAvailable(nextLevel, FORGE_UPGRADE_COST, allResources)) {
-    dispatch(buildingsSlice.actions.setBuildingsError('Can`t upgrade forge'));
-    return;
-  }
-  dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: FORGE_UPGRADE_COST[nextLevel] }));
-  dispatch(buildingsSlice.actions._upgradeForge());
-};
+    if (!isUpgradeAvailable) {
+      dispatch(buildingsSlice.actions.setBuildingsError(`Can't upgrade ${buildingName}`));
+      return;
+    }
+    const buildingNextLevelCost = buildingUpgradeCostList[nextLevel];
 
-export const UpgradeMarketWithResources = (): AppThunk => (dispatch, getState) => {
-  const resourcesState = getState().resources;
-  const buildingsState = getState().buildings;
-
-  const allResources = selectAllResources(resourcesState);
-
-  const currentMarketLevel = selectMarketLevel(buildingsState);
-  const nextLevel = (Number(currentMarketLevel) + 1).toString();
-
-  if (!isBuildingUpgradeAvailable(nextLevel, MARKET_UPGRADE_COST, allResources)) {
-    dispatch(buildingsSlice.actions.setBuildingsError('Can`t upgrade market'));
-    return;
-  }
-  dispatch(resourcesSlice.actions._destroyResourcesForUpgrade({ resourcesToDestroy: MARKET_UPGRADE_COST[nextLevel] }));
-  dispatch(buildingsSlice.actions._upgradeMarket());
-};
+    dispatch(
+      resourcesSlice.actions._destroyResourcesForUpgrade({
+        resourcesToDestroy: buildingNextLevelCost,
+      }),
+    );
+    dispatch(buildingsSlice.actions._upgradeBuilding({ buildingName }));
+  };

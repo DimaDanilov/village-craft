@@ -1,5 +1,5 @@
 import type { ResourcesInfo } from '@features/resources/model';
-import type { InstrumentCost } from '../constants';
+import type { InstrumentCost } from '../types';
 
 export function isInstrumentNextLevelExist<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
   _nextLevel: K,

@@ -1,4 +1,3 @@
-export * from './ForgeTableAxeUpgradeRow';
 export * from './ForgeTableBodyRow';
+export * from './ForgeTableNextLevelInstrument';
 export * from './ForgeTableInstrumentPrice';
-export * from './ForgeTablePickaxeUpgradeRow';

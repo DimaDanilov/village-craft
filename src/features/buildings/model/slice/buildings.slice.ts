@@ -1,14 +1,17 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { ForgeBuilding, MarketBuilding } from '../types';
-import { selectBuildingsError, selectForgeLevel, selectIsEveryBuildingBuilt, selectMarketLevel } from '../selectors';
+import type { BuildingName, ForgeBuilding, GateToTheFutureBuilding, MarketBuilding } from '../types';
+import { selectBuildingLevel, selectBuildingsError, selectIsEveryBuildingBuilt } from '../selectors';
 import { isBuildingNextLevelExist } from '../tools';
-import { FORGE_UPGRADE_COST, MARKET_UPGRADE_COST } from '../constants';
+import { BUILDING_UPGRADE_COST } from '..';
+
+export interface BuildingInfo {
+  forge: ForgeBuilding;
+  market: MarketBuilding;
+  gateToTheFuture: GateToTheFutureBuilding;
+}
 
 export interface BuildingsState {
-  buildings: {
-    forge: ForgeBuilding;
-    market: MarketBuilding;
-  };
+  buildings: BuildingInfo;
   error?: string;
 }
 
@@ -20,6 +23,9 @@ const initialState: BuildingsState = {
     market: {
       level: '0',
     },
+    gateToTheFuture: {
+      level: '0',
+    },
   },
   error: undefined,
 };
@@ -27,18 +33,19 @@ const initialState: BuildingsState = {
 export const buildingsSlice = createSlice({
   name: 'buildings',
   initialState,
-  selectors: { selectForgeLevel, selectMarketLevel, selectIsEveryBuildingBuilt, selectBuildingsError },
+  selectors: {
+    selectBuildingLevel,
+    selectIsEveryBuildingBuilt,
+    selectBuildingsError,
+  },
   reducers: {
-    _upgradeForge: (state) => {
-      const nextLevel = (Number(state.buildings.forge.level) + 1).toString();
-      if (isBuildingNextLevelExist(nextLevel, FORGE_UPGRADE_COST)) {
-        state.buildings.forge.level = nextLevel;
-      }
-    },
-    _upgradeMarket: (state) => {
-      const nextLevel = (Number(state.buildings.market.level) + 1).toString();
-      if (isBuildingNextLevelExist(nextLevel, MARKET_UPGRADE_COST)) {
-        state.buildings.market.level = nextLevel;
+    _upgradeBuilding: (state, action: PayloadAction<{ buildingName: BuildingName }>) => {
+      const { buildingName } = action.payload;
+      const currentLevel = state.buildings[buildingName].level;
+      const nextLevel = (Number(currentLevel) + 1).toString();
+      const isNextLevelExist = isBuildingNextLevelExist(nextLevel, BUILDING_UPGRADE_COST[buildingName]);
+      if (isNextLevelExist) {
+        state.buildings[buildingName].level = nextLevel;
       }
     },
     setBuildingsError: (state, action: PayloadAction<string>) => {
