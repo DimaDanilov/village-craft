@@ -1,4 +1,4 @@
-import { resourcesSlice, sellWood } from '@features/resources/model';
+import { resourcesSlice, sellResources } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import { RESOURCES_IMAGES, STONE_TRADE_MULTIPLIER } from '@features/resources/model/constants';
@@ -7,11 +7,11 @@ import { MarketTableBodyRow } from './MarketTableBodyRow';
 export const MarketTableWoodSellRow = () => {
   const dispatch = useAppDispatch();
 
-  const woodCount = useAppSelector(resourcesSlice.selectors.selectWoodCount);
+  const woodCount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'wood'));
 
   const onSellWood = useCallback(
-    (woodAmountToSell: number) => dispatch(sellWood({ woodCount: woodAmountToSell })),
-    [dispatch, sellWood],
+    (woodAmountToSell: number) => dispatch(sellResources({ resourceName: 'wood', resourcesCount: woodAmountToSell })),
+    [dispatch, sellResources],
   );
 
   return (

@@ -3,6 +3,6 @@ import { useAppSelector } from '@store';
 import { ResourceCard } from '../ResourceCard';
 
 export const StoneStats = () => {
-  const stoneCount = useAppSelector(resourcesSlice.selectors.selectStoneCount);
+  const stoneCount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'stone'));
   return <ResourceCard resourceCount={stoneCount} imageSrc={RESOURCES_IMAGES.stone} />;
 };

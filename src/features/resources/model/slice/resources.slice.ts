@@ -1,13 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { CoinsStorage, StonePile, WoodPile } from '../types';
-import {
-  selectAllResources,
-  selectCoinsCount,
-  selectResourcesError,
-  selectStoneCount,
-  selectWoodCount,
-} from '../selectors';
+import type { CoinsStorage, ResourceName, ResourceNameToSell, StonePile, WoodPile } from '../types';
+import { selectAllResources, selectResourceCount, selectResourcesError } from '../selectors';
 import { isSellAvailable } from '../tools';
 import type { InstrumentCost } from '@features/instruments/model';
 
@@ -42,19 +36,13 @@ export const resourcesSlice = createSlice({
   initialState,
   selectors: {
     selectAllResources,
-    selectWoodCount,
-    selectStoneCount,
-    selectCoinsCount,
+    selectResourceCount,
     selectResourcesError,
   },
   reducers: {
-    /* Use chopWoodWithAxe in component instead */
-    _chopWood: (state, action: PayloadAction<{ count: number }>) => {
-      state.resources.wood.count += action.payload.count;
-    },
-    /* Use mineStoneWithPickaxe in component instead */
-    _mineStone: (state, action: PayloadAction<{ count: number }>) => {
-      state.resources.stone.count += action.payload.count;
+    _mineResources: (state, action: PayloadAction<{ resourceName: ResourceName; count: number }>) => {
+      const { resourceName, count } = action.payload;
+      state.resources[resourceName].count += count;
     },
     _destroyResourcesForUpgrade: (state, action: PayloadAction<{ resourcesToDestroy: InstrumentCost }>) => {
       const { resourcesToDestroy } = action.payload;
@@ -63,36 +51,18 @@ export const resourcesSlice = createSlice({
         state.resources[typedKey].count -= resourceAmountToDestroy;
       });
     },
-    sellWood: (state, action: PayloadAction<{ woodCount: number }>) => {
-      const { woodCount } = action.payload;
-      const isSellWoodAvailable = isSellAvailable({
-        currentResourcesAmount: state.resources.wood.count,
-        amountToSell: woodCount,
+    sellResources: (state, action: PayloadAction<{ resourceName: ResourceNameToSell; resourcesCount: number }>) => {
+      const { resourceName, resourcesCount } = action.payload;
+      const isSellResourcesAvailable = isSellAvailable({
+        currentResourcesAmount: state.resources[resourceName].count,
+        amountToSell: resourcesCount,
       });
-
-      if (!isSellWoodAvailable) {
-        state.error = 'Not enough wood to sell';
+      if (!isSellResourcesAvailable) {
+        state.error = `Not enough ${resourceName} to sell`;
         return;
       }
-
-      state.resources.wood.count -= woodCount;
-      state.resources.coins.count += woodCount;
-      state.error = undefined;
-    },
-    sellStone: (state, action: PayloadAction<{ stoneCount: number }>) => {
-      const { stoneCount } = action.payload;
-      const isSellStoneAvailable = isSellAvailable({
-        currentResourcesAmount: state.resources.stone.count,
-        amountToSell: stoneCount,
-      });
-
-      if (!isSellStoneAvailable) {
-        state.error = 'Not enough stone to sell';
-        return;
-      }
-
-      state.resources.stone.count -= stoneCount;
-      state.resources.coins.count += stoneCount;
+      state.resources[resourceName].count -= resourcesCount;
+      state.resources.coins.count += resourcesCount;
       state.error = undefined;
     },
     clearResourcesError: (state) => {
@@ -101,4 +71,4 @@ export const resourcesSlice = createSlice({
   },
 });
 
-export const { sellWood, sellStone, clearResourcesError } = resourcesSlice.actions;
+export const { sellResources, clearResourcesError } = resourcesSlice.actions;
