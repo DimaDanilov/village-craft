@@ -1,15 +1,18 @@
+import { ResourcesPanel } from '@widgets';
 import { useCallback } from 'react';
 import type { ReactNode } from 'react';
 
 interface ModalProps {
   title: string;
+  description: string;
+  displayResourcesPanel?: boolean;
   isOpen: boolean;
   onClose: () => void;
   error?: string;
   children?: ReactNode;
 }
 
-export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) => {
+export const Modal = ({ title, description, displayResourcesPanel, isOpen, onClose, error, children }: ModalProps) => {
   if (!isOpen) return null;
 
   const onStopPropagationClick = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -19,7 +22,7 @@ export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) =
   return (
     <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
+        className="flex flex-col bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
         onClick={onStopPropagationClick}
       >
         <div className="min-w-80 flex justify-between">
@@ -36,8 +39,14 @@ export const Modal = ({ title, isOpen, onClose, error, children }: ModalProps) =
             </svg>
           </button>
         </div>
+        <p className="my-2">{description}</p>
+        {displayResourcesPanel && (
+          <div className="mt-2">
+            <ResourcesPanel />
+          </div>
+        )}
         {error && <div className="my-4 p-2 bg-red-100 text-red-700 rounded-xl">{error}</div>}
-        <div className="mt-10">{children}</div>
+        <div className="mt-2">{children}</div>
       </div>
     </div>
   );

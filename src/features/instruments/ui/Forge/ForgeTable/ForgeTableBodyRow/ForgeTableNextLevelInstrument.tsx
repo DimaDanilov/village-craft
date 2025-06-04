@@ -23,10 +23,10 @@ export function ForgeTableNextLevelInstrument({
 
   return (
     <div className="flex flex-col gap-1 items-center">
-      <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
-      <div className="flex flex-row items-center gap-1">
+      <img src={instrumentImageSrc} width="90px" alt="Instrument Image" />
+      <div className="flex flex-row items-center gap-2">
         <img src={resourceImageSrc} width="40px" alt="Resource Image" />
-        <span>: {instrumentNextLevelEfficiency}</span>
+        <span>{instrumentNextLevelEfficiency}/click</span>
       </div>
       <span className="text-xl">level {instrumentNextLevel}</span>
     </div>

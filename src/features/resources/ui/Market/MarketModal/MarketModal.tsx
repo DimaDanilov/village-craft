@@ -21,7 +21,14 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
   }, [dispatch, clearResourcesError]);
 
   return (
-    <Modal title="Market" error={error} isOpen={isModalOpen} onClose={onCloseMarket}>
+    <Modal
+      title="Market"
+      description="Sell resources and earn money. You can enter amount of resources in the field or scroll your mouse wheel"
+      displayResourcesPanel
+      error={error}
+      isOpen={isModalOpen}
+      onClose={onCloseMarket}
+    >
       <MarketTable />
     </Modal>
   );

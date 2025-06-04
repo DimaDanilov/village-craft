@@ -21,7 +21,14 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
   }, [dispatch, clearInstrumentsError]);
 
   return (
-    <Modal title="Forge" error={error} isOpen={isModalOpen} onClose={onCloseForge}>
+    <Modal
+      title="Forge"
+      description="Spend resources to upgrade instrument levels. It will help you gain even more resources"
+      displayResourcesPanel
+      error={error}
+      isOpen={isModalOpen}
+      onClose={onCloseForge}
+    >
       <ForgeTable />
     </Modal>
   );

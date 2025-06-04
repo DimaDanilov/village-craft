@@ -21,7 +21,14 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
   }, [dispatch, clearBuildingsError]);
 
   return (
-    <Modal title="Service Builder" error={error} isOpen={isModalOpen} onClose={onCloseServiceBuilder}>
+    <Modal
+      title="Service Builder"
+      description="Create new building to open new resources and features"
+      displayResourcesPanel
+      error={error}
+      isOpen={isModalOpen}
+      onClose={onCloseServiceBuilder}
+    >
       <ServiceBuilderTable />
     </Modal>
   );
