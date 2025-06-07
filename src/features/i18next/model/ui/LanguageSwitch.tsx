@@ -8,8 +8,11 @@ export function LanguageSwitch() {
   const changeAppLanguage = useChangeAppLanguage();
 
   return (
-    <div>
-      <button onClick={() => changeAppLanguage({ language: languageToSet })}>Now current {currentLanguage}</button>
-    </div>
+    <button
+      className={`bg-orange-300 text-white text-xl font-semibold rounded-xl cursor-pointer w-14 h-14`}
+      onClick={() => changeAppLanguage({ language: languageToSet })}
+    >
+      {currentLanguage.toUpperCase()}
+    </button>
   );
 }
