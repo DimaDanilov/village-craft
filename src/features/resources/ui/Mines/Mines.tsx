@@ -8,7 +8,7 @@ export const Mines = () => {
   const dispatch = useAppDispatch();
   const stoneAmount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'stone'));
 
-  const mineStone = useCallback(() => dispatch(mineResourcesWithInstrument('stone')), [dispatch, resourcesSlice]);
+  const mineStone = useCallback(() => dispatch(mineResourcesWithInstrument('stone')), [dispatch]);
 
   return (
     <DeckResourceCard

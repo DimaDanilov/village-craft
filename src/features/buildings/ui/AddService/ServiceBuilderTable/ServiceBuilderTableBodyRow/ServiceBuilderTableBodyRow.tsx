@@ -19,7 +19,7 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
 
   const onBuild = useCallback(() => {
     dispatch(UpgradeBuildingWithResources(buildingName));
-  }, [dispatch]);
+  }, [buildingName, dispatch]);
 
   if (buildingCurrentLevel !== '0') return;
   return (

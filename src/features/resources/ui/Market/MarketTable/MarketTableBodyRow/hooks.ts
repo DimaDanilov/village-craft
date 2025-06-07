@@ -22,9 +22,12 @@ export interface UseMarketSellResourcesParams {
 export function useMarketControlledInputs({ maxInputLimit }: UseMarketControlledInputsParams) {
   const [resourceAmountToSell, setResourceAmountToSell] = useState<number>(maxInputLimit);
 
-  const onResourceAmountChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) < maxInputLimit) setResourceAmountToSell(Number(e.target.value));
-  }, []);
+  const onResourceAmountChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      if (Number(e.target.value) < maxInputLimit) setResourceAmountToSell(Number(e.target.value));
+    },
+    [maxInputLimit],
+  );
 
   const onWheelResourceAmountChange = useCallback(
     (e: WheelEvent<HTMLInputElement>) => {
@@ -64,7 +67,7 @@ export function useMarketSellResources({
     const newTradeAmountToSet = resourceAmountLeftAfterTrade > 0 ? resourceAmountLeftAfterTrade : 1; // If after trade there is no resources to trade, then set resources to 1 in trade window
     sellAction(resourceAmountToSell);
     setResourceAmountToSell(newTradeAmountToSet);
-  }, [resourceAmountToSell]);
+  }, [maxResourceAmount, resourceAmountToSell, sellAction, setResourceAmountToSell]);
 
   return onSellResources;
 }

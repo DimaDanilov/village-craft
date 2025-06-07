@@ -18,7 +18,7 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
   const onCloseMarket = useCallback(() => {
     dispatch(clearResourcesError());
     setIsModalOpen(false);
-  }, [dispatch, clearResourcesError]);
+  }, [dispatch, setIsModalOpen]);
 
   return (
     <Modal

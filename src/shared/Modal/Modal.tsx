@@ -1,5 +1,4 @@
 import { ResourcesPanel } from '@widgets';
-import { useCallback } from 'react';
 import type { ReactNode } from 'react';
 
 interface ModalProps {
@@ -12,12 +11,12 @@ interface ModalProps {
   children?: ReactNode;
 }
 
+function onStopPropagationClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  e.stopPropagation();
+}
+
 export const Modal = ({ title, description, displayResourcesPanel, isOpen, onClose, error, children }: ModalProps) => {
   if (!isOpen) return null;
-
-  const onStopPropagationClick = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.stopPropagation();
-  }, []);
 
   return (
     <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/50 backdrop-blur-sm" onClick={onClose}>

@@ -11,7 +11,7 @@ export const MarketTableWoodSellRow = () => {
 
   const onSellWood = useCallback(
     (woodAmountToSell: number) => dispatch(sellResources({ resourceName: 'wood', resourcesCount: woodAmountToSell })),
-    [dispatch, sellResources],
+    [dispatch],
   );
 
   return (

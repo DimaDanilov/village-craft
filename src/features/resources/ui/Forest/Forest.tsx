@@ -8,7 +8,7 @@ export const Forest = () => {
   const dispatch = useAppDispatch();
   const woodAmount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'wood'));
 
-  const chopWood = useCallback(() => dispatch(mineResourcesWithInstrument('wood')), [dispatch, resourcesSlice]);
+  const chopWood = useCallback(() => dispatch(mineResourcesWithInstrument('wood')), [dispatch]);
 
   return (
     <DeckResourceCard

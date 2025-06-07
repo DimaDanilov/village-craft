@@ -18,7 +18,7 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
   const onCloseForge = useCallback(() => {
     dispatch(clearInstrumentsError());
     setIsModalOpen(false);
-  }, [dispatch, clearInstrumentsError]);
+  }, [dispatch, setIsModalOpen]);
 
   return (
     <Modal

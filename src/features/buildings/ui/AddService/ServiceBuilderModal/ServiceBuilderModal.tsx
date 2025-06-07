@@ -18,7 +18,7 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
   const onCloseServiceBuilder = useCallback(() => {
     dispatch(clearBuildingsError());
     setIsModalOpen(false);
-  }, [dispatch, clearBuildingsError]);
+  }, [dispatch, setIsModalOpen]);
 
   return (
     <Modal

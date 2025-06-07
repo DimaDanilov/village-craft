@@ -17,7 +17,9 @@ export const ServiceBuilderTableBuildingPrice = ({
   const buildingCostMaterialsCards = Object.entries(buildingNextLevelCost).map(([resourceKey, resourcesCost]) => {
     const availableResource = resourceKey as ResourceName;
     const resourceImageSrc = RESOURCES_IMAGES[availableResource];
-    return <ResourceCard resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />;
+    return (
+      <ResourceCard key={resourceKey} resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />
+    );
   });
 
   return <span className="grid grid-cols-3 gap-1">{buildingCostMaterialsCards}</span>;

@@ -12,7 +12,7 @@ export const MarketTableStoneSellRow = () => {
   const onSellStone = useCallback(
     (stoneAmountToSell: number) =>
       dispatch(sellResources({ resourceName: 'stone', resourcesCount: stoneAmountToSell })),
-    [dispatch, sellResources],
+    [dispatch],
   );
 
   return (

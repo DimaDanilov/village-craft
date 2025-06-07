@@ -25,7 +25,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
 
   const onUpgrade = useCallback(
     () => dispatch(UpgradeInstrumentWithResources(instrumentName)),
-    [dispatch, UpgradeInstrumentWithResources],
+    [dispatch, instrumentName],
   );
 
   return (

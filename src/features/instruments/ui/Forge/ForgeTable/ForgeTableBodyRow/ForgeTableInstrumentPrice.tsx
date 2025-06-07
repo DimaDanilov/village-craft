@@ -17,7 +17,14 @@ export const ForgeTableInstrumentPrice = ({
       ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
           const availableResource = resourceKey as keyof ResourcesInfo;
           const resourceImageSrc = RESOURCES_IMAGES[availableResource];
-          return <ResourceCard resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />;
+          return (
+            <ResourceCard
+              key={resourceKey}
+              resourceCount={resourcesCost}
+              imageSrc={resourceImageSrc}
+              imageWidth="60px"
+            />
+          );
         })
       : [];
   return isNextLevelExist ? (
