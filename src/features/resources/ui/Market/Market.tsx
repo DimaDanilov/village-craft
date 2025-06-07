@@ -2,8 +2,8 @@ import { clearResourcesError } from '@features/resources/model';
 import { useCallback, useState } from 'react';
 import { MarketModal } from './MarketModal';
 import { useAppDispatch, useAppSelector } from '@store';
-import { buildingsSlice } from '@features/buildings/model';
-import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
+import { BUILDING_INFOS, buildingsSlice } from '@features/buildings/model';
+import { DeckServiceCard } from '@features/buildings/ui';
 
 export const Market = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ export const Market = () => {
 
   return (
     <>
-      <DeckServiceCard onClick={openMarket} deckCardInfo={DECK_CARD_INFOS.market} serviceLevel={Number(marketLevel)} />
+      <DeckServiceCard onClick={openMarket} buildingInfo={BUILDING_INFOS.market} serviceLevel={Number(marketLevel)} />
       <MarketModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );

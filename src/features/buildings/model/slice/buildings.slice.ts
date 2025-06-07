@@ -4,14 +4,14 @@ import { selectBuildingLevel, selectBuildingsError, selectIsEveryBuildingBuilt }
 import { isBuildingNextLevelExist } from '../tools';
 import { BUILDING_UPGRADE_COST } from '..';
 
-export interface BuildingInfo {
+export interface BuildingState {
   forge: ForgeBuilding;
   market: MarketBuilding;
   gateToTheFuture: GateToTheFutureBuilding;
 }
 
 export interface BuildingsState {
-  buildings: BuildingInfo;
+  buildings: BuildingState;
   error?: string;
 }
 

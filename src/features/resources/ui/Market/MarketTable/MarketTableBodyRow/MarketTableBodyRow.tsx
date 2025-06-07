@@ -1,11 +1,12 @@
 import { Button } from '@shared/Button/Button';
-import { DECK_CARD_RESOURCE_PALETTE, ResourceCard } from '@widgets';
+import { ResourceCard } from '@widgets';
 import {
   useMarketControlledInputs,
   useMarketIsSellDisabled,
   useMarketSellResources,
   type UseMarketSellResourcesParams,
 } from './hooks';
+import { DECK_CARD_RESOURCE_PALETTE } from '@features/buildings/ui';
 
 type MarketTableBodyRowProps = Pick<UseMarketSellResourcesParams, 'maxResourceAmount' | 'sellAction'> & {
   tradeMultiplier: number;

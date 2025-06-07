@@ -1,8 +1,8 @@
 import { buildingsSlice } from '@features/buildings/model';
 import { useAppSelector } from '@store';
-import { DECK_CARD_SERVICE_PALETTE, DeckAddCard } from '@widgets';
 import { useCallback, useState } from 'react';
 import { ServiceBuilderModal } from './ServiceBuilderModal';
+import { DECK_CARD_SERVICE_PALETTE, DeckAddCard } from '../DeckCard';
 
 export const AddService = () => {
   const isEverythingBuild = useAppSelector(buildingsSlice.selectors.selectIsEveryBuildingBuilt);

@@ -1,7 +1,7 @@
 import { Forest, Mines } from '@features/resources/ui';
 import { CardsSection } from './DefaultCardsSection';
-import { DECK_CARD_RESOURCE_PALETTE } from '@widgets/DeckCard';
 import { useTranslation } from 'react-i18next';
+import { DECK_CARD_RESOURCE_PALETTE } from '../DeckCard';
 
 export const ResourcesSection = () => {
   const { t } = useTranslation('Resources');

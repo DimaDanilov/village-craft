@@ -7,16 +7,17 @@ import react from 'eslint-plugin-react';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.strict,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, ...tseslint.configs.strict],
     files: ['**/*.{ts,tsx}'],
     plugins: {
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     rules: {
       ...react.configs.recommended.rules,

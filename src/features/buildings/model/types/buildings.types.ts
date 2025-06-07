@@ -1,7 +1,7 @@
 import type { ResourceName } from '@features/resources/model';
-import type { BuildingInfo } from '../slice';
+import type { BuildingState } from '../slice';
 
-export type BuildingName = keyof BuildingInfo;
+export type BuildingName = keyof BuildingState;
 
 export type BuildingCost = Partial<Record<ResourceName, number>>;
 
@@ -30,4 +30,20 @@ export interface MarketBuilding {
 
 export interface GateToTheFutureBuilding {
   level: GateToTheFutureLevel;
+}
+
+export type BuildingCategory = 'resource' | 'service';
+
+export interface BuildingInfo {
+  imageSrc: string;
+  title: string;
+  description: string;
+}
+
+export interface BuildingInfos {
+  forest: BuildingInfo;
+  mines: BuildingInfo;
+  forge: BuildingInfo;
+  market: BuildingInfo;
+  gateToTheFuture: BuildingInfo;
 }

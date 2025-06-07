@@ -1,16 +1,17 @@
 import type { ReactNode } from 'react';
-import type { DeckCardInfo, DeckCardPalette } from '../types';
+import type { DeckCardPalette } from '../types';
 import { DeckCardHeader } from '../DeckCardHeader';
+import type { BuildingInfo } from '@features/buildings/model';
 
 interface DeckCardDefaultProps {
   onClick?: () => void;
   deckCardPalette: DeckCardPalette;
-  deckCardInfo: DeckCardInfo;
+  buildingInfo: BuildingInfo;
   children?: ReactNode;
 }
 
-export const DeckCardDefault = ({ onClick, deckCardPalette, deckCardInfo, children }: DeckCardDefaultProps) => {
-  const { title, description, imageSrc } = deckCardInfo;
+export const DeckCardDefault = ({ onClick, deckCardPalette, buildingInfo, children }: DeckCardDefaultProps) => {
+  const { title, description, imageSrc } = buildingInfo;
   const { bgColorClassName, textColorClassName, borderColorClassName } = deckCardPalette;
 
   return (

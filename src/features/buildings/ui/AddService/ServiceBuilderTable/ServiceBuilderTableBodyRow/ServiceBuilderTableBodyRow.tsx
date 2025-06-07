@@ -1,8 +1,7 @@
 import { Button } from '@shared/Button/Button';
 import { ServiceBuilderTableBuildingPrice } from './ServiceBuilderTableBuildingPrice';
-import { UpgradeBuildingWithResources, useBuildingUpgradePrice } from '@features/buildings/model';
+import { BUILDING_INFOS, UpgradeBuildingWithResources, useBuildingUpgradePrice } from '@features/buildings/model';
 import type { BuildingName } from '@features/buildings/model';
-import { DECK_CARD_INFOS } from '@widgets';
 import { useCallback } from 'react';
 import { useAppDispatch } from '@store';
 
@@ -11,7 +10,7 @@ interface ServiceBuilderTableBodyRowProps {
 }
 
 export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTableBodyRowProps) => {
-  const { title, description, imageSrc } = DECK_CARD_INFOS[buildingName];
+  const { title, description, imageSrc } = BUILDING_INFOS[buildingName];
   const { buildingCurrentLevel, buildingNextLevelCost, isUpgradeAvailable } = useBuildingUpgradePrice(buildingName);
   const isBuildDisabled = buildingCurrentLevel !== '0' || !isUpgradeAvailable;
 

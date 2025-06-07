@@ -2,8 +2,8 @@ import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback, useState } from 'react';
 import { ForgeModal } from './ForgeModal';
 import { clearInstrumentsError } from '@features/instruments/model';
-import { buildingsSlice } from '@features/buildings/model';
-import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
+import { BUILDING_INFOS, buildingsSlice } from '@features/buildings/model';
+import { DeckServiceCard } from '@features/buildings/ui';
 
 export const Forge = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ export const Forge = () => {
 
   return (
     <>
-      <DeckServiceCard onClick={openForge} deckCardInfo={DECK_CARD_INFOS.forge} serviceLevel={Number(forgeLevel)} />
+      <DeckServiceCard onClick={openForge} buildingInfo={BUILDING_INFOS.forge} serviceLevel={Number(forgeLevel)} />
       <ForgeModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   );

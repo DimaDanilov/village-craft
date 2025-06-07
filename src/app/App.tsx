@@ -1,7 +1,7 @@
 import { LanguageSwitch } from '@features/i18next/model';
 import { store } from '@store';
 import { InstrumentResourcesInfo } from '@widgets';
-import { ResourcesSection, ServicesSection } from '@widgets/CardsSection';
+import { ResourcesSection, ServicesSection } from '@features/buildings/ui/CardsSection';
 import { Provider } from 'react-redux';
 
 function App() {
