@@ -2,20 +2,24 @@ import { initReactI18next } from 'react-i18next';
 import { AVAILABLE_LANGUAGES } from './i18next.constants';
 import i18next from 'i18next';
 
-import mainResourcesEn from './locales/Resources/en.json';
-import mainResourcesRu from './locales/Resources/ru.json';
-import mainServicesEn from './locales/Services/en.json';
-import mainServicesRu from './locales/Services/ru.json';
+import ResourcesEn from './locales/Resources/en.json';
+import ResourcesRu from './locales/Resources/ru.json';
+import BuildingsEn from './locales/Buildings/en.json';
+import BuildingsRu from './locales/Buildings/ru.json';
+import ServicesEn from './locales/Services/en.json';
+import ServicesRu from './locales/Services/ru.json';
 import { getSafetyLocalStorageLanguage } from './tools/getSafetyLocalStorageLanguage';
 
 export const englishNamespaces = {
-  Resources: mainResourcesEn,
-  Services: mainServicesEn,
+  Resources: ResourcesEn,
+  Services: ServicesEn,
+  Buildings: BuildingsEn,
 };
 
 export const russianNamespaces = {
-  Resources: mainResourcesRu,
-  Services: mainServicesRu,
+  Resources: ResourcesRu,
+  Services: ServicesRu,
+  Buildings: BuildingsRu,
 };
 
 const resources = {

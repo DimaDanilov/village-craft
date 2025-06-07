@@ -2,6 +2,7 @@ import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
 import { RESOURCES_IMAGES } from '@features/resources/model';
 import type { ResourceName } from '@features/resources/model';
 import { ResourceCard } from '@widgets';
+import { useTranslation } from 'react-i18next';
 
 interface ServiceBuilderTableBuildingPriceProps {
   currentLevel: BuildingLevel;
@@ -12,7 +13,8 @@ export const ServiceBuilderTableBuildingPrice = ({
   currentLevel,
   buildingNextLevelCost,
 }: ServiceBuilderTableBuildingPriceProps) => {
-  if (currentLevel !== '0' || buildingNextLevelCost === undefined) return <span>Done</span>;
+  const { t } = useTranslation('Buildings');
+  if (currentLevel !== '0' || buildingNextLevelCost === undefined) return <span>{t('errors.buildingIsReady')}</span>;
 
   const buildingCostMaterialsCards = Object.entries(buildingNextLevelCost).map(([resourceKey, resourcesCost]) => {
     const availableResource = resourceKey as ResourceName;

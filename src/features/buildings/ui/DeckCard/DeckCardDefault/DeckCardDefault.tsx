@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { DeckCardPalette } from '../types';
 import { DeckCardHeader } from '../DeckCardHeader';
 import type { BuildingInfo } from '@features/buildings/model';
+import { useTranslation } from 'react-i18next';
 
 interface DeckCardDefaultProps {
   onClick?: () => void;
@@ -11,6 +12,7 @@ interface DeckCardDefaultProps {
 }
 
 export const DeckCardDefault = ({ onClick, deckCardPalette, buildingInfo, children }: DeckCardDefaultProps) => {
+  const { t } = useTranslation('Buildings');
   const { title, description, imageSrc } = buildingInfo;
   const { bgColorClassName, textColorClassName, borderColorClassName } = deckCardPalette;
 
@@ -19,7 +21,7 @@ export const DeckCardDefault = ({ onClick, deckCardPalette, buildingInfo, childr
       className={`flex flex-col justify-between w-60 h-90 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer pb-4`}
       onClick={onClick}
     >
-      <DeckCardHeader title={title} description={description} imageSrc={imageSrc} />
+      <DeckCardHeader title={t(title)} description={t(description)} imageSrc={imageSrc} />
       {children}
     </div>
   );

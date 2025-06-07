@@ -4,6 +4,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { ServiceBuilderTable } from '../ServiceBuilderTable';
 import { useAppDispatch, useAppSelector } from '@store';
 import { buildingsSlice, clearBuildingsError } from '@features/buildings/model';
+import { useTranslation } from 'react-i18next';
 
 interface AddServiceModalProps {
   isModalOpen: boolean;
@@ -11,6 +12,7 @@ interface AddServiceModalProps {
 }
 
 export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceModalProps) => {
+  const { t } = useTranslation('Buildings');
   const dispatch = useAppDispatch();
 
   const error = useAppSelector(buildingsSlice.selectors.selectBuildingsError);
@@ -22,8 +24,8 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
 
   return (
     <Modal
-      title="Service Builder"
-      description="Create new building to open new resources and features"
+      title={t('modal.title')}
+      description={t('modal.description')}
       displayResourcesPanel
       error={error}
       isOpen={isModalOpen}

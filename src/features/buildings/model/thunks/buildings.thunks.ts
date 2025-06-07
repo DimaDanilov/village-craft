@@ -4,10 +4,12 @@ import { selectBuildingLevel } from '../selectors';
 import { buildingsSlice } from '../slice';
 import { isBuildingUpgradeAvailable } from '../tools';
 import { BUILDING_UPGRADE_COST, type BuildingName } from '..';
+import { useTranslation } from 'react-i18next';
 
-export const UpgradeBuildingWithResources =
-  (buildingName: BuildingName): AppThunk =>
-  (dispatch, getState) => {
+export const useUpgradeBuildingWithResources = (buildingName: BuildingName): AppThunk => {
+  const { t } = useTranslation('Buildings');
+
+  return (dispatch, getState) => {
     const resourcesState = getState().resources;
     const buildingsState = getState().buildings;
 
@@ -19,7 +21,9 @@ export const UpgradeBuildingWithResources =
     const isUpgradeAvailable = isBuildingUpgradeAvailable(nextLevel, buildingUpgradeCostList, allResources);
 
     if (!isUpgradeAvailable) {
-      dispatch(buildingsSlice.actions.setBuildingsError(`Can't upgrade ${buildingName}`));
+      dispatch(
+        buildingsSlice.actions.setBuildingsError(`${t('errors.cantUpgrade')} ${t(`buildings.${buildingName}.title`)}`),
+      );
       return;
     }
     const buildingNextLevelCost = buildingUpgradeCostList[nextLevel];
@@ -31,3 +35,4 @@ export const UpgradeBuildingWithResources =
     );
     dispatch(buildingsSlice.actions._upgradeBuilding({ buildingName }));
   };
+};

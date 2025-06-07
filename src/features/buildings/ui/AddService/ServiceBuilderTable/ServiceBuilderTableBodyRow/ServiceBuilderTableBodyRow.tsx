@@ -1,15 +1,18 @@
 import { Button } from '@shared/Button/Button';
 import { ServiceBuilderTableBuildingPrice } from './ServiceBuilderTableBuildingPrice';
-import { BUILDING_INFOS, UpgradeBuildingWithResources, useBuildingUpgradePrice } from '@features/buildings/model';
+import { BUILDING_INFOS, useUpgradeBuildingWithResources, useBuildingUpgradePrice } from '@features/buildings/model';
 import type { BuildingName } from '@features/buildings/model';
 import { useCallback } from 'react';
 import { useAppDispatch } from '@store';
+import { useTranslation } from 'react-i18next';
 
 interface ServiceBuilderTableBodyRowProps {
   buildingName: BuildingName;
 }
 
 export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTableBodyRowProps) => {
+  const { t } = useTranslation('Buildings');
+  const upgradeBuildingsWithResources = useUpgradeBuildingWithResources(buildingName);
   const { title, description, imageSrc } = BUILDING_INFOS[buildingName];
   const { buildingCurrentLevel, buildingNextLevelCost, isUpgradeAvailable } = useBuildingUpgradePrice(buildingName);
   const isBuildDisabled = buildingCurrentLevel !== '0' || !isUpgradeAvailable;
@@ -17,8 +20,8 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
   const dispatch = useAppDispatch();
 
   const onBuild = useCallback(() => {
-    dispatch(UpgradeBuildingWithResources(buildingName));
-  }, [buildingName, dispatch]);
+    dispatch(upgradeBuildingsWithResources);
+  }, [dispatch, upgradeBuildingsWithResources]);
 
   if (buildingCurrentLevel !== '0') return;
   return (
@@ -26,10 +29,10 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
       <td>
         <div className="w-60 flex flex-col gap-1 justify-center items-center">
           <img width={300} src={imageSrc} alt="Forge Image" />
-          <span className="text-lg">{title}</span>
+          <span className="text-lg">{t(title)}</span>
         </div>
       </td>
-      <td>{description}</td>
+      <td>{t(description)}</td>
       <td>
         <ServiceBuilderTableBuildingPrice
           currentLevel={buildingCurrentLevel}
@@ -38,7 +41,7 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
       </td>
       <td>
         <Button onClick={onBuild} disabled={isBuildDisabled}>
-          Build {title}
+          {t('buildButton')} {t(title)}
         </Button>
       </td>
     </tr>

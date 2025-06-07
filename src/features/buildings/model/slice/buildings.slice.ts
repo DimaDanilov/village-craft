@@ -1,10 +1,19 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { BuildingName, ForgeBuilding, GateToTheFutureBuilding, MarketBuilding } from '../types';
+import type {
+  BuildingName,
+  ForestBuilding,
+  ForgeBuilding,
+  GateToTheFutureBuilding,
+  MarketBuilding,
+  MinesBuilding,
+} from '../types';
 import { selectBuildingLevel, selectBuildingsError, selectIsEveryBuildingBuilt } from '../selectors';
 import { isBuildingNextLevelExist } from '../tools';
 import { BUILDING_UPGRADE_COST } from '..';
 
 export interface BuildingState {
+  forest: ForestBuilding;
+  mines: MinesBuilding;
   forge: ForgeBuilding;
   market: MarketBuilding;
   gateToTheFuture: GateToTheFutureBuilding;
@@ -17,6 +26,12 @@ export interface BuildingsState {
 
 const initialState: BuildingsState = {
   buildings: {
+    forest: {
+      level: '1',
+    },
+    mines: {
+      level: '1',
+    },
     forge: {
       level: '0',
     },
