@@ -14,30 +14,32 @@
     },
     "market": {
       "title": "Рынок",
-      "description": "Продавайте ваши ресурсы, чтобы заработать деньги."
+      "description": "Продавайте ресурсы, чтобы заработать деньги."
     },
     "gateToTheFuture": {
       "title": "Врата в будущее",
       "description": "Войдите в будущее и достигните финальной цели в этом мире."
     }
   },
-  "modal": {
-    "title": "Строитель зданий",
-    "description": "Создавайте новые здания, чтобы открыть новые ресурсы и способности"
-  },
-  "table": {
-    "header": {
-      "imageColumn": "Постройка",
-      "descriptionColumn": "Описание",
-      "costColumn": "Стоимость"
+  "addService": {
+    "modal": {
+      "title": "Строитель зданий",
+      "description": "Создавайте новые здания, чтобы открыть новые ресурсы и способности"
     },
-    "body": {
-      "buildButton": "Построить"
+    "table": {
+      "header": {
+        "imageColumn": "Постройка",
+        "descriptionColumn": "Описание",
+        "costColumn": "Стоимость"
+      },
+      "body": {
+        "buildButton": "Построить"
+      }
+    },
+    "deckCard": {
+      "title": "Построить новый сервис",
+      "level": "Уровень"
     }
-  },
-  "addServiceDeckCard": {
-    "level": "Уровень",
-    "title": "Построить новый сервис"
   },
   "errors": {
     "buildingIsReady": "Готово",

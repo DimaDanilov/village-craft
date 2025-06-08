@@ -6,7 +6,7 @@ import { DECK_CARD_RESOURCE_PALETTE } from '../DeckCard';
 export const ResourcesSection = () => {
   const { t } = useTranslation('Resources');
   return (
-    <CardsSection title={t('title')} textColorClassName={DECK_CARD_RESOURCE_PALETTE.textColorClassName}>
+    <CardsSection title={t('deckCardArea.title')} textColorClassName={DECK_CARD_RESOURCE_PALETTE.textColorClassName}>
       <Forest />
       <Mines />
     </CardsSection>

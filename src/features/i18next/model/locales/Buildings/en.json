@@ -21,23 +21,25 @@
       "description": "Enter the future and reach your final goal in the new world."
     }
   },
-  "modal": {
-    "title": "Service Builder",
-    "description": "Create new buildings to open new resources and features"
-  },
-  "table": {
-    "header": {
-      "imageColumn": "Service Building",
-      "descriptionColumn": "Description",
-      "costColumn": "Cost"
+  "addService": {
+    "modal": {
+      "title": "Service Builder",
+      "description": "Create new buildings to open new resources and features"
     },
-    "body": {
-      "buildButton": "Build"
+    "table": {
+      "header": {
+        "imageColumn": "Service Building",
+        "descriptionColumn": "Description",
+        "costColumn": "Cost"
+      },
+      "body": {
+        "buildButton": "Build"
+      }
+    },
+    "deckCard": {
+      "title": "Build a new service",
+      "level": "Level"
     }
-  },
-  "addServiceDeckCard": {
-    "title": "Build a new service",
-    "level": "Level"
   },
   "errors": {
     "buildingIsReady": "Done",

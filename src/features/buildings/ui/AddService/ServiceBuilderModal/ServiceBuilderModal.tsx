@@ -24,8 +24,8 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
 
   return (
     <Modal
-      title={t('modal.title')}
-      description={t('modal.description')}
+      title={t('addService.modal.title')}
+      description={t('addService.modal.description')}
       displayResourcesPanel
       error={error}
       isOpen={isModalOpen}

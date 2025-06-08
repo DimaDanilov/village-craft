@@ -19,7 +19,7 @@ export const DeckServiceCard = ({ onClick, buildingInfo, serviceLevel }: DeckSer
         <DeckCardDefault buildingInfo={buildingInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick}>
           <div className="flex justify-end mx-3">
             <span>
-              {t('addServiceDeckCard.level')}: {serviceLevel}
+              {t('addService.deckCard.level')}: {serviceLevel}
             </span>
           </div>
         </DeckCardDefault>

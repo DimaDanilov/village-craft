@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 export const ServicesSection = () => {
   const { t } = useTranslation('Services');
   return (
-    <CardsSection title={t('title')} textColorClassName={DECK_CARD_SERVICE_PALETTE.textColorClassName}>
+    <CardsSection title={t('deckCardArea.title')} textColorClassName={DECK_CARD_SERVICE_PALETTE.textColorClassName}>
       <Forge />
       <Market />
       <GateToTheFuture />

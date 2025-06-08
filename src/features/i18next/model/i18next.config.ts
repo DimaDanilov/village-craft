@@ -6,6 +6,8 @@ import ResourcesEn from './locales/Resources/en.json';
 import ResourcesRu from './locales/Resources/ru.json';
 import BuildingsEn from './locales/Buildings/en.json';
 import BuildingsRu from './locales/Buildings/ru.json';
+import ResourcesPanelEn from './locales/ResourcesPanel/en.json';
+import ResourcesPanelRu from './locales/ResourcesPanel/ru.json';
 import InstrumentsEn from './locales/Instruments/en.json';
 import InstrumentsRu from './locales/Instruments/ru.json';
 import ServicesEn from './locales/Services/en.json';
@@ -17,6 +19,7 @@ export const englishNamespaces = {
   Services: ServicesEn,
   Buildings: BuildingsEn,
   Instruments: InstrumentsEn,
+  ResourcesPanel: ResourcesPanelEn,
 };
 
 export const russianNamespaces = {
@@ -24,6 +27,7 @@ export const russianNamespaces = {
   Services: ServicesRu,
   Buildings: BuildingsRu,
   Instruments: InstrumentsRu,
+  ResourcesPanel: ResourcesPanelRu,
 };
 
 const resources = {
