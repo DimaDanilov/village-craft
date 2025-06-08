@@ -8,7 +8,7 @@
     }
   },
   "errors": {
-    "cantUpgrade": "Нельзя улучшить"
+    "cantUpgrade": "Нельзя улучшить {{instrumentName}}"
   },
   "forge": {
     "table": {

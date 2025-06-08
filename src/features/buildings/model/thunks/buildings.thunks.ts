@@ -21,8 +21,9 @@ export const useUpgradeBuildingWithResources = (buildingName: BuildingName): App
     const isUpgradeAvailable = isBuildingUpgradeAvailable(nextLevel, buildingUpgradeCostList, allResources);
 
     if (!isUpgradeAvailable) {
+      const translatedBuildingName = t(`buildings.${buildingName}.title`);
       dispatch(
-        buildingsSlice.actions.setBuildingsError(`${t('errors.cantUpgrade')} ${t(`buildings.${buildingName}.title`)}`),
+        buildingsSlice.actions.setBuildingsError(t('errors.cantUpgrade', { buildingName: translatedBuildingName })),
       );
       return;
     }

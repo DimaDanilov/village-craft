@@ -43,6 +43,6 @@
   },
   "errors": {
     "buildingIsReady": "Done",
-    "cantUpgrade": "Can't upgrade"
+    "cantUpgrade": "Can't upgrade {{buildingName}}"
   }
 }

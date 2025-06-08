@@ -1,4 +1,9 @@
 {
+  "resources": {
+    "wood": { "title": "Wood" },
+    "stone": { "title": "Stone" },
+    "coins": { "title": "Coins" }
+  },
   "deckCardArea": {
     "title": "Resources"
   },
@@ -6,6 +11,9 @@
     "header": {
       "cost": "Cost",
       "receive": "Receive"
+    },
+    "errors": {
+      "notEnoughResources": "Not enough {{resourceName}} to sell"
     }
   }
 }

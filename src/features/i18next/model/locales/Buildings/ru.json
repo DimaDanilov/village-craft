@@ -43,6 +43,6 @@
   },
   "errors": {
     "buildingIsReady": "Готово",
-    "cantUpgrade": "Нельзя улучшить"
+    "cantUpgrade": "Нельзя улучшить {{buildingName}}"
   }
 }

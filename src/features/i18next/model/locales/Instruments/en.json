@@ -8,7 +8,7 @@
     }
   },
   "errors": {
-    "cantUpgrade": "Can't upgrade"
+    "cantUpgrade": "Can't upgrade {{instrumentName}}"
   },
   "forge": {
     "table": {

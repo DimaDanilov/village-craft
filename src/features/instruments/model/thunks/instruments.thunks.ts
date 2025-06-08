@@ -21,9 +21,10 @@ export const useUpgradeInstrumentWithResources = (instrumentName: InstrumentName
     const nextInstrumentLevel = (Number(currentInstrumentLevel) + 1).toString();
 
     if (!isInstrumentUpgradeAvailable(nextInstrumentLevel, instrumentUpgradeCostList, allResources)) {
+      const translatedInstrumentName = t(INSTRUMENT_INFOS[instrumentName].title);
       dispatch(
         instrumentsSlice.actions.setInstrumentsError(
-          `${t('errors.cantUpgrade')} ${t(INSTRUMENT_INFOS[instrumentName].title)}`,
+          t('errors.cantUpgrade', { instrumentName: translatedInstrumentName }),
         ),
       );
       return;

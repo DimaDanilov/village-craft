@@ -17,6 +17,7 @@ export interface CoinsStorage {
 }
 
 interface ResourceInfo {
+  title: `resources.${ResourceName}.title`;
   imageSrc: string;
   instrumentMining?: InstrumentName;
 }

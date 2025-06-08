@@ -1,4 +1,9 @@
 {
+  "resources": {
+    "wood": { "title": "Дерево" },
+    "stone": { "title": "Камень" },
+    "coins": { "title": "Монеты" }
+  },
   "deckCardArea": {
     "title": "Ресурсы"
   },
@@ -6,6 +11,9 @@
     "header": {
       "cost": "Стоимость",
       "receive": "Итого"
+    },
+    "errors": {
+      "notEnoughResources": "Недостаточно {{resourceName}} для продажи"
     }
   }
 }

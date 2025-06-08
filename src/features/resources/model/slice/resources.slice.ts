@@ -4,6 +4,8 @@ import type { CoinsStorage, ResourceName, ResourceNameToSell, StonePile, WoodPil
 import { selectAllResources, selectResourceCount, selectResourcesError } from '../selectors';
 import { isSellAvailable } from '../tools';
 import type { InstrumentCost } from '@features/instruments/model';
+import i18next from '@features/i18next/model/i18next.config';
+import { RESOURCE_INFOS } from '../constants';
 
 export interface ResourceState {
   wood: WoodPile;
@@ -58,7 +60,8 @@ export const resourcesSlice = createSlice({
         amountToSell: resourcesCount,
       });
       if (!isSellResourcesAvailable) {
-        state.error = `Not enough ${resourceName} to sell`;
+        const translatedResourceName = i18next.t(`Resources:${RESOURCE_INFOS[resourceName].title}`);
+        state.error = i18next.t(`Resources:market.errors.notEnoughResources`, { resourceName: translatedResourceName });
         return;
       }
       state.resources[resourceName].count -= resourcesCount;
