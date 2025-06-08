@@ -1,6 +1,6 @@
 import { INSTRUMENT_INFOS } from '@features/instruments/model';
 import type { InstrumentName, UseInstrumentUpgradeEfficiencyReturn } from '@features/instruments/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
+import { RESOURCE_INFOS } from '@features/resources/model';
 
 type ForgeTableCurrentLevelInstrumentProps = Pick<
   UseInstrumentUpgradeEfficiencyReturn,
@@ -16,7 +16,7 @@ export function ForgeTableCurrentLevelInstrument({
 }: ForgeTableCurrentLevelInstrumentProps) {
   const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
   const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
-  const resourceImageSrc = RESOURCES_IMAGES[resourceMiningByInstrument];
+  const resourceImageSrc = RESOURCE_INFOS[resourceMiningByInstrument].imageSrc;
 
   return (
     <div className="flex flex-col gap-1 items-center">

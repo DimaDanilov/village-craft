@@ -5,14 +5,14 @@ import { selectAllResources, selectResourceCount, selectResourcesError } from '.
 import { isSellAvailable } from '../tools';
 import type { InstrumentCost } from '@features/instruments/model';
 
-export interface ResourcesInfo {
+export interface ResourceState {
   wood: WoodPile;
   stone: StonePile;
   coins: CoinsStorage;
 }
 
 export interface ResourcesState {
-  resources: ResourcesInfo;
+  resources: ResourceState;
   error?: string;
 }
 
@@ -47,7 +47,7 @@ export const resourcesSlice = createSlice({
     _destroyResourcesForUpgrade: (state, action: PayloadAction<{ resourcesToDestroy: InstrumentCost }>) => {
       const { resourcesToDestroy } = action.payload;
       Object.entries(resourcesToDestroy).forEach(([resourceKey, resourceAmountToDestroy]) => {
-        const typedKey = resourceKey as keyof ResourcesInfo;
+        const typedKey = resourceKey as keyof ResourceState;
         state.resources[typedKey].count -= resourceAmountToDestroy;
       });
     },

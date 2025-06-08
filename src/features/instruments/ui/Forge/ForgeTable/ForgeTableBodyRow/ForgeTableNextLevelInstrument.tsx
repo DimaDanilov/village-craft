@@ -3,7 +3,7 @@ import {
   type InstrumentName,
   type UseInstrumentUpgradeEfficiencyReturn,
 } from '@features/instruments/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
+import { RESOURCE_INFOS } from '@features/resources/model';
 
 type ForgeTableNextLevelInstrumentProps = Pick<
   UseInstrumentUpgradeEfficiencyReturn,
@@ -22,7 +22,7 @@ export function ForgeTableNextLevelInstrument({
 
   const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
   const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
-  const resourceImageSrc = RESOURCES_IMAGES[resourceMiningByInstrument];
+  const resourceImageSrc = RESOURCE_INFOS[resourceMiningByInstrument].imageSrc;
 
   return (
     <div className="flex flex-col gap-1 items-center">

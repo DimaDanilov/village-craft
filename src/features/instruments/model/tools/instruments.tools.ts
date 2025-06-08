@@ -1,4 +1,4 @@
-import type { ResourcesInfo } from '@features/resources/model';
+import type { ResourceState } from '@features/resources/model';
 import type { InstrumentCost } from '../types';
 
 export function isInstrumentNextLevelExist<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
@@ -11,10 +11,10 @@ export function isInstrumentNextLevelExist<T extends Record<string, InstrumentCo
 export function isResourcesEnoughToUpgradeInstrument<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
   _nextLevel: K,
   levelCost: T[keyof T],
-  allResourcesState: ResourcesInfo,
+  allResourcesState: ResourceState,
 ): _nextLevel is Extract<keyof T, K> {
   const hasEnoughResources = Object.entries(levelCost).every(([resourceKey, resourceCost]) => {
-    const availableCount = allResourcesState[resourceKey as keyof ResourcesInfo]?.count ?? 0;
+    const availableCount = allResourcesState[resourceKey as keyof ResourceState]?.count ?? 0;
     return availableCount >= resourceCost;
   });
 
@@ -24,7 +24,7 @@ export function isResourcesEnoughToUpgradeInstrument<T extends Record<string, In
 export function isInstrumentUpgradeAvailable<T extends Record<string, InstrumentCost>, K extends PropertyKey>(
   _nextLevel: K,
   allLevelsCost: T,
-  allResourcesState: ResourcesInfo,
+  allResourcesState: ResourceState,
 ): _nextLevel is Extract<keyof T, K> {
   if (!isInstrumentNextLevelExist(_nextLevel, allLevelsCost)) return false;
 

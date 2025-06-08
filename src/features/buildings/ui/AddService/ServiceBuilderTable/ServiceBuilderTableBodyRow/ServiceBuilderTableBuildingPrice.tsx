@@ -1,6 +1,5 @@
 import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
-import type { ResourceName } from '@features/resources/model';
+import { RESOURCE_INFOS, type ResourceName } from '@features/resources/model';
 import { ResourceCard } from '@widgets';
 import { useTranslation } from 'react-i18next';
 
@@ -18,7 +17,7 @@ export const ServiceBuilderTableBuildingPrice = ({
 
   const buildingCostMaterialsCards = Object.entries(buildingNextLevelCost).map(([resourceKey, resourcesCost]) => {
     const availableResource = resourceKey as ResourceName;
-    const resourceImageSrc = RESOURCES_IMAGES[availableResource];
+    const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
     return (
       <ResourceCard key={resourceKey} resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />
     );

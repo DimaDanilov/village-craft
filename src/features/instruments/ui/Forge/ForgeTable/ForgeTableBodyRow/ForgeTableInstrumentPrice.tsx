@@ -1,6 +1,5 @@
 import type { InstrumentCost } from '@features/instruments/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
-import type { ResourcesInfo } from '@features/resources/model';
+import { RESOURCE_INFOS, type ResourceState } from '@features/resources/model';
 import { ResourceCard } from '@widgets';
 
 interface ForgeTableInstrumentPriceProps {
@@ -15,8 +14,8 @@ export const ForgeTableInstrumentPrice = ({
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
       ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
-          const availableResource = resourceKey as keyof ResourcesInfo;
-          const resourceImageSrc = RESOURCES_IMAGES[availableResource];
+          const availableResource = resourceKey as keyof ResourceState;
+          const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
           return (
             <ResourceCard
               key={resourceKey}

@@ -1,7 +1,8 @@
-import type { ResourcesInfo } from '../slice';
+import type { InstrumentName } from '@features/instruments/model';
+import type { ResourceState } from '../slice';
 
-export type ResourceName = keyof ResourcesInfo;
-export type ResourceNameToSell = keyof Omit<ResourcesInfo, 'coins'>;
+export type ResourceName = keyof ResourceState;
+export type ResourceNameToSell = keyof Omit<ResourceState, 'coins'>;
 
 export interface WoodPile {
   count: number;
@@ -14,3 +15,10 @@ export interface StonePile {
 export interface CoinsStorage {
   count: number;
 }
+
+interface ResourceInfo {
+  imageSrc: string;
+  instrumentMining?: InstrumentName;
+}
+
+export type ResourceInfos = Record<ResourceName, ResourceInfo>;

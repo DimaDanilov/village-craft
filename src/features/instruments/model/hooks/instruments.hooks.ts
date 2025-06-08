@@ -3,14 +3,14 @@ import { isInstrumentNextLevelExist, isInstrumentUpgradeAvailable } from '../too
 import type { InstrumentCost, InstrumentName } from '../types';
 import { instrumentsSlice } from '../slice';
 import { resourcesSlice } from '@features/resources/model';
-import type { ResourcesInfo } from '@features/resources/model';
+import type { ResourceState } from '@features/resources/model';
 import { INSTRUMENT_INFOS } from '../constants';
 
 export function useInstrumentUpgradeCost(instrumentName: InstrumentName) {
   const instrumentCurrentLevel = useAppSelector((state) =>
     instrumentsSlice.selectors.selectInstrumentLevel(state, instrumentName),
   );
-  const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
+  const allResources: ResourceState = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
   const instrumentUpgradeCostList = INSTRUMENT_INFOS[instrumentName].upgradeCost;
 

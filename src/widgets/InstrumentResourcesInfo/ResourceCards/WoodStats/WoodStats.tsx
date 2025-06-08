@@ -1,5 +1,5 @@
 import { useAppSelector } from '@store';
-import { RESOURCES_IMAGES, resourcesSlice } from '@features/resources/model';
+import { RESOURCE_INFOS, resourcesSlice } from '@features/resources/model';
 import { ResourceCard } from '../ResourceCard';
 import type { ResourceCardFlexDirection, ResourceCardImageWidth } from '../ResourceCard';
 
@@ -14,7 +14,7 @@ export const WoodStats = ({ flexDirection, imageWidth }: WoodStatsProps) => {
     <ResourceCard
       resourceCount={woodCount}
       flexDirection={flexDirection}
-      imageSrc={RESOURCES_IMAGES.wood}
+      imageSrc={RESOURCE_INFOS.wood.imageSrc}
       imageWidth={imageWidth}
     />
   );
