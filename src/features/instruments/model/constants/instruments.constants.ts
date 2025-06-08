@@ -1,4 +1,3 @@
-import type { InstrumentsState } from '../slice';
 import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import type {
@@ -68,20 +67,15 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   },
 };
 
-const INSTRUMENTS_IMAGES: Record<keyof InstrumentsState['instruments'], string> = {
-  axe: AxeImageSrc,
-  pickaxe: PickaxeImageSrc,
-};
-
 const AXE_INFO: InstrumentInfo = {
-  imageSrc: INSTRUMENTS_IMAGES.axe,
+  imageSrc: AxeImageSrc,
   resourceMined: 'wood',
   levelEfficiency: AXE_LEVEL_EFFICIENCY,
   upgradeCost: AXE_UPGRADE_COST,
 } as const;
 
 const PICKAXE_INFO: InstrumentInfo = {
-  imageSrc: INSTRUMENTS_IMAGES.pickaxe,
+  imageSrc: PickaxeImageSrc,
   resourceMined: 'stone',
   levelEfficiency: PICKAXE_LEVEL_EFFICIENCY,
   upgradeCost: PICKAXE_UPGRADE_COST,

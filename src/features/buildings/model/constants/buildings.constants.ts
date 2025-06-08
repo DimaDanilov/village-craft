@@ -9,7 +9,12 @@ import type {
   ForestUpgradeCostRecord,
   MinesUpgradeCostRecord,
 } from '../types';
-import { LOCATIONS_IMAGES } from '@features/resources/model';
+
+import ForestImageSrc from '@assets/locations/Forest.png';
+import MinesImageSrc from '@assets/locations/Mines.png';
+import MarketImageSrc from '@assets/locations/Market.png';
+import ForgeImageSrc from '@assets/locations/Forge.png';
+import GateToTheFutureImageSrc from '@assets/locations/Gate_to_the_future.png';
 
 const FOREST_UPGRADE_COST: ForestUpgradeCostRecord = {
   '1': {},
@@ -51,31 +56,31 @@ export const BUILDING_UPGRADE_COST: Record<BuildingName, BuildingUpgradeCostReco
 };
 
 export const FOREST_INFO: BuildingInfo = {
-  imageSrc: LOCATIONS_IMAGES.forest,
+  imageSrc: ForestImageSrc,
   title: 'buildings.forest.title',
   description: 'buildings.forest.description',
 } as const;
 
 export const MINES_INFO: BuildingInfo = {
-  imageSrc: LOCATIONS_IMAGES.mines,
+  imageSrc: MinesImageSrc,
   title: 'buildings.mines.title',
   description: 'buildings.mines.description',
 } as const;
 
 export const FORGE_INFO: BuildingInfo = {
-  imageSrc: LOCATIONS_IMAGES.forge,
+  imageSrc: ForgeImageSrc,
   title: 'buildings.forge.title',
   description: 'buildings.forge.description',
 } as const;
 
 export const MARKET_INFO: BuildingInfo = {
-  imageSrc: LOCATIONS_IMAGES.market,
+  imageSrc: MarketImageSrc,
   title: 'buildings.market.title',
   description: 'buildings.market.description',
 } as const;
 
 export const GATE_TO_THE_FUTURE_INFO: BuildingInfo = {
-  imageSrc: LOCATIONS_IMAGES.gateToTheFuture,
+  imageSrc: GateToTheFutureImageSrc,
   title: 'buildings.gateToTheFuture.title',
   description: 'buildings.gateToTheFuture.description',
 } as const;
