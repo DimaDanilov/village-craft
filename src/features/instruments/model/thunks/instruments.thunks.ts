@@ -5,10 +5,12 @@ import { isInstrumentUpgradeAvailable } from '../tools';
 import { instrumentsSlice } from '../slice';
 import type { InstrumentName } from '../types';
 import { INSTRUMENT_INFOS } from '../constants';
+import { useTranslation } from 'react-i18next';
 
-export const UpgradeInstrumentWithResources =
-  (instrumentName: InstrumentName): AppThunk =>
-  (dispatch, getState) => {
+export const useUpgradeInstrumentWithResources = (instrumentName: InstrumentName): AppThunk => {
+  const { t } = useTranslation('Instruments');
+
+  return (dispatch, getState) => {
     const resourcesState = getState().resources;
     const instrumentsState = getState().instruments;
 
@@ -19,7 +21,11 @@ export const UpgradeInstrumentWithResources =
     const nextInstrumentLevel = (Number(currentInstrumentLevel) + 1).toString();
 
     if (!isInstrumentUpgradeAvailable(nextInstrumentLevel, instrumentUpgradeCostList, allResources)) {
-      dispatch(instrumentsSlice.actions.setInstrumentsError(`Can't upgrade ${instrumentName}`));
+      dispatch(
+        instrumentsSlice.actions.setInstrumentsError(
+          `${t('errors.cantUpgrade')} ${t(INSTRUMENT_INFOS[instrumentName].title)}`,
+        ),
+      );
       return;
     }
     const instrumentNextLevelCost = instrumentUpgradeCostList[nextInstrumentLevel];
@@ -31,3 +37,4 @@ export const UpgradeInstrumentWithResources =
     );
     dispatch(instrumentsSlice.actions._upgradeInstrument({ instrumentName }));
   };
+};

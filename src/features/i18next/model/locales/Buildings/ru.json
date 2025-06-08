@@ -25,14 +25,20 @@
     "title": "Строитель зданий",
     "description": "Создавайте новые здания, чтобы открыть новые ресурсы и способности"
   },
-  "level": "Уровень",
-  "addServiceDeckCard": "Построить новый сервис",
   "table": {
-    "imageColumn": "Постройка",
-    "descriptionColumn": "Описание",
-    "costColumn": "Стоимость"
+    "header": {
+      "imageColumn": "Постройка",
+      "descriptionColumn": "Описание",
+      "costColumn": "Стоимость"
+    },
+    "body": {
+      "buildButton": "Построить"
+    }
   },
-  "buildButton": "Построить",
+  "addServiceDeckCard": {
+    "level": "Уровень",
+    "title": "Построить новый сервис"
+  },
   "errors": {
     "buildingIsReady": "Готово",
     "cantUpgrade": "Нельзя улучшить"

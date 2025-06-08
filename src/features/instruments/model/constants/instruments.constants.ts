@@ -68,6 +68,7 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
 };
 
 const AXE_INFO: InstrumentInfo = {
+  title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
   resourceMined: 'wood',
   levelEfficiency: AXE_LEVEL_EFFICIENCY,
@@ -75,6 +76,7 @@ const AXE_INFO: InstrumentInfo = {
 } as const;
 
 const PICKAXE_INFO: InstrumentInfo = {
+  title: 'instruments.pickaxe.title',
   imageSrc: PickaxeImageSrc,
   resourceMined: 'stone',
   levelEfficiency: PICKAXE_LEVEL_EFFICIENCY,

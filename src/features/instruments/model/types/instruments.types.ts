@@ -27,6 +27,7 @@ export interface PickaxeInstrument {
 }
 
 export interface InstrumentInfo {
+  title: `instruments.${InstrumentName}.title`;
   imageSrc: string;
   resourceMined: ResourceName;
   upgradeCost: InstrumentUpgradeCostRecord;

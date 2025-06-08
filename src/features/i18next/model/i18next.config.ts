@@ -6,6 +6,8 @@ import ResourcesEn from './locales/Resources/en.json';
 import ResourcesRu from './locales/Resources/ru.json';
 import BuildingsEn from './locales/Buildings/en.json';
 import BuildingsRu from './locales/Buildings/ru.json';
+import InstrumentsEn from './locales/Instruments/en.json';
+import InstrumentsRu from './locales/Instruments/ru.json';
 import ServicesEn from './locales/Services/en.json';
 import ServicesRu from './locales/Services/ru.json';
 import { getSafetyLocalStorageLanguage } from './tools/getSafetyLocalStorageLanguage';
@@ -14,12 +16,14 @@ export const englishNamespaces = {
   Resources: ResourcesEn,
   Services: ServicesEn,
   Buildings: BuildingsEn,
+  Instruments: InstrumentsEn,
 };
 
 export const russianNamespaces = {
   Resources: ResourcesRu,
   Services: ServicesRu,
   Buildings: BuildingsRu,
+  Instruments: InstrumentsRu,
 };
 
 const resources = {

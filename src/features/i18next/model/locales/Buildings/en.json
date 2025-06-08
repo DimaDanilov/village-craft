@@ -25,14 +25,20 @@
     "title": "Service Builder",
     "description": "Create new buildings to open new resources and features"
   },
-  "level": "Level",
-  "addServiceDeckCard": "Build a new service",
   "table": {
-    "imageColumn": "Service Building",
-    "descriptionColumn": "Description",
-    "costColumn": "Cost"
+    "header": {
+      "imageColumn": "Service Building",
+      "descriptionColumn": "Description",
+      "costColumn": "Cost"
+    },
+    "body": {
+      "buildButton": "Build"
+    }
   },
-  "buildButton": "Build",
+  "addServiceDeckCard": {
+    "title": "Build a new service",
+    "level": "Level"
+  },
   "errors": {
     "buildingIsReady": "Done",
     "cantUpgrade": "Can't upgrade"

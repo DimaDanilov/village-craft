@@ -17,7 +17,11 @@ export const AddService = () => {
   return (
     !isEverythingBuild && (
       <>
-        <DeckAddCard onClick={openServiceBuilder} title={t('addServiceDeckCard')} palette={DECK_CARD_SERVICE_PALETTE} />
+        <DeckAddCard
+          onClick={openServiceBuilder}
+          title={t('addServiceDeckCard.title')}
+          palette={DECK_CARD_SERVICE_PALETTE}
+        />
         <ServiceBuilderModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
       </>
     )
