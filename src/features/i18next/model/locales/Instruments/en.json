@@ -1,0 +1,28 @@
+{
+  "instruments": {
+    "axe": {
+      "title": "Axe"
+    },
+    "pickaxe": {
+      "title": "Pickaxe"
+    }
+  },
+  "errors": {
+    "cantUpgrade": "Can't upgrade {{instrumentName}}"
+  },
+  "forge": {
+    "table": {
+      "header": {
+        "currentTool": "Current Tool",
+        "cost": "Cost",
+        "receive": "Receive"
+      },
+      "body": {
+        "click": "Click",
+        "level": "Level",
+        "max": "Max",
+        "upgrade": "Upgrade"
+      }
+    }
+  }
+}

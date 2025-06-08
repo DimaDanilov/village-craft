@@ -2,7 +2,8 @@ import { mineResourcesWithInstrument, resourcesSlice } from '@features/resources
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import AxeIcon from '@assets/icons/Axe.svg?react';
-import { DECK_CARD_INFOS, DeckResourceCard } from '@widgets';
+import { DeckResourceCard } from '@features/buildings/ui';
+import { BUILDING_INFOS } from '@features/buildings/model';
 
 export const Forest = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,7 @@ export const Forest = () => {
   return (
     <DeckResourceCard
       onClick={chopWood}
-      deckCardInfo={DECK_CARD_INFOS.forest}
+      buildingInfo={BUILDING_INFOS.forest}
       ResourceIconComponent={AxeIcon}
       resourceCount={woodAmount}
     />

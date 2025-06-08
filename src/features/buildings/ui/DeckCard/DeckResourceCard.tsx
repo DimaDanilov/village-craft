@@ -1,24 +1,24 @@
+import type { BuildingInfo } from '@features/buildings/model';
 import { DECK_CARD_RESOURCE_PALETTE } from './constants';
 import { DeckCardDefault } from './DeckCardDefault';
-import type { DeckCardInfo } from './types';
 
 interface DeckResourceCardProps {
   onClick?: () => void;
-  deckCardInfo: DeckCardInfo;
+  buildingInfo: BuildingInfo;
   resourceCount: number;
   ResourceIconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 export const DeckResourceCard = ({
   onClick,
-  deckCardInfo,
+  buildingInfo,
   resourceCount,
   ResourceIconComponent,
 }: DeckResourceCardProps) => {
   const { iconStrokeColorClassName } = DECK_CARD_RESOURCE_PALETTE;
 
   return (
-    <DeckCardDefault deckCardInfo={deckCardInfo} deckCardPalette={DECK_CARD_RESOURCE_PALETTE} onClick={onClick}>
+    <DeckCardDefault buildingInfo={buildingInfo} deckCardPalette={DECK_CARD_RESOURCE_PALETTE} onClick={onClick}>
       <div className="flex flex-row justify-end items-center mx-3 mt-5 gap-1">
         <ResourceIconComponent
           width={30}

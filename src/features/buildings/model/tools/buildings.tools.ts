@@ -1,4 +1,4 @@
-import type { ResourcesInfo } from '@features/resources/model';
+import type { ResourceState } from '@features/resources/model';
 import type { BuildingCost } from '../types';
 
 export function isBuildingNextLevelExist<T extends Record<string, BuildingCost>, K extends PropertyKey>(
@@ -11,10 +11,10 @@ export function isBuildingNextLevelExist<T extends Record<string, BuildingCost>,
 export function isResourcesEnoughToUpgradeBuilding<T extends Record<string, BuildingCost>, K extends PropertyKey>(
   _nextLevel: K,
   levelCost: T[keyof T],
-  allResourcesState: ResourcesInfo,
+  allResourcesState: ResourceState,
 ): _nextLevel is Extract<keyof T, K> {
   const hasEnoughResources = Object.entries(levelCost).every(([resourceKey, resourceCost]) => {
-    const availableCount = allResourcesState[resourceKey as keyof ResourcesInfo]?.count ?? 0;
+    const availableCount = allResourcesState[resourceKey as keyof ResourceState]?.count ?? 0;
     return availableCount >= resourceCost;
   });
 
@@ -24,7 +24,7 @@ export function isResourcesEnoughToUpgradeBuilding<T extends Record<string, Buil
 export function isBuildingUpgradeAvailable<T extends Record<string, BuildingCost>, K extends PropertyKey>(
   _nextLevel: K,
   allLevelsCost: T,
-  allResourcesState: ResourcesInfo,
+  allResourcesState: ResourceState,
 ): _nextLevel is Extract<keyof T, K> {
   if (!isBuildingNextLevelExist(_nextLevel, allLevelsCost)) return false;
 

@@ -2,7 +2,8 @@ import { mineResourcesWithInstrument, resourcesSlice } from '@features/resources
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import PickaxeIcon from '@assets/icons/Pickaxe.svg?react';
-import { DECK_CARD_INFOS, DeckResourceCard } from '@widgets';
+import { DeckResourceCard } from '@features/buildings/ui';
+import { BUILDING_INFOS } from '@features/buildings/model';
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,7 @@ export const Mines = () => {
   return (
     <DeckResourceCard
       onClick={mineStone}
-      deckCardInfo={DECK_CARD_INFOS.mines}
+      buildingInfo={BUILDING_INFOS.mines}
       ResourceIconComponent={PickaxeIcon}
       resourceCount={stoneAmount}
     />

@@ -1,18 +1,18 @@
 import { useAppSelector } from '@store';
-import { INSTRUMENT_LEVEL_EFFICIENCY, INSTRUMENT_UPGRADE_COST } from '../constants';
 import { isInstrumentNextLevelExist, isInstrumentUpgradeAvailable } from '../tools';
 import type { InstrumentCost, InstrumentName } from '../types';
 import { instrumentsSlice } from '../slice';
 import { resourcesSlice } from '@features/resources/model';
-import type { ResourcesInfo } from '@features/resources/model';
+import type { ResourceState } from '@features/resources/model';
+import { INSTRUMENT_INFOS } from '../constants';
 
 export function useInstrumentUpgradeCost(instrumentName: InstrumentName) {
   const instrumentCurrentLevel = useAppSelector((state) =>
     instrumentsSlice.selectors.selectInstrumentLevel(state, instrumentName),
   );
-  const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
+  const allResources: ResourceState = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
-  const instrumentUpgradeCostList = INSTRUMENT_UPGRADE_COST[instrumentName];
+  const instrumentUpgradeCostList = INSTRUMENT_INFOS[instrumentName].upgradeCost;
 
   const instrumentNextLevel: string = String(Number(instrumentCurrentLevel) + 1);
 
@@ -31,13 +31,13 @@ export function useInstrumentUpgradeEfficiency(instrumentName: InstrumentName) {
     instrumentsSlice.selectors.selectInstrumentLevel(state, instrumentName),
   );
 
-  const instrumentUpgradeCostList = INSTRUMENT_UPGRADE_COST[instrumentName];
+  const instrumentUpgradeCostList = INSTRUMENT_INFOS[instrumentName].upgradeCost;
 
   const instrumentNextLevel: string = String(Number(instrumentCurrentLevel) + 1);
 
   const isNextLevelExist = isInstrumentNextLevelExist(instrumentNextLevel, instrumentUpgradeCostList);
 
-  const instrumentLevelEfficiencyList = INSTRUMENT_LEVEL_EFFICIENCY[instrumentName];
+  const instrumentLevelEfficiencyList = INSTRUMENT_INFOS[instrumentName].levelEfficiency;
   const instrumentCurrentLevelEfficiency: number = instrumentLevelEfficiencyList[instrumentCurrentLevel];
   const instrumentNextLevelEfficiency: number | undefined = isNextLevelExist
     ? instrumentLevelEfficiencyList[instrumentNextLevel]

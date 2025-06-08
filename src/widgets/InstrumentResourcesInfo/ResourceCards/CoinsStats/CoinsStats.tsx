@@ -1,4 +1,4 @@
-import { RESOURCES_IMAGES, resourcesSlice } from '@features/resources/model';
+import { RESOURCE_INFOS, resourcesSlice } from '@features/resources/model';
 import { useAppSelector } from '@store';
 import { ResourceCard, type ResourceCardFlexDirection, type ResourceCardImageWidth } from '../ResourceCard';
 
@@ -13,7 +13,7 @@ export const CoinsStats = ({ flexDirection, imageWidth }: CoinsStatsProps) => {
     <ResourceCard
       resourceCount={coinsCount}
       flexDirection={flexDirection}
-      imageSrc={RESOURCES_IMAGES.coins}
+      imageSrc={RESOURCE_INFOS.coins.imageSrc}
       imageWidth={imageWidth}
     />
   );

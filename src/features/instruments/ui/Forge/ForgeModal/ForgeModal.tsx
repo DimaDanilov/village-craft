@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { clearInstrumentsError, instrumentsSlice } from '@features/instruments/model';
 import { ForgeTable } from '../ForgeTable';
+import { useTranslation } from 'react-i18next';
 
 interface ForgeModalProps {
   isModalOpen: boolean;
@@ -11,6 +12,7 @@ interface ForgeModalProps {
 }
 
 export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => {
+  const { t } = useTranslation('Buildings');
   const dispatch = useAppDispatch();
 
   const error = useAppSelector(instrumentsSlice.selectors.selectInstrumentsError);
@@ -22,8 +24,8 @@ export const ForgeModal = ({ isModalOpen, setIsModalOpen }: ForgeModalProps) => 
 
   return (
     <Modal
-      title="Forge"
-      description="Spend resources to upgrade instrument levels. It will help you gain even more resources"
+      title={t('buildings.forge.title')}
+      description={t('buildings.forge.description')}
       displayResourcesPanel
       error={error}
       isOpen={isModalOpen}

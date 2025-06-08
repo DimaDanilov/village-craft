@@ -3,7 +3,7 @@ import { BUILDING_UPGRADE_COST } from '../constants';
 import { isBuildingNextLevelExist, isBuildingUpgradeAvailable } from '../tools';
 import type { BuildingCost, BuildingName } from '../types';
 import { buildingsSlice } from '../slice';
-import { resourcesSlice, type ResourcesInfo } from '@features/resources/model';
+import { resourcesSlice, type ResourceState } from '@features/resources/model';
 
 export function useBuildingUpgradePrice(buildingName: BuildingName) {
   const buildingCurrentLevel = useAppSelector((state) =>
@@ -11,7 +11,7 @@ export function useBuildingUpgradePrice(buildingName: BuildingName) {
   );
   const buildingNextLevel: string = String(Number(buildingCurrentLevel) + 1);
 
-  const allResources: ResourcesInfo = useAppSelector(resourcesSlice.selectors.selectAllResources);
+  const allResources: ResourceState = useAppSelector(resourcesSlice.selectors.selectAllResources);
 
   const buildingUpgradeCostList = BUILDING_UPGRADE_COST[buildingName];
 

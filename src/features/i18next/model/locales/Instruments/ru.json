@@ -1,0 +1,28 @@
+{
+  "instruments": {
+    "axe": {
+      "title": "Топор"
+    },
+    "pickaxe": {
+      "title": "Кирка"
+    }
+  },
+  "errors": {
+    "cantUpgrade": "Нельзя улучшить {{instrumentName}}"
+  },
+  "forge": {
+    "table": {
+      "header": {
+        "currentTool": "Текущий инструмент",
+        "cost": "Стоимость",
+        "receive": "Итого"
+      },
+      "body": {
+        "click": "Клик",
+        "level": "Уровень",
+        "max": "Макс",
+        "upgrade": "Улучшить"
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
-import { INSTRUMENT_RESOURCE_MINING, INSTRUMENTS_IMAGES } from '@features/instruments/model';
+import { INSTRUMENT_INFOS } from '@features/instruments/model';
 import type { InstrumentName, UseInstrumentUpgradeEfficiencyReturn } from '@features/instruments/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
+import { RESOURCE_INFOS } from '@features/resources/model';
+import { useTranslation } from 'react-i18next';
 
 type ForgeTableCurrentLevelInstrumentProps = Pick<
   UseInstrumentUpgradeEfficiencyReturn,
@@ -14,18 +15,23 @@ export function ForgeTableCurrentLevelInstrument({
   instrumentCurrentLevelEfficiency,
   instrumentCurrentLevel,
 }: ForgeTableCurrentLevelInstrumentProps) {
-  const instrumentImageSrc = INSTRUMENTS_IMAGES[instrumentName];
-  const resourceMiningByInstrument = INSTRUMENT_RESOURCE_MINING[instrumentName];
-  const resourceImageSrc = RESOURCES_IMAGES[resourceMiningByInstrument];
+  const { t } = useTranslation('Instruments');
+  const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
+  const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
+  const resourceImageSrc = RESOURCE_INFOS[resourceMiningByInstrument].imageSrc;
 
   return (
     <div className="flex flex-col gap-1 items-center">
       <img src={instrumentImageSrc} width="90px" alt="Instrument Image" />
       <div className="flex flex-row items-center gap-2">
         <img src={resourceImageSrc} width="40px" alt="Resource Image" />
-        <span>{instrumentCurrentLevelEfficiency}/click</span>
+        <span>
+          {instrumentCurrentLevelEfficiency}/{t('forge.table.body.click')}
+        </span>
       </div>
-      <span className="text-xl">level {instrumentCurrentLevel}</span>
+      <span className="text-xl">
+        {t('forge.table.body.level')} {instrumentCurrentLevel}
+      </span>
     </div>
   );
 }

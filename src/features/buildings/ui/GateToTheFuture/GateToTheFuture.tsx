@@ -1,6 +1,6 @@
 import { useAppSelector } from '@store';
-import { buildingsSlice } from '@features/buildings/model';
-import { DECK_CARD_INFOS, DeckServiceCard } from '@widgets';
+import { BUILDING_INFOS, buildingsSlice } from '@features/buildings/model';
+import { DeckServiceCard } from '../DeckCard';
 
 export const GateToTheFuture = () => {
   const gateToTheFutureLevel = useAppSelector((state) =>
@@ -9,7 +9,7 @@ export const GateToTheFuture = () => {
 
   return (
     <>
-      <DeckServiceCard deckCardInfo={DECK_CARD_INFOS.gateToTheFuture} serviceLevel={Number(gateToTheFutureLevel)} />
+      <DeckServiceCard buildingInfo={BUILDING_INFOS.gateToTheFuture} serviceLevel={Number(gateToTheFutureLevel)} />
     </>
   );
 };

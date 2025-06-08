@@ -1,16 +1,13 @@
-import type { InstrumentsState } from '../slice';
 import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import type {
   AxeLevelEfficiencyRecord,
   AxeUpgradeCostRecord,
-  InstrumentLevelEfficiencyRecord,
-  InstrumentName,
-  InstrumentUpgradeCostRecord,
+  InstrumentInfo,
+  InstrumentInfos,
   PickaxeLevelEfficiencyRecord,
   PickaxeUpgradeCostRecord,
 } from '../types';
-import type { ResourceName } from '@features/resources/model';
 
 const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '1': 1,
@@ -70,22 +67,23 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   },
 };
 
-export const INSTRUMENT_LEVEL_EFFICIENCY: Record<InstrumentName, InstrumentLevelEfficiencyRecord> = {
-  axe: AXE_LEVEL_EFFICIENCY,
-  pickaxe: PICKAXE_LEVEL_EFFICIENCY,
-};
+const AXE_INFO: InstrumentInfo = {
+  title: 'instruments.axe.title',
+  imageSrc: AxeImageSrc,
+  resourceMined: 'wood',
+  levelEfficiency: AXE_LEVEL_EFFICIENCY,
+  upgradeCost: AXE_UPGRADE_COST,
+} as const;
 
-export const INSTRUMENT_UPGRADE_COST: Record<InstrumentName, InstrumentUpgradeCostRecord> = {
-  axe: AXE_UPGRADE_COST,
-  pickaxe: PICKAXE_UPGRADE_COST,
-};
+const PICKAXE_INFO: InstrumentInfo = {
+  title: 'instruments.pickaxe.title',
+  imageSrc: PickaxeImageSrc,
+  resourceMined: 'stone',
+  levelEfficiency: PICKAXE_LEVEL_EFFICIENCY,
+  upgradeCost: PICKAXE_UPGRADE_COST,
+} as const;
 
-export const INSTRUMENT_RESOURCE_MINING: Record<InstrumentName, ResourceName> = {
-  axe: 'wood',
-  pickaxe: 'stone',
-};
-
-export const INSTRUMENTS_IMAGES: Record<keyof InstrumentsState['instruments'], string> = {
-  axe: AxeImageSrc,
-  pickaxe: PickaxeImageSrc,
+export const INSTRUMENT_INFOS: InstrumentInfos = {
+  axe: AXE_INFO,
+  pickaxe: PICKAXE_INFO,
 };

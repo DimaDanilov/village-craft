@@ -1,7 +1,7 @@
 import type { InstrumentCost } from '@features/instruments/model';
-import { RESOURCES_IMAGES } from '@features/resources/model';
-import type { ResourcesInfo } from '@features/resources/model';
+import { RESOURCE_INFOS, type ResourceState } from '@features/resources/model';
 import { ResourceCard } from '@widgets';
+import { useTranslation } from 'react-i18next';
 
 interface ForgeTableInstrumentPriceProps {
   isNextLevelExist: boolean;
@@ -12,11 +12,12 @@ export const ForgeTableInstrumentPrice = ({
   isNextLevelExist,
   instrumentNextLevelCost,
 }: ForgeTableInstrumentPriceProps) => {
+  const { t } = useTranslation('Instruments');
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
       ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
-          const availableResource = resourceKey as keyof ResourcesInfo;
-          const resourceImageSrc = RESOURCES_IMAGES[availableResource];
+          const availableResource = resourceKey as keyof ResourceState;
+          const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
           return (
             <ResourceCard
               key={resourceKey}
@@ -30,6 +31,6 @@ export const ForgeTableInstrumentPrice = ({
   return isNextLevelExist ? (
     <span className="grid grid-cols-3 gap-2">{instrumentCostMaterialsCards}</span>
   ) : (
-    <span>MAX</span>
+    <span>{t('forge.table.body.max')}</span>
   );
 };

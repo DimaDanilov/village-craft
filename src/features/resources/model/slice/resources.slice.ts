@@ -4,15 +4,17 @@ import type { CoinsStorage, ResourceName, ResourceNameToSell, StonePile, WoodPil
 import { selectAllResources, selectResourceCount, selectResourcesError } from '../selectors';
 import { isSellAvailable } from '../tools';
 import type { InstrumentCost } from '@features/instruments/model';
+import i18next from '@features/i18next/model/i18next.config';
+import { RESOURCE_INFOS } from '../constants';
 
-export interface ResourcesInfo {
+export interface ResourceState {
   wood: WoodPile;
   stone: StonePile;
   coins: CoinsStorage;
 }
 
 export interface ResourcesState {
-  resources: ResourcesInfo;
+  resources: ResourceState;
   error?: string;
 }
 
@@ -47,7 +49,7 @@ export const resourcesSlice = createSlice({
     _destroyResourcesForUpgrade: (state, action: PayloadAction<{ resourcesToDestroy: InstrumentCost }>) => {
       const { resourcesToDestroy } = action.payload;
       Object.entries(resourcesToDestroy).forEach(([resourceKey, resourceAmountToDestroy]) => {
-        const typedKey = resourceKey as keyof ResourcesInfo;
+        const typedKey = resourceKey as keyof ResourceState;
         state.resources[typedKey].count -= resourceAmountToDestroy;
       });
     },
@@ -58,7 +60,8 @@ export const resourcesSlice = createSlice({
         amountToSell: resourcesCount,
       });
       if (!isSellResourcesAvailable) {
-        state.error = `Not enough ${resourceName} to sell`;
+        const translatedResourceName = i18next.t(`Resources:${RESOURCE_INFOS[resourceName].title}`);
+        state.error = i18next.t(`Resources:market.errors.notEnoughResources`, { resourceName: translatedResourceName });
         return;
       }
       state.resources[resourceName].count -= resourcesCount;

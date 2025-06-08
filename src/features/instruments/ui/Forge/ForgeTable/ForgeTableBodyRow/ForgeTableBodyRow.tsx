@@ -1,21 +1,20 @@
-import {
-  UpgradeInstrumentWithResources,
-  useInstrumentUpgradeCost,
-  useInstrumentUpgradeEfficiency,
-} from '@features/instruments/model';
-import type { InstrumentName } from '@features/instruments/model';
+import { useInstrumentUpgradeCost, useInstrumentUpgradeEfficiency } from '@features/instruments/model';
+import { useUpgradeInstrumentWithResources, type InstrumentName } from '@features/instruments/model';
 import { Button } from '@shared/Button/Button';
 import { ForgeTableInstrumentPrice } from './ForgeTableInstrumentPrice';
 import { useCallback } from 'react';
 import { useAppDispatch } from '@store';
 import { ForgeTableNextLevelInstrument } from './ForgeTableNextLevelInstrument';
 import { ForgeTableCurrentLevelInstrument } from './ForgeTableCurrentLevelInstrument';
+import { useTranslation } from 'react-i18next';
 
 interface ForgeTableBodyRowParams {
   instrumentName: InstrumentName;
 }
 
 export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) => {
+  const { t } = useTranslation('Instruments');
+  const upgradeInstrumentWithResources = useUpgradeInstrumentWithResources(instrumentName);
   const { isNextLevelExist, instrumentCurrentLevel, instrumentNextLevel, instrumentNextLevelCost, isUpgradeAvailable } =
     useInstrumentUpgradeCost(instrumentName);
   const { instrumentCurrentLevelEfficiency, instrumentNextLevelEfficiency } =
@@ -24,8 +23,8 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
   const dispatch = useAppDispatch();
 
   const onUpgrade = useCallback(
-    () => dispatch(UpgradeInstrumentWithResources(instrumentName)),
-    [dispatch, instrumentName],
+    () => dispatch(upgradeInstrumentWithResources),
+    [dispatch, upgradeInstrumentWithResources],
   );
 
   return (
@@ -45,7 +44,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
       </td>
       <td>
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
-          Upgrade
+          {t('forge.table.body.upgrade')}
         </Button>
       </td>
       <td>

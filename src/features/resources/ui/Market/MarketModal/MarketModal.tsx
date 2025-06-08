@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import { MarketTable } from '../MarketTable';
+import { useTranslation } from 'react-i18next';
 
 interface MarketModalProps {
   isModalOpen: boolean;
@@ -11,6 +12,7 @@ interface MarketModalProps {
 }
 
 export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) => {
+  const { t } = useTranslation('Buildings');
   const dispatch = useAppDispatch();
 
   const error = useAppSelector(resourcesSlice.selectors.selectResourcesError);
@@ -22,8 +24,8 @@ export const MarketModal = ({ isModalOpen, setIsModalOpen }: MarketModalProps) =
 
   return (
     <Modal
-      title="Market"
-      description="Sell resources and earn money. You can enter amount of resources in the field or scroll your mouse wheel"
+      title={t('buildings.market.title')}
+      description={t('buildings.market.description')}
       displayResourcesPanel
       error={error}
       isOpen={isModalOpen}
