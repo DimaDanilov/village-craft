@@ -54,10 +54,4 @@ export interface BuildingInfo {
   description: `buildings.${BuildingName}.description`;
 }
 
-export interface BuildingInfos {
-  forest: BuildingInfo;
-  mines: BuildingInfo;
-  forge: BuildingInfo;
-  market: BuildingInfo;
-  gateToTheFuture: BuildingInfo;
-}
+export type BuildingInfos = Record<BuildingName, BuildingInfo>;

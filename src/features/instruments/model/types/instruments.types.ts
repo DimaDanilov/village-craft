@@ -1,7 +1,7 @@
 import type { ResourceName } from '@features/resources/model';
-import type { InstrumentInfo } from '../slice';
+import type { InstrumentState } from '../slice';
 
-export type InstrumentName = keyof InstrumentInfo;
+export type InstrumentName = keyof InstrumentState;
 
 export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
 export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
@@ -25,3 +25,12 @@ export interface AxeInstrument {
 export interface PickaxeInstrument {
   level: PickaxeLevel;
 }
+
+export interface InstrumentInfo {
+  imageSrc: string;
+  resourceMined: ResourceName;
+  upgradeCost: InstrumentUpgradeCostRecord;
+  levelEfficiency: InstrumentLevelEfficiencyRecord;
+}
+
+export type InstrumentInfos = Record<InstrumentName, InstrumentInfo>;

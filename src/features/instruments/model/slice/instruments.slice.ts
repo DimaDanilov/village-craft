@@ -3,15 +3,15 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { AxeInstrument, InstrumentName, PickaxeInstrument } from '../types';
 import { selectInstrumentLevel, selectInstrumentsError } from '../selectors';
 import { isInstrumentNextLevelExist } from '../tools';
-import { INSTRUMENT_UPGRADE_COST } from '../constants';
+import { INSTRUMENT_INFOS } from '../constants';
 
-export interface InstrumentInfo {
+export interface InstrumentState {
   axe: AxeInstrument;
   pickaxe: PickaxeInstrument;
 }
 
 export interface InstrumentsState {
-  instruments: InstrumentInfo;
+  instruments: InstrumentState;
   error?: string;
 }
 
@@ -36,7 +36,7 @@ export const instrumentsSlice = createSlice({
       const { instrumentName } = action.payload;
       const currentLevel = state.instruments[instrumentName].level;
       const nextLevel = (Number(currentLevel) + 1).toString();
-      const isNextLevelExist = isInstrumentNextLevelExist(nextLevel, INSTRUMENT_UPGRADE_COST[instrumentName]);
+      const isNextLevelExist = isInstrumentNextLevelExist(nextLevel, INSTRUMENT_INFOS[instrumentName].upgradeCost);
       if (isNextLevelExist) {
         state.instruments[instrumentName].level = nextLevel;
       }

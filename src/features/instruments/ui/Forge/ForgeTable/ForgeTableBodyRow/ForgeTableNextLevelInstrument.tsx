@@ -1,5 +1,8 @@
-import { INSTRUMENT_RESOURCE_MINING, INSTRUMENTS_IMAGES } from '@features/instruments/model';
-import type { InstrumentName, UseInstrumentUpgradeEfficiencyReturn } from '@features/instruments/model';
+import {
+  INSTRUMENT_INFOS,
+  type InstrumentName,
+  type UseInstrumentUpgradeEfficiencyReturn,
+} from '@features/instruments/model';
 import { RESOURCES_IMAGES } from '@features/resources/model';
 
 type ForgeTableNextLevelInstrumentProps = Pick<
@@ -17,8 +20,8 @@ export function ForgeTableNextLevelInstrument({
 }: ForgeTableNextLevelInstrumentProps) {
   if (!isNextLevelExist) return <span>MAX</span>;
 
-  const instrumentImageSrc = INSTRUMENTS_IMAGES[instrumentName];
-  const resourceMiningByInstrument = INSTRUMENT_RESOURCE_MINING[instrumentName];
+  const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
+  const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
   const resourceImageSrc = RESOURCES_IMAGES[resourceMiningByInstrument];
 
   return (
