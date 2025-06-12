@@ -19,9 +19,9 @@ export const Modal = ({ title, description, displayResourcesPanel, isOpen, onClo
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-start justify-center z-50 bg-black/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 flex items-start justify-center z-40 bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="flex flex-col bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
+        className="flex flex-col gap-2 bg-white mt-32 pt-3 pb-8 px-6 rounded-xl shadow-lg w-full max-w-fit"
         onClick={onStopPropagationClick}
       >
         <div className="min-w-80 flex justify-between">
@@ -38,7 +38,7 @@ export const Modal = ({ title, description, displayResourcesPanel, isOpen, onClo
             </svg>
           </button>
         </div>
-        <p className="my-2">{description}</p>
+        <p className="my-2 text-xl">{description}</p>
         {displayResourcesPanel && (
           <div className="mt-2">
             <ResourcesPanel />

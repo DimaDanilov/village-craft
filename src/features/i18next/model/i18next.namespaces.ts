@@ -10,6 +10,8 @@ import AddServiceEn from '@features/buildings/ui/AddService/i18n/en.json';
 import AddServiceRu from '@features/buildings/ui/AddService/i18n/ru.json';
 import CardsSectionEn from '@features/buildings/ui/CardsSection/i18n/en.json';
 import CardsSectionRu from '@features/buildings/ui/CardsSection/i18n/ru.json';
+import GateToTheFutureEn from '@features/buildings/ui/GateToTheFuture/i18n/en.json';
+import GateToTheFutureRu from '@features/buildings/ui/GateToTheFuture/i18n/ru.json';
 import ForgeEn from '@features/instruments/ui/Forge/i18n/en.json';
 import ForgeRu from '@features/instruments/ui/Forge/i18n/ru.json';
 import MarketEn from '@features/resources/ui/Market/i18n/en.json';
@@ -26,6 +28,7 @@ export const englishNamespaces = {
   /* UI */
   AddService: AddServiceEn,
   CardsSection: CardsSectionEn,
+  GateToTheFuture: GateToTheFutureEn,
   Forge: ForgeEn,
   Market: MarketEn,
   /* Widgets */
@@ -40,6 +43,7 @@ export const russianNamespaces = {
   /* UI */
   AddService: AddServiceRu,
   CardsSection: CardsSectionRu,
+  GateToTheFuture: GateToTheFutureRu,
   Forge: ForgeRu,
   Market: MarketRu,
   /* Widgets */
