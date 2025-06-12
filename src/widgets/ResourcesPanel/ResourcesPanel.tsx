@@ -5,8 +5,8 @@ export function ResourcesPanel() {
   const { t } = useTranslation('ResourcesPanel');
   return (
     <div className="flex flex-row gap-4 items-center">
-      <h2 className="text text-lg">{t('resourcesTotal')}: </h2>
-      <div className="flex flex-row gap-6 w-fit px-3 py-1 rounded-2xl border-amber-500 border-2">
+      <h2>{t('resourcesTotal')}: </h2>
+      <div className="flex flex-row gap-4 w-fit px-3 py-0.5 rounded-2xl border-amber-500 border-2">
         <ResourceInfoPanel resourceName="wood" />
         <ResourceInfoPanel resourceName="stone" />
         <ResourceInfoPanel resourceName="sand" />
