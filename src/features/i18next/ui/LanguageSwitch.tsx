@@ -1,6 +1,6 @@
-import { AVAILABLE_LANGUAGES } from '../i18next.constants';
-import type { TAppLanguage } from '../i18next.types';
-import { getSafetyLocalStorageLanguage, useChangeAppLanguage } from '../tools';
+import { AVAILABLE_LANGUAGES } from '../model/i18next.constants';
+import type { TAppLanguage } from '../model/i18next.types';
+import { getSafetyLocalStorageLanguage, useChangeAppLanguage } from '../model/tools';
 
 export function LanguageSwitch() {
   const currentLanguage: TAppLanguage = getSafetyLocalStorageLanguage();

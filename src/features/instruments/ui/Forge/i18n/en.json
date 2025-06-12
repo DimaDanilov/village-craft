@@ -1,0 +1,15 @@
+{
+  "table": {
+    "header": {
+      "currentTool": "Current Tool",
+      "cost": "Cost",
+      "receive": "Receive"
+    },
+    "body": {
+      "click": "Click",
+      "level": "Level",
+      "max": "Max",
+      "upgrade": "Upgrade"
+    }
+  }
+}

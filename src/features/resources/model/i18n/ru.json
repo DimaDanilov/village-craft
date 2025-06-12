@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "wood": { "title": "Дерево" },
+    "stone": { "title": "Камень" },
+    "coins": { "title": "Монеты" }
+  },
+  "errors": {
+    "notEnoughResources": "Недостаточно {{resourceName}} для продажи"
+  }
+}

@@ -12,7 +12,7 @@ interface AddServiceModalProps {
 }
 
 export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceModalProps) => {
-  const { t } = useTranslation('Buildings');
+  const { t } = useTranslation('AddService');
   const dispatch = useAppDispatch();
 
   const error = useAppSelector(buildingsSlice.selectors.selectBuildingsError);
@@ -24,8 +24,8 @@ export const ServiceBuilderModal = ({ isModalOpen, setIsModalOpen }: AddServiceM
 
   return (
     <Modal
-      title={t('addService.modal.title')}
-      description={t('addService.modal.description')}
+      title={t('modal.title')}
+      description={t('modal.description')}
       displayResourcesPanel
       error={error}
       isOpen={isModalOpen}

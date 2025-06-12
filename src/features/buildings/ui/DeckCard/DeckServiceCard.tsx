@@ -10,7 +10,7 @@ interface DeckServiceCardProps {
 }
 
 export const DeckServiceCard = ({ onClick, buildingInfo, serviceLevel }: DeckServiceCardProps) => {
-  const { t } = useTranslation('Buildings');
+  const { t } = useTranslation('AddService');
   const isServiceExists = serviceLevel > 0;
 
   return (
@@ -19,7 +19,7 @@ export const DeckServiceCard = ({ onClick, buildingInfo, serviceLevel }: DeckSer
         <DeckCardDefault buildingInfo={buildingInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick}>
           <div className="flex justify-end mx-3">
             <span>
-              {t('addService.deckCard.level')}: {serviceLevel}
+              {t('deckCard.level')}: {serviceLevel}
             </span>
           </div>
         </DeckCardDefault>

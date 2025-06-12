@@ -1,0 +1,13 @@
+{
+  "instruments": {
+    "axe": {
+      "title": "Axe"
+    },
+    "pickaxe": {
+      "title": "Pickaxe"
+    }
+  },
+  "errors": {
+    "cantUpgrade": "Can't upgrade {{instrumentName}}"
+  }
+}

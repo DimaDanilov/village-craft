@@ -12,7 +12,7 @@ export const ForgeTableInstrumentPrice = ({
   isNextLevelExist,
   instrumentNextLevelCost,
 }: ForgeTableInstrumentPriceProps) => {
-  const { t } = useTranslation('Instruments');
+  const { t } = useTranslation('Forge');
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
       ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
@@ -31,6 +31,6 @@ export const ForgeTableInstrumentPrice = ({
   return isNextLevelExist ? (
     <span className="grid grid-cols-3 gap-2">{instrumentCostMaterialsCards}</span>
   ) : (
-    <span>{t('forge.table.body.max')}</span>
+    <span>{t('table.body.max')}</span>
   );
 };

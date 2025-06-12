@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "wood": { "title": "Wood" },
+    "stone": { "title": "Stone" },
+    "coins": { "title": "Coins" }
+  },
+  "errors": {
+    "notEnoughResources": "Not enough {{resourceName}} to sell"
+  }
+}

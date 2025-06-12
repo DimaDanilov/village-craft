@@ -1,0 +1,10 @@
+{
+  "deckCardArea": {
+    "resources": {
+      "title": "Ресурсы"
+    },
+    "services": {
+      "title": "Сервисы"
+    }
+  }
+}

@@ -19,8 +19,8 @@ export function ForgeTableNextLevelInstrument({
   instrumentNextLevelEfficiency,
   instrumentNextLevel,
 }: ForgeTableNextLevelInstrumentProps) {
-  const { t } = useTranslation('Instruments');
-  if (!isNextLevelExist) return <span>{t('forge.table.body.max')}</span>;
+  const { t } = useTranslation('Forge');
+  if (!isNextLevelExist) return <span>{t('table.body.max')}</span>;
 
   const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
   const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
@@ -32,11 +32,11 @@ export function ForgeTableNextLevelInstrument({
       <div className="flex flex-row items-center gap-2">
         <img src={resourceImageSrc} width="40px" alt="Resource Image" />
         <span>
-          {instrumentNextLevelEfficiency}/{t('forge.table.body.click')}
+          {instrumentNextLevelEfficiency}/{t('table.body.click')}
         </span>
       </div>
       <span className="text-xl">
-        {t('forge.table.body.level')} {instrumentNextLevel}
+        {t('table.body.level')} {instrumentNextLevel}
       </span>
     </div>
   );

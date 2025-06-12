@@ -1,8 +1,7 @@
-import type { englishNamespaces, russianNamespaces } from '../i18next.config';
+import type { englishNamespaces, russianNamespaces } from '../i18next.namespaces';
 
 declare module 'i18next' {
   interface CustomTypeOptions {
-    defaultNS: 'Main';
     resources: typeof englishNamespaces & typeof russianNamespaces;
   }
 }

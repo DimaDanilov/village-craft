@@ -60,8 +60,12 @@ export const resourcesSlice = createSlice({
         amountToSell: resourcesCount,
       });
       if (!isSellResourcesAvailable) {
-        const translatedResourceName = i18next.t(`Resources:${RESOURCE_INFOS[resourceName].title}`);
-        state.error = i18next.t(`Resources:market.errors.notEnoughResources`, { resourceName: translatedResourceName });
+        const { t } = i18next;
+        const translatedResourceName = t(`${RESOURCE_INFOS[resourceName].title}`, { ns: 'Resources' });
+        state.error = t(`errors.notEnoughResources`, {
+          ns: 'Resources',
+          resourceName: translatedResourceName,
+        });
         return;
       }
       state.resources[resourceName].count -= resourcesCount;

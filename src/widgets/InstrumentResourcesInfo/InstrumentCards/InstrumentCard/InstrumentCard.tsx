@@ -7,12 +7,12 @@ interface InstrumentCardProps {
 }
 
 export const InstrumentCard = ({ instrumentLevel, imageSrc }: InstrumentCardProps) => {
-  const { t } = useTranslation('Instruments');
+  const { t } = useTranslation('Forge');
   return (
     <div className="flex flex-col gap-1 items-center">
       <img src={imageSrc} width="80px" alt="Instrument Image" />
       <span className="text-xl">
-        {t('forge.table.body.level')} {instrumentLevel}
+        {t('table.body.level')} {instrumentLevel}
       </span>
     </div>
   );

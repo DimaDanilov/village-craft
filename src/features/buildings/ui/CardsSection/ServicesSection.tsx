@@ -5,9 +5,12 @@ import { AddService, DECK_CARD_SERVICE_PALETTE, GateToTheFuture } from '@feature
 import { useTranslation } from 'react-i18next';
 
 export const ServicesSection = () => {
-  const { t } = useTranslation('Services');
+  const { t } = useTranslation('CardsSection');
   return (
-    <CardsSection title={t('deckCardArea.title')} textColorClassName={DECK_CARD_SERVICE_PALETTE.textColorClassName}>
+    <CardsSection
+      title={t('deckCardArea.services.title')}
+      textColorClassName={DECK_CARD_SERVICE_PALETTE.textColorClassName}
+    >
       <Forge />
       <Market />
       <GateToTheFuture />

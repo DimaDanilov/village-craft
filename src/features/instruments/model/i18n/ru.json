@@ -1,0 +1,13 @@
+{
+  "instruments": {
+    "axe": {
+      "title": "Топор"
+    },
+    "pickaxe": {
+      "title": "Кирка"
+    }
+  },
+  "errors": {
+    "cantUpgrade": "Нельзя улучшить {{instrumentName}}"
+  }
+}

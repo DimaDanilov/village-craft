@@ -41,7 +41,7 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
       </td>
       <td>
         <Button onClick={onBuild} disabled={isBuildDisabled}>
-          {t('addService.table.body.buildButton')} {t(title)}
+          {t('table.body.buildButton', { ns: 'AddService' })} {t(title)}
         </Button>
       </td>
     </tr>

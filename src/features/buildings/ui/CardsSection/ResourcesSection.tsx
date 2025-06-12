@@ -4,9 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { DECK_CARD_RESOURCE_PALETTE } from '../DeckCard';
 
 export const ResourcesSection = () => {
-  const { t } = useTranslation('Resources');
+  const { t } = useTranslation('CardsSection');
   return (
-    <CardsSection title={t('deckCardArea.title')} textColorClassName={DECK_CARD_RESOURCE_PALETTE.textColorClassName}>
+    <CardsSection
+      title={t('deckCardArea.resources.title')}
+      textColorClassName={DECK_CARD_RESOURCE_PALETTE.textColorClassName}
+    >
       <Forest />
       <Mines />
     </CardsSection>

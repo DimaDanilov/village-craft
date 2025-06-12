@@ -13,7 +13,7 @@ interface ForgeTableBodyRowParams {
 }
 
 export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) => {
-  const { t } = useTranslation('Instruments');
+  const { t } = useTranslation('Forge');
   const upgradeInstrumentWithResources = useUpgradeInstrumentWithResources(instrumentName);
   const { isNextLevelExist, instrumentCurrentLevel, instrumentNextLevel, instrumentNextLevelCost, isUpgradeAvailable } =
     useInstrumentUpgradeCost(instrumentName);
@@ -44,7 +44,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
       </td>
       <td>
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
-          {t('forge.table.body.upgrade')}
+          {t('table.body.upgrade')}
         </Button>
       </td>
       <td>

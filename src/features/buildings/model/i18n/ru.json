@@ -21,26 +21,6 @@
       "description": "Войдите в будущее и достигните финальной цели в этом мире."
     }
   },
-  "addService": {
-    "modal": {
-      "title": "Строитель зданий",
-      "description": "Создавайте новые здания, чтобы открыть новые ресурсы и способности"
-    },
-    "table": {
-      "header": {
-        "imageColumn": "Постройка",
-        "descriptionColumn": "Описание",
-        "costColumn": "Стоимость"
-      },
-      "body": {
-        "buildButton": "Построить"
-      }
-    },
-    "deckCard": {
-      "title": "Построить новый сервис",
-      "level": "Уровень"
-    }
-  },
   "errors": {
     "buildingIsReady": "Готово",
     "cantUpgrade": "Нельзя улучшить {{buildingName}}"

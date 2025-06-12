@@ -15,7 +15,7 @@ export function ForgeTableCurrentLevelInstrument({
   instrumentCurrentLevelEfficiency,
   instrumentCurrentLevel,
 }: ForgeTableCurrentLevelInstrumentProps) {
-  const { t } = useTranslation('Instruments');
+  const { t } = useTranslation('Forge');
   const instrumentImageSrc = INSTRUMENT_INFOS[instrumentName].imageSrc;
   const resourceMiningByInstrument = INSTRUMENT_INFOS[instrumentName].resourceMined;
   const resourceImageSrc = RESOURCE_INFOS[resourceMiningByInstrument].imageSrc;
@@ -26,11 +26,11 @@ export function ForgeTableCurrentLevelInstrument({
       <div className="flex flex-row items-center gap-2">
         <img src={resourceImageSrc} width="40px" alt="Resource Image" />
         <span>
-          {instrumentCurrentLevelEfficiency}/{t('forge.table.body.click')}
+          {instrumentCurrentLevelEfficiency}/{t('table.body.click')}
         </span>
       </div>
       <span className="text-xl">
-        {t('forge.table.body.level')} {instrumentCurrentLevel}
+        {t('table.body.level')} {instrumentCurrentLevel}
       </span>
     </div>
   );
