@@ -1,6 +1,6 @@
 import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
 import { RESOURCE_INFOS, type ResourceName } from '@features/resources/model';
-import { ResourceCard } from '@widgets';
+import { ResourceStatsCard } from '@widgets';
 import { useTranslation } from 'react-i18next';
 
 interface ServiceBuilderTableBuildingPriceProps {
@@ -19,7 +19,12 @@ export const ServiceBuilderTableBuildingPrice = ({
     const availableResource = resourceKey as ResourceName;
     const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
     return (
-      <ResourceCard key={resourceKey} resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />
+      <ResourceStatsCard
+        key={resourceKey}
+        resourceCount={resourcesCost}
+        imageSrc={resourceImageSrc}
+        imageWidth="60px"
+      />
     );
   });
 

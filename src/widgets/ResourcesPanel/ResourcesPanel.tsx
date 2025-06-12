@@ -1,4 +1,4 @@
-import { CoinsStats, SandStats, StoneStats, WoodStats } from '@widgets/InstrumentResourcesInfo';
+import { CoinsStats, SandStats, StoneStats, WoodStats } from '@widgets/ResourceCards';
 import { useTranslation } from 'react-i18next';
 
 export function ResourcesPanel() {

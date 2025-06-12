@@ -9,7 +9,7 @@ function App() {
     <Provider store={store}>
       <div className="w-5/6 h-svh flex flex-col mx-auto relative">
         <div className="w-full my-6 flex flex-row justify-between">
-          <div className="w-full flex flex-row flex-wrap gap-24">
+          <div className="flex flex-row flex-wrap gap-24">
             <ResourcesSection />
             <ServicesSection />
           </div>

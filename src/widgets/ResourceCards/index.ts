@@ -1,5 +1,5 @@
 export * from './CoinsStats';
-export * from './ResourceCard';
+export * from './ResourceStatsCard';
 export * from './StoneStats';
 export * from './SandStats';
 export * from './WoodStats';

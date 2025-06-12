@@ -1,20 +1,18 @@
 import { RESOURCE_INFOS, resourcesSlice } from '@features/resources/model';
 import { useAppSelector } from '@store';
-import { ResourceCard, type ResourceCardFlexDirection, type ResourceCardImageWidth } from '../ResourceCard';
+import { ResourceStatsCard, type ResourceCardFlexDirection } from '../ResourceStatsCard';
 
 interface CoinsStatsProps {
   flexDirection: ResourceCardFlexDirection;
-  imageWidth: ResourceCardImageWidth;
 }
 
-export const CoinsStats = ({ flexDirection, imageWidth }: CoinsStatsProps) => {
+export const CoinsStats = ({ flexDirection }: CoinsStatsProps) => {
   const coinsCount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, 'coins'));
   return (
-    <ResourceCard
+    <ResourceStatsCard
       resourceCount={coinsCount}
       flexDirection={flexDirection}
       imageSrc={RESOURCE_INFOS.coins.imageSrc}
-      imageWidth={imageWidth}
     />
   );
 };
