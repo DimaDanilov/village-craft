@@ -1,26 +1,26 @@
-import { AxeStats, PickaxeStats, ShovelStats } from '../InstrumentCards';
-import { CoinsStats, SandStats, StoneStats, WoodStats } from '../ResourceCards';
+import { InstrumentCard } from './InstrumentStatsCard';
+import { ResourceInfo } from './ResourceInfo';
 
 export const InstrumentResourcesInfo = () => {
   return (
-    <div className="grid grid-cols-1 gap-2 w-fit h-fit">
+    <div className="flex flex-col gap-2 w-fit h-fit">
       <div className={`flex flex-row rounded-2xl border border-teal-400 overflow-hidden`}>
-        <AxeStats />
+        <InstrumentCard instrumentName="axe" />
         <div className={`w-0.25 bg-white`}></div>
-        <WoodStats flexDirection="col" />
+        <ResourceInfo resourceName="wood" />
       </div>
       <div className={`flex flex-row rounded-2xl border border-teal-400 overflow-hidden`}>
-        <PickaxeStats />
+        <InstrumentCard instrumentName="pickaxe" />
         <div className={`w-0.25 bg-white`}></div>
-        <StoneStats flexDirection="col" />
+        <ResourceInfo resourceName="stone" />
       </div>
       <div className={`flex flex-row rounded-2xl border border-teal-400 overflow-hidden`}>
-        <ShovelStats />
+        <InstrumentCard instrumentName="shovel" />
         <div className={`w-0.25 bg-white`}></div>
-        <SandStats flexDirection="col" />
+        <ResourceInfo resourceName="sand" />
       </div>
-      <div className={`flex flex-row justify-end rounded-2xl border border-teal-400 overflow-hidden`}>
-        <CoinsStats flexDirection="col" />
+      <div className={`w-fit self-end rounded-2xl border border-teal-400 overflow-hidden`}>
+        <ResourceInfo resourceName="coins" />
       </div>
     </div>
   );

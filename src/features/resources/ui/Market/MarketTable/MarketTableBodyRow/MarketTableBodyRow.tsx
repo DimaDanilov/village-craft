@@ -1,5 +1,5 @@
 import { Button } from '@shared/Button/Button';
-import { ResourceStatsCard } from '@widgets';
+import { ResourceInfo } from '@widgets';
 import {
   useMarketControlledInputs,
   useMarketIsSellDisabled,
@@ -78,7 +78,7 @@ export const MarketTableBodyRow = ({
       </td>
       <td>
         <div onWheel={onWheelResourceAmountChange}>
-          <ResourceStatsCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} />
+          {/* <ResourceStatsCard resourceCount={resourceAmountToSell} imageSrc={receiveItemImageSrc} /> */}
         </div>
       </td>
     </tr>

@@ -1,6 +1,6 @@
 import type { InstrumentCost } from '@features/instruments/model';
-import { RESOURCE_INFOS, type ResourceState } from '@features/resources/model';
-import { ResourceStatsCard } from '@widgets';
+import type { ResourceState } from '@features/resources/model';
+import { ResourceInfo } from '@widgets';
 import { useTranslation } from 'react-i18next';
 
 interface ForgeTableInstrumentPriceProps {
@@ -15,17 +15,9 @@ export const ForgeTableInstrumentPrice = ({
   const { t } = useTranslation('Forge');
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
-      ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourcesCost]) => {
+      ? Object.keys(instrumentNextLevelCost).map((resourceKey) => {
           const availableResource = resourceKey as keyof ResourceState;
-          const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
-          return (
-            <ResourceStatsCard
-              key={resourceKey}
-              resourceCount={resourcesCost}
-              imageSrc={resourceImageSrc}
-              imageWidth="60px"
-            />
-          );
+          return <ResourceInfo key={resourceKey} resourceName={availableResource} imageWidth="60px" />;
         })
       : [];
   return isNextLevelExist ? (
