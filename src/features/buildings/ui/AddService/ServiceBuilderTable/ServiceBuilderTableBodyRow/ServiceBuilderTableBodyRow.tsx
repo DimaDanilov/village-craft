@@ -28,11 +28,11 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
     <tr>
       <td>
         <div className="w-60 flex flex-col gap-1 justify-center items-center">
-          <img width={300} src={imageSrc} alt="Forge Image" />
-          <span className="text-lg">{t(title)}</span>
+          <img width="230px" src={imageSrc} alt="Forge Image" />
+          <span>{t(title)}</span>
         </div>
       </td>
-      <td>{t(description)}</td>
+      <td className="text-sm">{t(description)}</td>
       <td>
         <ServiceBuilderTableBuildingPrice
           currentLevel={buildingCurrentLevel}
@@ -41,7 +41,7 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
       </td>
       <td>
         <Button onClick={onBuild} disabled={isBuildDisabled}>
-          {t('table.body.buildButton', { ns: 'AddService' })} {t(title)}
+          {t('table.body.buildButton', { ns: 'AddService' })}
         </Button>
       </td>
     </tr>

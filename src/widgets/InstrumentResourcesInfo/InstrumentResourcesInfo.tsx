@@ -3,7 +3,7 @@ import { ResourceInfo } from './ResourceInfo';
 
 export const InstrumentResourcesInfo = () => {
   return (
-    <div className="flex flex-col gap-2 w-fit h-fit">
+    <div className="flex flex-col gap-3 w-fit h-fit">
       <div className={`flex flex-row rounded-2xl border border-teal-400 overflow-hidden`}>
         <InstrumentCard instrumentName="axe" />
         <div className={`w-0.25 bg-white`}></div>
