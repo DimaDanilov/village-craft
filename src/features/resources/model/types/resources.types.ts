@@ -12,6 +12,10 @@ export interface StonePile {
   count: number;
 }
 
+export interface SandPile {
+  count: number;
+}
+
 export interface CoinsStorage {
   count: number;
 }

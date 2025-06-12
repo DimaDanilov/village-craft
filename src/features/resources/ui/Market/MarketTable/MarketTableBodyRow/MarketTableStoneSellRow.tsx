@@ -1,7 +1,7 @@
 import { resourcesSlice, sellResources } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
 import { useCallback } from 'react';
-import { RESOURCE_INFOS, WOOD_TRADE_MULTIPLIER } from '@features/resources/model/constants';
+import { RESOURCE_INFOS, STONE_TRADE_MULTIPLIER } from '@features/resources/model/constants';
 import { MarketTableBodyRow } from './MarketTableBodyRow';
 
 export const MarketTableStoneSellRow = () => {
@@ -18,7 +18,7 @@ export const MarketTableStoneSellRow = () => {
   return (
     <MarketTableBodyRow
       maxResourceAmount={stoneCount}
-      tradeMultiplier={WOOD_TRADE_MULTIPLIER}
+      tradeMultiplier={STONE_TRADE_MULTIPLIER}
       sellItemImageSrc={RESOURCE_INFOS.stone.imageSrc}
       receiveItemImageSrc={RESOURCE_INFOS.coins.imageSrc}
       sellAction={onSellStone}

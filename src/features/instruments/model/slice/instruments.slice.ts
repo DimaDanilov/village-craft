@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { AxeInstrument, InstrumentName, PickaxeInstrument } from '../types';
+import type { AxeInstrument, InstrumentName, PickaxeInstrument, ShovelInstrument } from '../types';
 import { selectInstrumentLevel, selectInstrumentsError } from '../selectors';
 import { isInstrumentNextLevelExist } from '../tools';
 import { INSTRUMENT_INFOS } from '../constants';
@@ -8,6 +8,7 @@ import { INSTRUMENT_INFOS } from '../constants';
 export interface InstrumentState {
   axe: AxeInstrument;
   pickaxe: PickaxeInstrument;
+  shovel: ShovelInstrument;
 }
 
 export interface InstrumentsState {
@@ -21,6 +22,9 @@ const initialState: InstrumentsState = {
       level: '1',
     },
     pickaxe: {
+      level: '1',
+    },
+    shovel: {
       level: '1',
     },
   },

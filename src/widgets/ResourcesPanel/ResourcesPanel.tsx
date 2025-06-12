@@ -1,4 +1,4 @@
-import { CoinsStats, StoneStats, WoodStats } from '@widgets/InstrumentResourcesInfo';
+import { CoinsStats, SandStats, StoneStats, WoodStats } from '@widgets/InstrumentResourcesInfo';
 import { useTranslation } from 'react-i18next';
 
 export function ResourcesPanel() {
@@ -9,6 +9,7 @@ export function ResourcesPanel() {
       <div className="flex flex-row gap-6 w-fit px-6 py-1 rounded-2xl border-amber-500 border-2">
         <WoodStats flexDirection="row" imageWidth="40px" />
         <StoneStats flexDirection="row" imageWidth="40px" />
+        <SandStats flexDirection="row" imageWidth="40px" />
         <CoinsStats flexDirection="row" imageWidth="40px" />
       </div>
     </div>

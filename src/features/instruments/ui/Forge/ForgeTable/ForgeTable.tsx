@@ -10,6 +10,7 @@ export const ForgeTable = () => {
       <tbody>
         <ForgeTableBodyRow instrumentName="axe" />
         <ForgeTableBodyRow instrumentName="pickaxe" />
+        <ForgeTableBodyRow instrumentName="shovel" />
       </tbody>
     </table>
   );

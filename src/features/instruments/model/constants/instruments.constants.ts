@@ -1,5 +1,6 @@
 import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
+import ShovelImageSrc from '@assets/instruments/Shovel.png';
 import type {
   AxeLevelEfficiencyRecord,
   AxeUpgradeCostRecord,
@@ -7,6 +8,8 @@ import type {
   InstrumentInfos,
   PickaxeLevelEfficiencyRecord,
   PickaxeUpgradeCostRecord,
+  ShovelLevelEfficiencyRecord,
+  ShovelUpgradeCostRecord,
 } from '../types';
 
 const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
@@ -23,6 +26,12 @@ const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
   '3': 3,
   '4': 5,
   '5': 8,
+};
+
+const SHOVEL_LEVEL_EFFICIENCY: ShovelLevelEfficiencyRecord = {
+  '1': 1,
+  '2': 3,
+  '3': 8,
 };
 
 const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
@@ -67,6 +76,12 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   },
 };
 
+const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
+  '1': {},
+  '2': { wood: 30 },
+  '3': { stone: 35, coins: 70 },
+};
+
 const AXE_INFO: InstrumentInfo = {
   title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
@@ -83,7 +98,16 @@ const PICKAXE_INFO: InstrumentInfo = {
   upgradeCost: PICKAXE_UPGRADE_COST,
 } as const;
 
+const SHOVEL_INFO: InstrumentInfo = {
+  title: 'instruments.shovel.title',
+  imageSrc: ShovelImageSrc,
+  resourceMined: 'sand',
+  levelEfficiency: SHOVEL_LEVEL_EFFICIENCY,
+  upgradeCost: SHOVEL_UPGRADE_COST,
+};
+
 export const INSTRUMENT_INFOS: InstrumentInfos = {
   axe: AXE_INFO,
   pickaxe: PICKAXE_INFO,
+  shovel: SHOVEL_INFO,
 };

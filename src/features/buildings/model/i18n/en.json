@@ -8,6 +8,10 @@
       "title": "Mines",
       "description": "Mine stone with your pickaxe."
     },
+    "beach": {
+      "title": "Beach",
+      "description": "Dig sand with your shovel."
+    },
     "forge": {
       "title": "Forge",
       "description": "Upgrade your instruments to collect resources more easily."

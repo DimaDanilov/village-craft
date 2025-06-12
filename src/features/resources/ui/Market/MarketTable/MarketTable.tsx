@@ -1,5 +1,5 @@
 import { MarketTableHeaderRow } from './MarketTableHeaderRow';
-import { MarketTableStoneSellRow, MarketTableWoodSellRow } from './MarketTableBodyRow';
+import { MarketTableSandSellRow, MarketTableStoneSellRow, MarketTableWoodSellRow } from './MarketTableBodyRow';
 
 export const MarketTable = () => {
   return (
@@ -10,6 +10,7 @@ export const MarketTable = () => {
       <tbody>
         <MarketTableWoodSellRow />
         <MarketTableStoneSellRow />
+        <MarketTableSandSellRow />
       </tbody>
     </table>
   );
