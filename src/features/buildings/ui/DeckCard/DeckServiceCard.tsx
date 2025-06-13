@@ -18,8 +18,8 @@ export const DeckServiceCard = ({ onClick, buildingInfo, serviceLevel }: DeckSer
       {isServiceExists && (
         <DeckCardDefault buildingInfo={buildingInfo} deckCardPalette={DECK_CARD_SERVICE_PALETTE} onClick={onClick}>
           <div className="flex justify-end mx-3">
-            <span>
-              {t('deckCard.level')}: {serviceLevel}
+            <span className="text-sm font-semibold">
+              {t('deckCard.level')} {serviceLevel}
             </span>
           </div>
         </DeckCardDefault>
