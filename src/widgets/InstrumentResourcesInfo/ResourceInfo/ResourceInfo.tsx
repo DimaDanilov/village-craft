@@ -10,11 +10,11 @@ export const ResourceInfo = ({ resourceName }: ResourceInfoProps) => {
   const resourceCount = useAppSelector((state) => resourcesSlice.selectors.selectResourceCount(state, resourceName));
   const imageSrc = RESOURCE_INFOS[resourceName].imageSrc;
   return (
-    <div className={`flex flex-col w-fit h-fit items-center ${DECK_CARD_SERVICE_PALETTE.bgColorClassName}`}>
-      <div className="bg-white w-full px-1 flex justify-center">
-        <img src={imageSrc} width="60px" alt="Resource Image" />
+    <div className={`flex flex-row w-full h-12 items-center ${DECK_CARD_SERVICE_PALETTE.bgColorClassName}`}>
+      <div className="w-10 h-10 m-1 p-1 bg-white flex justify-center rounded-2xl">
+        <img src={imageSrc} alt="Resource Image" />
       </div>
-      <span className={`text-2xl my-1 ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>{resourceCount}</span>
+      <span className={`text-2xl px-2 ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>{resourceCount}</span>
     </div>
   );
 };
