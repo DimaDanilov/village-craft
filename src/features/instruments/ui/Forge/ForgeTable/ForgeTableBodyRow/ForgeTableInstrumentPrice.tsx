@@ -1,6 +1,6 @@
+import { DECK_CARD_SERVICE_PALETTE } from '@features/buildings/ui';
 import type { InstrumentCost } from '@features/instruments/model';
-import type { ResourceState } from '@features/resources/model';
-import { ResourceInfo } from '@widgets';
+import { RESOURCE_INFOS, type ResourceState } from '@features/resources/model';
 import { useTranslation } from 'react-i18next';
 
 interface ForgeTableInstrumentPriceProps {
@@ -15,9 +15,14 @@ export const ForgeTableInstrumentPrice = ({
   const { t } = useTranslation('Forge');
   const instrumentCostMaterialsCards =
     instrumentNextLevelCost !== undefined
-      ? Object.keys(instrumentNextLevelCost).map((resourceKey) => {
+      ? Object.entries(instrumentNextLevelCost).map(([resourceKey, resourceAmount]) => {
           const availableResource = resourceKey as keyof ResourceState;
-          return <ResourceInfo key={resourceKey} resourceName={availableResource} imageWidth="60px" />;
+          return (
+            <div key={resourceKey} className="flex flex-col justify-center items-center">
+              <img width="50px" src={RESOURCE_INFOS[availableResource].imageSrc} alt="Resource Image" />
+              <span className={`text-lg ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>{resourceAmount}</span>
+            </div>
+          );
         })
       : [];
   return isNextLevelExist ? (
