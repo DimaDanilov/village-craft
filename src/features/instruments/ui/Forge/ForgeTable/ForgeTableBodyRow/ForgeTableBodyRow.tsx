@@ -37,6 +37,14 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
         />
       </td>
       <td>
+        <ForgeTableNextLevelInstrument
+          instrumentName={instrumentName}
+          isNextLevelExist={isNextLevelExist}
+          instrumentNextLevel={instrumentNextLevel}
+          instrumentNextLevelEfficiency={instrumentNextLevelEfficiency}
+        />
+      </td>
+      <td>
         <ForgeTableInstrumentPrice
           isNextLevelExist={isNextLevelExist}
           instrumentNextLevelCost={instrumentNextLevelCost}
@@ -46,14 +54,6 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
         <Button disabled={!isUpgradeAvailable} onClick={onUpgrade}>
           {t('table.body.upgrade')}
         </Button>
-      </td>
-      <td>
-        <ForgeTableNextLevelInstrument
-          instrumentName={instrumentName}
-          isNextLevelExist={isNextLevelExist}
-          instrumentNextLevel={instrumentNextLevel}
-          instrumentNextLevelEfficiency={instrumentNextLevelEfficiency}
-        />
       </td>
     </tr>
   );
