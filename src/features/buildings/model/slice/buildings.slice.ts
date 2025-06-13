@@ -38,10 +38,10 @@ const initialState: BuildingsState = {
       level: '1',
     },
     forge: {
-      level: '0',
+      level: '1',
     },
     market: {
-      level: '0',
+      level: '1',
     },
     gateToTheFuture: {
       level: '0',

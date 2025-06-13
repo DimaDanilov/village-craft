@@ -64,7 +64,7 @@ export const resourcesSlice = createSlice({
         amountToSell: resourcesCount,
       });
       if (!isSellResourcesAvailable) {
-        const { t } = i18next; 
+        const { t } = i18next;
         const translatedResourceName = t(`${RESOURCE_INFOS[resourceName].title}`, { ns: 'Resources' });
         state.error = t(`errors.notEnoughResources`, {
           ns: 'Resources',
@@ -73,7 +73,7 @@ export const resourcesSlice = createSlice({
         return;
       }
       state.resources[resourceName].count -= resourcesCount;
-      state.resources.coins.count += resourcesCount;
+      state.resources.coins.count += resourcesCount * RESOURCE_INFOS[resourceName].cost;
       state.error = undefined;
     },
     clearResourcesError: (state) => {

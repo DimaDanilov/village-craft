@@ -45,7 +45,7 @@ export const Modal = ({ title, description, displayResourcesPanel, isOpen, onClo
           </div>
         )}
         {error && <div className="my-4 p-2 bg-red-100 text-red-700 rounded-xl">{error}</div>}
-        <div className="mt-2 overflow-auto">{children}</div>
+        <div className="mt-2 overflow-auto mx-auto">{children}</div>
       </div>
     </div>
   );

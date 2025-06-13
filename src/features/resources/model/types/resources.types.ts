@@ -24,6 +24,7 @@ interface ResourceInfo {
   title: `resources.${ResourceName}.title`;
   imageSrc: string;
   instrumentMining?: InstrumentName;
+  cost: number;
 }
 
 export type ResourceInfos = Record<ResourceName, ResourceInfo>;
