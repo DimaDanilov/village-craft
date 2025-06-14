@@ -51,7 +51,7 @@ const GATE_TO_THE_FUTURE_UPGRADE_COST: GateToTheFutureUpgradeCostRecord = {
   '1': {
     wood: 400,
     stone: 200,
-    sand: 300,
+    sand: 500,
     coins: 800,
   },
 };

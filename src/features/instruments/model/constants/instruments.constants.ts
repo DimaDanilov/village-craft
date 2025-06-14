@@ -30,8 +30,8 @@ const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
 
 const SHOVEL_LEVEL_EFFICIENCY: ShovelLevelEfficiencyRecord = {
   '1': 1,
-  '2': 3,
-  '3': 8,
+  '2': 5,
+  '3': 30,
 };
 
 const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
@@ -51,7 +51,7 @@ const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   '5': {
     wood: 150,
     stone: 120,
-    coins: 80,
+    coins: 100,
   },
 };
 
@@ -72,7 +72,7 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   '5': {
     wood: 200,
     stone: 150,
-    coins: 120,
+    coins: 150,
   },
 };
 
