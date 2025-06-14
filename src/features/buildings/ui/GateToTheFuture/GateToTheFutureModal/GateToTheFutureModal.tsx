@@ -25,7 +25,7 @@ export const GateToTheFutureModal = ({ isModalOpen, setIsModalOpen }: GateToTheF
     >
       <div className="flex flex-col gap-4">
         <h2 className="text-xl text-amber-600">{t('modal.victoryMessage', { ns: 'GateToTheFuture' })}</h2>
-        <img className="w-200" src={VictoryImageSrc} />
+        <img className="w-160 mx-auto" src={VictoryImageSrc} />
       </div>
     </Modal>
   );

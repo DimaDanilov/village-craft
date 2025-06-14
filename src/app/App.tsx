@@ -7,9 +7,9 @@ import { Provider } from 'react-redux';
 function App() {
   return (
     <Provider store={store}>
-      <div className="w-5/6 h-svh flex flex-col mx-auto relative">
+      <div className="w-11/12 h-svh flex flex-col mx-auto mr-6 relative">
         <div className="w-full my-6 flex flex-row justify-between">
-          <div className="w-full flex flex-row flex-wrap gap-24">
+          <div className="flex flex-row flex-wrap gap-24">
             <ResourcesSection />
             <ServicesSection />
           </div>

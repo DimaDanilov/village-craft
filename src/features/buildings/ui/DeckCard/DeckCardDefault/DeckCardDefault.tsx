@@ -18,7 +18,7 @@ export const DeckCardDefault = ({ onClick, deckCardPalette, buildingInfo, childr
 
   return (
     <div
-      className={`flex flex-col justify-between w-60 h-90 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer pb-4`}
+      className={`flex flex-col justify-between w-52 h-72 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer pb-4`}
       onClick={onClick}
     >
       <DeckCardHeader title={t(title)} description={t(description)} imageSrc={imageSrc} />

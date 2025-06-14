@@ -12,6 +12,10 @@ export interface StonePile {
   count: number;
 }
 
+export interface SandPile {
+  count: number;
+}
+
 export interface CoinsStorage {
   count: number;
 }
@@ -20,6 +24,7 @@ interface ResourceInfo {
   title: `resources.${ResourceName}.title`;
   imageSrc: string;
   instrumentMining?: InstrumentName;
+  cost: number;
 }
 
 export type ResourceInfos = Record<ResourceName, ResourceInfo>;

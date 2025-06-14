@@ -1,3 +1,3 @@
-export * from './InstrumentCards';
+export * from './InstrumentStatsCard';
 export * from './InstrumentResourcesInfo';
-export * from './ResourceCards';
+export * from './ResourceInfo';

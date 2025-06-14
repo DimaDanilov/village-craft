@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer 2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 226.21 244.28">
+  <defs>
+    <style>
+      .shovel {
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <g id="Layer 1" data-name="Layer 1">
+    <path class="shovel" d="M140.74,167.74l-50.25,56.26c-16.85,18.86-45.8,20.49-64.66,3.64l-5.55-4.96C1.43,205.84-.21,176.89,16.64,158.03l50.25-56.26,20.9,18.66,6.24-6.99,9.71,8.67L206.49,7.06l12.66,11.31-102.76,115.05,9.71,8.67-6.24,6.99,20.9,18.66Z"/>
+  </g>
+</svg>

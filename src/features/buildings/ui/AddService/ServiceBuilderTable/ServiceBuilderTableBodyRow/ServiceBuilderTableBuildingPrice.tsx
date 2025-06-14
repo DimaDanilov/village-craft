@@ -1,7 +1,7 @@
 import type { BuildingCost, BuildingLevel } from '@features/buildings/model';
-import { RESOURCE_INFOS, type ResourceName } from '@features/resources/model';
-import { ResourceCard } from '@widgets';
+import type { ResourceName } from '@features/resources/model';
 import { useTranslation } from 'react-i18next';
+import { ServiceBuilderResourceInfo } from './ServiceBuilderResourceInfo';
 
 interface ServiceBuilderTableBuildingPriceProps {
   currentLevel: BuildingLevel;
@@ -15,13 +15,12 @@ export const ServiceBuilderTableBuildingPrice = ({
   const { t } = useTranslation('Buildings');
   if (currentLevel !== '0' || buildingNextLevelCost === undefined) return <span>{t('errors.buildingIsReady')}</span>;
 
-  const buildingCostMaterialsCards = Object.entries(buildingNextLevelCost).map(([resourceKey, resourcesCost]) => {
+  const buildingCostMaterialsCards = Object.entries(buildingNextLevelCost).map(([resourceKey, resourceNeeded]) => {
     const availableResource = resourceKey as ResourceName;
-    const resourceImageSrc = RESOURCE_INFOS[availableResource].imageSrc;
     return (
-      <ResourceCard key={resourceKey} resourceCount={resourcesCost} imageSrc={resourceImageSrc} imageWidth="60px" />
+      <ServiceBuilderResourceInfo key={resourceKey} resourceName={availableResource} resourceNeeded={resourceNeeded} />
     );
   });
 
-  return <span className="grid grid-cols-3 gap-1">{buildingCostMaterialsCards}</span>;
+  return <span className="grid grid-cols-3 gap-x-2 gap-y-4">{buildingCostMaterialsCards}</span>;
 };

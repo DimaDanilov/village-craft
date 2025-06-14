@@ -1,4 +1,4 @@
-import { Forest, Mines } from '@features/resources/ui';
+import { Beach, Forest, Mines } from '@features/resources/ui';
 import { CardsSection } from './DefaultCardsSection';
 import { useTranslation } from 'react-i18next';
 import { DECK_CARD_RESOURCE_PALETTE } from '../DeckCard';
@@ -12,6 +12,7 @@ export const ResourcesSection = () => {
     >
       <Forest />
       <Mines />
+      <Beach />
     </CardsSection>
   );
 };

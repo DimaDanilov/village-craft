@@ -5,6 +5,9 @@
     },
     "pickaxe": {
       "title": "Кирка"
+    },
+    "shovel": {
+      "title": "Лопата"
     }
   },
   "errors": {

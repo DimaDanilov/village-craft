@@ -1,18 +1,33 @@
-import { AxeStats, PickaxeStats } from './InstrumentCards';
-import { CoinsStats, StoneStats, WoodStats } from './ResourceCards';
+import { InstrumentCard } from './InstrumentStatsCard';
+import { ResourceInfo } from './ResourceInfo';
 
 export const InstrumentResourcesInfo = () => {
   return (
-    <div className="w-fit h-fit flex flex-row border-2 border-amber-500 rounded-xl">
-      <div className="flex flex-col border-r-2 border-r-amber-500 gap-4 px-10 py-6">
-        <AxeStats />
-        <PickaxeStats />
+    <div className="w-fit h-fit grid grid-cols-[1fr_1px_1fr] gap-y-2">
+      {/* Row 1 */}
+      <div className="col-span-3 grid grid-cols-subgrid rounded-2xl border border-teal-400 overflow-hidden">
+        <InstrumentCard instrumentName="axe" />
+        <div className={`w-0.25 bg-teal-400`}></div>
+        <ResourceInfo resourceName="wood" />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 px-10 py-6">
-        <WoodStats flexDirection="col" imageWidth="100px" />
-        <StoneStats flexDirection="col" imageWidth="100px" />
-        <CoinsStats flexDirection="col" imageWidth="100px" />
+      {/* Row 2 */}
+      <div className="col-span-3 grid grid-cols-subgrid rounded-2xl border border-teal-400 overflow-hidden">
+        <InstrumentCard instrumentName="pickaxe" />
+        <div className={`w-0.25 bg-teal-400`}></div>
+        <ResourceInfo resourceName="stone" />
+      </div>
+
+      {/* Row 3 */}
+      <div className="col-span-3 grid grid-cols-subgrid rounded-2xl border border-teal-400 overflow-hidden">
+        <InstrumentCard instrumentName="shovel" />
+        <div className={`w-0.25 bg-teal-400`}></div>
+        <ResourceInfo resourceName="sand" />
+      </div>
+
+      {/* Row 4 - only coins */}
+      <div className="col-span-1 col-start-3 grid rounded-2xl border border-teal-400 overflow-hidden">
+        <ResourceInfo resourceName="coins" />
       </div>
     </div>
   );

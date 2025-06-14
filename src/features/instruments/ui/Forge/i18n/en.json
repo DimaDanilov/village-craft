@@ -2,8 +2,8 @@
   "table": {
     "header": {
       "currentTool": "Current Tool",
-      "cost": "Cost",
-      "receive": "Receive"
+      "newTool": "New Tool",
+      "cost": "Cost"
     },
     "body": {
       "click": "Click",

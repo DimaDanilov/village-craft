@@ -22,7 +22,7 @@ export function ForgeTableCurrentLevelInstrument({
 
   return (
     <div className="flex flex-col gap-1 items-center">
-      <img src={instrumentImageSrc} width="90px" alt="Instrument Image" />
+      <img src={instrumentImageSrc} width="80px" alt="Instrument Image" />
       <div className="flex flex-row items-center gap-2">
         <img src={resourceImageSrc} width="40px" alt="Resource Image" />
         <span>

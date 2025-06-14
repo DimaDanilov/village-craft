@@ -9,7 +9,7 @@ export function LanguageSwitch() {
 
   return (
     <button
-      className={`bg-orange-300 text-white text-xl font-semibold rounded-xl cursor-pointer w-14 h-14`}
+      className={`bg-orange-300 hover:bg-amber-500 transition text-white text-lg font-semibold rounded-xl cursor-pointer w-12 h-12`}
       onClick={() => changeAppLanguage({ language: languageToSet })}
     >
       {currentLanguage.toUpperCase()}
