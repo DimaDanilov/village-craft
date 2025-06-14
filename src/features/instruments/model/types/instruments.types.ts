@@ -22,7 +22,7 @@ export type InstrumentUpgradeCostRecord = AxeUpgradeCostRecord | PickaxeUpgradeC
 
 export type AxeLevel = '1' | '2' | '3' | '4' | '5';
 export type PickaxeLevel = '1' | '2' | '3' | '4' | '5';
-export type ShovelLevel = '1' | '2' | '3';
+export type ShovelLevel = '1' | '2' | '3' | '4' | '5';
 
 export interface AxeInstrument {
   level: AxeLevel;
