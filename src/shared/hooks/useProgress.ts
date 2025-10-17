@@ -14,11 +14,15 @@ export function useProgress({ totalTimeMs, frequencyMs }: UseProgressParams) {
 
     const interval = setInterval(() => {
       setProgress((currentProgress) => {
+        if (currentProgress >= 100) {
+          clearInterval(interval);
+          return 0;
+        }
+
         const newProgress = currentProgress + 100 / intervalsAmount;
 
         if (newProgress >= 100) {
-          clearInterval(interval);
-          return 0;
+          return 100;
         }
 
         return newProgress;

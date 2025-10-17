@@ -2,7 +2,7 @@
   "buildings": {
     "forest": {
       "title": "Forest",
-      "description": "Forest full of high trees. Nice place to chop wood with axe."
+      "description": "Nice place to chop wood with axe."
     },
     "mines": {
       "title": "Mines",
@@ -10,7 +10,7 @@
     },
     "beach": {
       "title": "Beach",
-      "description": "Dig sand with your shovel."
+      "description": "Dig sand on bright beach with your shovel."
     },
     "forge": {
       "title": "Forge",

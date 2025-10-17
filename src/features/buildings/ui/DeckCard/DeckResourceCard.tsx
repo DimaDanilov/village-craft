@@ -1,29 +1,28 @@
 import type { BuildingInfo } from '@features/buildings/model';
-import { DECK_CARD_RESOURCE_PALETTE } from './constants';
+import { DECK_CARD_RESOURCE_PALETTE, DECK_CARD_SERVICE_PALETTE } from './constants';
 import { useCallback } from 'react';
 import { useExecuteFunctionAfterTimer, useProgress } from '@shared/hooks';
-import { DeckCardText } from './DeckCardText';
 import { useTranslation } from 'react-i18next';
-import { DeckCardImage } from './DeckCardImage';
 
 interface DeckResourceCardProps {
   onClick: () => void;
   buildingInfo: BuildingInfo;
-  resourceCount: number;
-  ResourceIconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  resourceImageSrc: string;
+  resourceMiningAmount: number;
+  InstrumentIconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 const TIMER_DURATION = 1400;
-const TIMER_FREQUENCY = 70;
+const TIMER_FREQUENCY = 35;
 
 export const DeckResourceCard = ({
   onClick,
   buildingInfo,
-  resourceCount,
-  ResourceIconComponent,
+  resourceImageSrc,
+  resourceMiningAmount,
+  InstrumentIconComponent,
 }: DeckResourceCardProps) => {
-  const { bgColorClassName, textColorClassName, borderColorClassName, iconStrokeColorClassName } =
-    DECK_CARD_RESOURCE_PALETTE;
+  const { textColorClassName, iconStrokeColorClassName } = DECK_CARD_RESOURCE_PALETTE;
   const { title, description, imageSrc } = buildingInfo;
 
   const { t } = useTranslation('Buildings');
@@ -42,20 +41,46 @@ export const DeckResourceCard = ({
 
   return (
     <div
-      className={`flex flex-col justify-between w-52 h-72 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer pb-4`}
+      className="relative w-52 h-72 overflow-hidden rounded-xl transition ease-in-out hover:scale-105 cursor-pointer select-none"
       onClick={handleClick}
     >
-      <DeckCardImage imageSrc={imageSrc} />
-      <div className="h-1 transition-all duration-100 bg-amber-600" style={{ width: `${progress}%` }} />
-      <DeckCardText title={t(title)} description={t(description)} />
-      <div className="flex flex-row justify-end items-center mx-3 mt-5 gap-1">
-        <ResourceIconComponent
-          width={25}
-          height={25}
-          className={`fill-transparent ${iconStrokeColorClassName}`}
-          strokeWidth="60px"
+      <img className="absolute -z-10 w-full h-full object-cover" src={imageSrc} alt="Resource Image" />
+      {progress !== 0 && (
+        <div
+          className="absolute h-2 top-0 transition-all duration-100 bg-amber-600"
+          style={{ width: `${progress}%` }}
         />
-        <span className="text-sm">{resourceCount}</span>
+      )}
+
+      <div className="flex flex-col justify-between h-full">
+        <div className="mx-3">
+          <h2
+            className={`w-fit px-2 pb-1 mx-auto rounded-b-xl text-xl font-semibold text-center ${textColorClassName} bg-white`}
+          >
+            {t(title)}
+          </h2>
+        </div>
+        <div className="flex flex-col gap-1 mx-3 mb-3">
+          <div className="grid grid-cols-[1fr_2fr_1fr] gap-2 items-end">
+            <div className="flex flex-row justify-center items-center p-1 h-10 aspect-square bg-white rounded-xl">
+              <InstrumentIconComponent
+                width={24}
+                height={24}
+                className={`fill-transparent ${iconStrokeColorClassName}`}
+                strokeWidth="60px"
+              />
+            </div>
+            <div className="p-2 bg-white rounded-full aspect-square">
+              <img src={resourceImageSrc} alt="Resource" />
+            </div>
+            <div className="flex flex-row justify-center aspect-square overflow-hidden items-center p-2 bg-white rounded-full">
+              <span className={`text-md ${DECK_CARD_SERVICE_PALETTE.textColorClassName}`}>+{resourceMiningAmount}</span>
+            </div>
+          </div>
+          <div className="p-1 bg-white rounded-xl">
+            <p className={`text-center text-sm ${textColorClassName}`}>{t(description)}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
