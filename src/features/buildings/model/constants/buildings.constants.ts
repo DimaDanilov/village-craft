@@ -33,16 +33,16 @@ const BEACH_UPGRADE_COST: BeachUpgradeCostRecord = {
 const FORGE_UPGRADE_COST: ForgeUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 15,
-    stone: 10,
+    wood: 5,
+    stone: 3,
   },
 };
 
 const MARKET_UPGRADE_COST: MarketUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 80,
-    stone: 50,
+    wood: 60,
+    stone: 45,
   },
 };
 

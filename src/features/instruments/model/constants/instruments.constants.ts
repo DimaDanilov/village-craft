@@ -14,32 +14,32 @@ import type {
 
 const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
   '1': 1,
-  '2': 3,
-  '3': 5,
-  '4': 10,
-  '5': 16,
+  '2': 5,
+  '3': 10,
+  '4': 16,
+  '5': 40,
 };
 
 const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
   '1': 1,
-  '2': 2,
-  '3': 3,
-  '4': 5,
-  '5': 8,
+  '2': 3,
+  '3': 8,
+  '4': 14,
+  '5': 30,
 };
 
 const SHOVEL_LEVEL_EFFICIENCY: ShovelLevelEfficiencyRecord = {
   '1': 1,
-  '2': 5,
-  '3': 12,
-  '4': 16,
-  '5': 30,
+  '2': 12,
+  '3': 18,
+  '4': 30,
+  '5': 90,
 };
 
 const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   '1': {},
   '2': {
-    wood: 10,
+    wood: 3,
   },
   '3': {
     wood: 20,
@@ -51,30 +51,31 @@ const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
     coins: 30,
   },
   '5': {
-    wood: 150,
-    stone: 120,
-    coins: 100,
+    wood: 110,
+    stone: 90,
+    coins: 90,
   },
 };
 
 const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   '1': {},
   '2': {
-    wood: 15,
+    wood: 2,
+    stone: 4,
   },
   '3': {
-    wood: 30,
-    stone: 25,
+    wood: 40,
+    stone: 15,
   },
   '4': {
-    wood: 120,
-    stone: 55,
-    coins: 50,
+    wood: 100,
+    stone: 45,
+    coins: 45,
   },
   '5': {
-    wood: 200,
-    stone: 150,
-    coins: 150,
+    wood: 130,
+    stone: 100,
+    coins: 100,
   },
 };
 
