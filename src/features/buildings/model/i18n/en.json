@@ -14,7 +14,7 @@
     },
     "forge": {
       "title": "Forge",
-      "description": "Upgrade your instruments to collect resources more easily."
+      "description": "Upgrade your instruments for more resources."
     },
     "market": {
       "title": "Market",
@@ -22,7 +22,7 @@
     },
     "gateToTheFuture": {
       "title": "Gate To The Future",
-      "description": "Enter the future and reach your final goal in the new world."
+      "description": "Reach your final goal in the new world."
     }
   },
   "errors": {

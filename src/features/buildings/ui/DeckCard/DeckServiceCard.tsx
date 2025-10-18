@@ -14,26 +14,35 @@ export const DeckServiceCard = ({ onClick, buildingInfo, serviceLevel }: DeckSer
   const isServiceExists = serviceLevel > 0;
 
   const { title, description, imageSrc } = buildingInfo;
-  const { bgColorClassName, textColorClassName, borderColorClassName } = DECK_CARD_SERVICE_PALETTE;
+  const { textColorClassName } = DECK_CARD_SERVICE_PALETTE;
 
   return (
     <>
       {isServiceExists && (
         <div
-          className={`flex flex-col justify-between w-52 h-72 ${bgColorClassName} ${textColorClassName} ${borderColorClassName} border-1 rounded-xl transition ease-in-out hover:scale-105 select-none cursor-pointer pb-4`}
+          className="relative w-52 h-72 overflow-hidden rounded-xl transition ease-in-out hover:scale-105 cursor-pointer select-none"
           onClick={onClick}
         >
-          <div className="relative h-30 overflow-hidden rounded-t-xl">
-            <img className="w-full h-full object-cover" src={imageSrc} alt="Resource Image" />
-          </div>
-          <div className="flex flex-col gap-4 mx-3 mt-2 h-24">
-            <h2 className="text-xl font-semibold text-center">{buildingsTranslation(title)}</h2>
-            <p className="text-justify text-sm">{buildingsTranslation(description)}</p>
-          </div>
-          <div className="flex justify-end mx-3">
-            <span className="text-sm font-semibold">
-              {addServiceTranslation('deckCard.level')} {serviceLevel}
-            </span>
+          <img className="absolute -z-10 w-full h-full object-cover" src={imageSrc} alt="Resource Image" />
+
+          <div className="flex flex-col justify-between h-full">
+            <div className="mx-3">
+              <h2
+                className={`w-fit px-2 pb-1 mx-auto rounded-b-xl text-lg font-semibold text-center ${textColorClassName} bg-white`}
+              >
+                {buildingsTranslation(title)}
+              </h2>
+            </div>
+            <div className="flex flex-col gap-1 mx-3 mb-3">
+              <div className="w-fit self-center flex flex-row justify-center items-center px-4 py-1 bg-white rounded-xl">
+                <span className={`text-sm font-semibold ${textColorClassName}`}>
+                  {addServiceTranslation('deckCard.level')} {serviceLevel}
+                </span>
+              </div>
+              <div className="p-1 bg-white rounded-xl">
+                <p className={`text-center text-sm ${textColorClassName}`}>{buildingsTranslation(description)}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}

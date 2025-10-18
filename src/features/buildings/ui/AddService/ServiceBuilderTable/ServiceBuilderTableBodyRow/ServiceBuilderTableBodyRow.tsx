@@ -28,7 +28,7 @@ export const ServiceBuilderTableBodyRow = ({ buildingName }: ServiceBuilderTable
     <tr>
       <td>
         <div className="w-60 flex flex-col gap-1 justify-center items-center">
-          <img width="230px" src={imageSrc} alt="Forge Image" />
+          <img className='rounded-xl' width="230px" src={imageSrc} alt="Forge Image" />
           <span>{t(title)}</span>
         </div>
       </td>

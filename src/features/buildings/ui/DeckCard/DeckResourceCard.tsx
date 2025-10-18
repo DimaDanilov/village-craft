@@ -13,7 +13,7 @@ interface DeckResourceCardProps {
 }
 
 const TIMER_DURATION = 1400;
-const TIMER_FREQUENCY = 35;
+const TIMER_FREQUENCY = 70;
 
 export const DeckResourceCard = ({
   onClick,
@@ -47,15 +47,17 @@ export const DeckResourceCard = ({
       <img className="absolute -z-10 w-full h-full object-cover" src={imageSrc} alt="Resource Image" />
       {progress !== 0 && (
         <div
-          className="absolute h-2 top-0 transition-all duration-100 bg-amber-600"
-          style={{ width: `${progress}%` }}
+          className="absolute w-full h-2 top-0 left-0 bg-amber-600 transition-transform duration-100"
+          style={{
+            transform: `translateX(-${100 - progress}%)`,
+          }}
         />
       )}
 
       <div className="flex flex-col justify-between h-full">
         <div className="mx-3">
           <h2
-            className={`w-fit px-2 pb-1 mx-auto rounded-b-xl text-xl font-semibold text-center ${textColorClassName} bg-white`}
+            className={`w-fit px-2 pb-1 mx-auto rounded-b-xl text-lg font-semibold text-center ${textColorClassName} bg-white`}
           >
             {t(title)}
           </h2>
