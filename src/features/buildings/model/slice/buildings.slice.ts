@@ -2,6 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type {
   BeachBuilding,
   BuildingName,
+  DeepMinesBuilding,
   ForestBuilding,
   ForgeBuilding,
   GateToTheFutureBuilding,
@@ -15,6 +16,7 @@ import { BUILDING_UPGRADE_COST } from '..';
 export interface BuildingState {
   forest: ForestBuilding;
   mines: MinesBuilding;
+  deepMines: DeepMinesBuilding;
   beach: BeachBuilding;
   forge: ForgeBuilding;
   market: MarketBuilding;
@@ -32,6 +34,9 @@ const initialState: BuildingsState = {
       level: '1',
     },
     mines: {
+      level: '1',
+    },
+    deepMines: {
       level: '1',
     },
     beach: {

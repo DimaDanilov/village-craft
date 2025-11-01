@@ -2,13 +2,10 @@ import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import ShovelImageSrc from '@assets/instruments/Shovel.png';
 import type {
-  AxeLevelEfficiencyRecord,
   AxeUpgradeCostRecord,
   InstrumentInfo,
   InstrumentInfos,
-  PickaxeLevelEfficiencyRecord,
   PickaxeUpgradeCostRecord,
-  ShovelLevelEfficiencyRecord,
   ShovelUpgradeCostRecord,
 } from '../types';
 

@@ -8,6 +8,10 @@
       "title": "Mines",
       "description": "Mine stone with your pickaxe."
     },
+    "deepMines": {
+      "title": "Deep Mines",
+      "description": "Dark deep mines unlock precious stones."
+    },
     "beach": {
       "title": "Beach",
       "description": "Dig sand on bright beach with your shovel."
