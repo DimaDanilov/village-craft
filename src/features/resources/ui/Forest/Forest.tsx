@@ -4,13 +4,13 @@ import { useCallback } from 'react';
 import AxeIcon from '@assets/icons/Axe.svg?react';
 import { DeckResourceCard } from '@features/buildings/ui';
 import { BUILDING_INFOS } from '@features/buildings/model';
-import { INSTRUMENT_INFOS, instrumentsSlice } from '@features/instruments/model';
+import { instrumentsSlice } from '@features/instruments/model';
 
 export const Forest = () => {
   const dispatch = useAppDispatch();
 
   const axeCurrentLevel = useAppSelector((state) => instrumentsSlice.selectors.selectInstrumentLevel(state, 'axe'));
-  const woodMiningAmount = INSTRUMENT_INFOS.axe.levelEfficiency[axeCurrentLevel];
+  const woodMiningAmount = RESOURCE_INFOS.wood.resourceMinedByInstrumentLevel?.[axeCurrentLevel] || 0;
 
   const chopWood = useCallback(() => dispatch(mineResourcesWithInstrument('wood')), [dispatch]);
 

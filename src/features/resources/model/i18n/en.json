@@ -2,6 +2,7 @@
   "resources": {
     "wood": { "title": "Wood" },
     "stone": { "title": "Stone" },
+    "iron": { "title": "Iron" },
     "sand": { "title": "Sand" },
     "coins": { "title": "Coins" }
   },

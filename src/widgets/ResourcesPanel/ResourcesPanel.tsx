@@ -12,6 +12,7 @@ export function ResourcesPanel() {
       >
         <ResourceInfoPanel resourceName="wood" />
         <ResourceInfoPanel resourceName="stone" />
+        <ResourceInfoPanel resourceName="iron" />
         <ResourceInfoPanel resourceName="sand" />
         <ResourceInfoPanel resourceName="coins" />
       </div>

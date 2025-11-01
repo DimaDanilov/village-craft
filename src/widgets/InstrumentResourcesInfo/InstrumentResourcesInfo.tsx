@@ -15,7 +15,10 @@ export const InstrumentResourcesInfo = () => {
       <div className="col-span-3 grid grid-cols-subgrid rounded-2xl border border-teal-400 overflow-hidden">
         <InstrumentCard instrumentName="pickaxe" />
         <div className={`w-0.25 bg-teal-400`}></div>
-        <ResourceInfo resourceName="stone" />
+        <div>
+          <ResourceInfo resourceName="stone" />
+          <ResourceInfo resourceName="iron" />
+        </div>
       </div>
 
       {/* Row 3 */}

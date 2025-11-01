@@ -12,30 +12,6 @@ import type {
   ShovelUpgradeCostRecord,
 } from '../types';
 
-const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 5,
-  '3': 10,
-  '4': 16,
-  '5': 40,
-};
-
-const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 3,
-  '3': 8,
-  '4': 14,
-  '5': 30,
-};
-
-const SHOVEL_LEVEL_EFFICIENCY: ShovelLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 12,
-  '3': 18,
-  '4': 30,
-  '5': 90,
-};
-
 const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   '1': {},
   '2': {
@@ -91,7 +67,6 @@ const AXE_INFO: InstrumentInfo = {
   title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
   resourceMined: 'wood',
-  levelEfficiency: AXE_LEVEL_EFFICIENCY,
   upgradeCost: AXE_UPGRADE_COST,
 } as const;
 
@@ -99,7 +74,6 @@ const PICKAXE_INFO: InstrumentInfo = {
   title: 'instruments.pickaxe.title',
   imageSrc: PickaxeImageSrc,
   resourceMined: 'stone',
-  levelEfficiency: PICKAXE_LEVEL_EFFICIENCY,
   upgradeCost: PICKAXE_UPGRADE_COST,
 } as const;
 
@@ -107,7 +81,6 @@ const SHOVEL_INFO: InstrumentInfo = {
   title: 'instruments.shovel.title',
   imageSrc: ShovelImageSrc,
   resourceMined: 'sand',
-  levelEfficiency: SHOVEL_LEVEL_EFFICIENCY,
   upgradeCost: SHOVEL_UPGRADE_COST,
 };
 

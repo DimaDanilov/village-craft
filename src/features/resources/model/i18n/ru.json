@@ -2,6 +2,7 @@
   "resources": {
     "wood": { "title": "Дерево" },
     "stone": { "title": "Камень" },
+    "iron": { "title": "Железо" },
     "sand": { "title": "Песок" },
     "coins": { "title": "Монеты" }
   },
