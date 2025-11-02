@@ -35,11 +35,10 @@ export const Mines = () => {
           InstrumentIconComponent={PickaxeIcon}
           resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'iron'].imageSrc}
           resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
+          onRollCard={handleRollCard}
+          rollAnimationStatus={animationStatus}
         />
       </FlippableCard>
-      <button disabled={animationStatus !== false} onClick={handleRollCard}>
-        {animationStatus ? 'disabled' : 'Roll Card'}
-      </button>
     </div>
   );
 };
