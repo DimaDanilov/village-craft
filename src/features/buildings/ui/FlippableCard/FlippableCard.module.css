@@ -1,0 +1,31 @@
+@keyframes rotateFirstHalf {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
+}
+
+@keyframes rotateSecondHalf {
+  from {
+    transform: rotateY(-90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+.cardAnimationContainer .cardTransformContainer {
+  transform-style: preserve-3d;
+}
+
+.cardAnimationContainer.firstHalf .cardTransformContainer {
+  animation: rotateFirstHalf 500ms;
+  transform: rotateY(90deg);
+}
+
+.cardAnimationContainer.secondHalf .cardTransformContainer {
+  animation: rotateSecondHalf 500ms;
+  transform: rotateY(0deg);
+}

@@ -1,18 +1,15 @@
 import { mineResourcesWithInstrument, RESOURCE_INFOS } from '@features/resources/model';
 import { useAppDispatch, useAppSelector } from '@store';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import PickaxeIcon from '@assets/icons/Pickaxe.svg?react';
 import { DeckResourceCard } from '@features/buildings/ui';
 import { BUILDING_INFOS } from '@features/buildings/model';
 import { instrumentsSlice } from '@features/instruments/model';
+import { FlippableCard, useFlippableCard } from '@features/buildings/ui/FlippableCard';
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
-
-  const [cardSide, setCardSide] = useState<'front' | 'back'>('front');
-  const handleRollCard = useCallback(() => {
-    setCardSide((prevSide) => (prevSide === 'front' ? 'back' : 'front'));
-  }, []);
+  const { cardSide, animationStatus, handleRollCard } = useFlippableCard();
 
   const pickAxeCurrentLevel = useAppSelector((state) =>
     instrumentsSlice.selectors.selectInstrumentLevel(state, 'pickaxe'),
@@ -31,24 +28,18 @@ export const Mines = () => {
 
   return (
     <div>
-      {cardSide === 'front' ? (
+      <FlippableCard animationStatus={animationStatus}>
         <DeckResourceCard
-          onClick={mineStone}
-          buildingInfo={BUILDING_INFOS.mines}
+          onClick={cardSide === 'front' ? mineStone : mineIron}
+          buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}
           InstrumentIconComponent={PickaxeIcon}
-          resourceImageSrc={RESOURCE_INFOS.stone.imageSrc}
-          resourceMiningAmount={stoneMiningAmount}
+          resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'iron'].imageSrc}
+          resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
         />
-      ) : (
-        <DeckResourceCard
-          onClick={mineIron}
-          buildingInfo={BUILDING_INFOS.deepMines}
-          InstrumentIconComponent={PickaxeIcon}
-          resourceImageSrc={RESOURCE_INFOS.iron.imageSrc}
-          resourceMiningAmount={ironMiningAmount}
-        />
-      )}
-      <button onClick={handleRollCard}>Roll Card</button>
+      </FlippableCard>
+      <button disabled={animationStatus !== false} onClick={handleRollCard}>
+        {animationStatus ? 'disabled' : 'Roll Card'}
+      </button>
     </div>
   );
 };
