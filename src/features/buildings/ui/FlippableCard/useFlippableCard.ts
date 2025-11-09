@@ -1,6 +1,10 @@
 import { useCallback, useState } from 'react';
 
-export function useFlippableCard() {
+interface UseFlippableCardParams {
+  animationDurationMs: number;
+}
+
+export function useFlippableCard({ animationDurationMs }: UseFlippableCardParams) {
   const [cardSide, setCardSide] = useState<'front' | 'back'>('front');
   const [animationStatus, setAnimationStatus] = useState<'firstHalf' | 'secondHalf' | false>(false);
   const handleRollCard = useCallback(() => {
@@ -10,9 +14,9 @@ export function useFlippableCard() {
       setCardSide((prevSide) => {
         return prevSide === 'front' ? 'back' : 'front';
       });
-    }, 500);
-    setTimeout(() => setAnimationStatus(false), 1000);
-  }, []);
+    }, animationDurationMs / 2);
+    setTimeout(() => setAnimationStatus(false), animationDurationMs);
+  }, [animationDurationMs]);
 
-  return { cardSide, animationStatus, handleRollCard };
+  return { cardSide, animationStatus, animationDurationMs, handleRollCard };
 }

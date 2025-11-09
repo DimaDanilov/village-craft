@@ -9,7 +9,9 @@ import { FlippableCard, useFlippableCard } from '@features/buildings/ui/Flippabl
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
-  const { cardSide, animationStatus, handleRollCard } = useFlippableCard();
+  const { cardSide, animationStatus, animationDurationMs, handleRollCard } = useFlippableCard({
+    animationDurationMs: 1000,
+  });
 
   const pickAxeCurrentLevel = useAppSelector((state) =>
     instrumentsSlice.selectors.selectInstrumentLevel(state, 'pickaxe'),
@@ -28,7 +30,7 @@ export const Mines = () => {
 
   return (
     <div>
-      <FlippableCard animationStatus={animationStatus}>
+      <FlippableCard animationStatus={animationStatus} animationDurationMs={animationDurationMs}>
         <DeckResourceCard
           onClick={cardSide === 'front' ? mineStone : mineIron}
           buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}

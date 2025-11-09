@@ -1,14 +1,23 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, CSSProperties } from 'react';
 
 import styles from './FlippableCard.module.css';
 
-interface FlippableCardProps extends PropsWithChildren {
-  animationStatus: 'firstHalf' | 'secondHalf' | false;
+interface CustomCSSProperties extends CSSProperties {
+  '--animation-duration': string | number;
 }
 
-export const FlippableCard = ({ animationStatus, children }: FlippableCardProps) => {
+interface FlippableCardProps extends PropsWithChildren {
+  animationStatus: 'firstHalf' | 'secondHalf' | false;
+  animationDurationMs: number;
+}
+
+export const FlippableCard = ({ animationStatus, animationDurationMs, children }: FlippableCardProps) => {
+  const style: CustomCSSProperties = {
+    '--animation-duration': animationDurationMs,
+  };
+
   return (
-    <div className={`${styles.cardAnimationContainer} ${animationStatus ? styles[animationStatus] : ''}`}>
+    <div className={`${styles.cardAnimationContainer} ${animationStatus ? styles[animationStatus] : ''}`} style={style}>
       <div className={styles.cardTransformContainer}>{children}</div>
     </div>
   );

@@ -21,11 +21,11 @@
 }
 
 .cardAnimationContainer.firstHalf .cardTransformContainer {
-  animation: rotateFirstHalf 500ms;
+  animation: rotateFirstHalf calc(var(--animation-duration) / 2 * 1ms);
   transform: rotateY(90deg);
 }
 
 .cardAnimationContainer.secondHalf .cardTransformContainer {
-  animation: rotateSecondHalf 500ms;
+  animation: rotateSecondHalf calc(var(--animation-duration) / 2 * 1ms);
   transform: rotateY(0deg);
 }
