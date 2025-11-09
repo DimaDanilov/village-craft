@@ -10,6 +10,7 @@ export const MarketTable = () => {
       <tbody>
         <MarketTableBodyRow resourceName="wood" />
         <MarketTableBodyRow resourceName="stone" />
+        <MarketTableBodyRow resourceName="ironOre" />
         <MarketTableBodyRow resourceName="sand" />
       </tbody>
     </table>

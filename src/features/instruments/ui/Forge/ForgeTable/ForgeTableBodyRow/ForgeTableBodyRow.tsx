@@ -17,7 +17,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
   const upgradeInstrumentWithResources = useUpgradeInstrumentWithResources(instrumentName);
   const { isNextLevelExist, instrumentCurrentLevel, instrumentNextLevel, instrumentNextLevelCost, isUpgradeAvailable } =
     useInstrumentUpgradeCost(instrumentName);
-  const { instrumentCurrentLevelEfficiency, instrumentNextLevelEfficiency } =
+  const { resourcesMinedEfficiencyCurrentLevel, resourcesMinedEfficiencyNextLevel } =
     useInstrumentUpgradeEfficiency(instrumentName);
 
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
         <ForgeTableCurrentLevelInstrument
           instrumentName={instrumentName}
           instrumentCurrentLevel={instrumentCurrentLevel}
-          instrumentCurrentLevelEfficiency={instrumentCurrentLevelEfficiency}
+          resourcesMinedEfficiencyCurrentLevel={resourcesMinedEfficiencyCurrentLevel}
         />
       </td>
       <td>
@@ -41,7 +41,7 @@ export const ForgeTableBodyRow = ({ instrumentName }: ForgeTableBodyRowParams) =
           instrumentName={instrumentName}
           isNextLevelExist={isNextLevelExist}
           instrumentNextLevel={instrumentNextLevel}
-          instrumentNextLevelEfficiency={instrumentNextLevelEfficiency}
+          resourcesMinedEfficiencyNextLevel={resourcesMinedEfficiencyNextLevel}
         />
       </td>
       <td>

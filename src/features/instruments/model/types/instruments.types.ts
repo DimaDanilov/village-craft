@@ -30,7 +30,7 @@ export interface ShovelInstrument {
 export interface InstrumentInfo {
   title: `instruments.${InstrumentName}.title`;
   imageSrc: string;
-  resourceMined: ResourceName;
+  resourcesMined: ResourceName[];
   upgradeCost: InstrumentUpgradeCostRecord;
 }
 

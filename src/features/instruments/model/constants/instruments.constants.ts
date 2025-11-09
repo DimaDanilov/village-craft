@@ -63,21 +63,21 @@ const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
 const AXE_INFO: InstrumentInfo = {
   title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
-  resourceMined: 'wood',
+  resourcesMined: ['wood'],
   upgradeCost: AXE_UPGRADE_COST,
 } as const;
 
 const PICKAXE_INFO: InstrumentInfo = {
   title: 'instruments.pickaxe.title',
   imageSrc: PickaxeImageSrc,
-  resourceMined: 'stone',
+  resourcesMined: ['stone', 'ironOre'],
   upgradeCost: PICKAXE_UPGRADE_COST,
 } as const;
 
 const SHOVEL_INFO: InstrumentInfo = {
   title: 'instruments.shovel.title',
   imageSrc: ShovelImageSrc,
-  resourceMined: 'sand',
+  resourcesMined: ['sand'],
   upgradeCost: SHOVEL_UPGRADE_COST,
 };
 

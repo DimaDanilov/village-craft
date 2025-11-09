@@ -2,8 +2,8 @@ import { useAppSelector } from '@store';
 import { isInstrumentNextLevelExist, isInstrumentUpgradeAvailable } from '../tools';
 import type { InstrumentCost, InstrumentName } from '../types';
 import { instrumentsSlice } from '../slice';
-import { resourcesSlice } from '@features/resources/model';
-import type { ResourceState } from '@features/resources/model';
+import { RESOURCE_INFOS, resourcesSlice } from '@features/resources/model';
+import type { ResourceName, ResourceState } from '@features/resources/model';
 import { INSTRUMENT_INFOS } from '../constants';
 
 export function useInstrumentUpgradeCost(instrumentName: InstrumentName) {
@@ -37,18 +37,31 @@ export function useInstrumentUpgradeEfficiency(instrumentName: InstrumentName) {
 
   const isNextLevelExist = isInstrumentNextLevelExist(instrumentNextLevel, instrumentUpgradeCostList);
 
-  const instrumentLevelEfficiencyList = INSTRUMENT_INFOS[instrumentName].levelEfficiency;
-  const instrumentCurrentLevelEfficiency: number = instrumentLevelEfficiencyList[instrumentCurrentLevel];
-  const instrumentNextLevelEfficiency: number | undefined = isNextLevelExist
-    ? instrumentLevelEfficiencyList[instrumentNextLevel]
-    : undefined;
+  const resourcesMinedByInstrument = INSTRUMENT_INFOS[instrumentName].resourcesMined;
+
+  const resourcesMinedEfficiencyCurrentLevel = resourcesMinedByInstrument.reduce((acc, resource) => {
+    const instrumentLevelEfficiencyList = RESOURCE_INFOS[resource].resourceMinedByInstrumentLevel;
+    const instrumentCurrentLevelEfficiency: number | undefined =
+      instrumentLevelEfficiencyList?.[instrumentCurrentLevel];
+    acc[resource] = instrumentCurrentLevelEfficiency;
+    return acc;
+  }, {} as Partial<Record<ResourceName, number | undefined>>);
+
+  const resourcesMinedEfficiencyNextLevel = resourcesMinedByInstrument.reduce((acc, resource) => {
+    const instrumentLevelEfficiencyList = RESOURCE_INFOS[resource].resourceMinedByInstrumentLevel;
+    const instrumentNextLevelEfficiency: number | undefined = isNextLevelExist
+      ? instrumentLevelEfficiencyList?.[instrumentNextLevel]
+      : undefined;
+    acc[resource] = instrumentNextLevelEfficiency;
+    return acc;
+  }, {} as Partial<Record<ResourceName, number | undefined>>);
 
   return {
     instrumentCurrentLevel,
     instrumentNextLevel,
     isNextLevelExist,
-    instrumentCurrentLevelEfficiency,
-    instrumentNextLevelEfficiency,
+    resourcesMinedEfficiencyCurrentLevel,
+    resourcesMinedEfficiencyNextLevel,
   };
 }
 
