@@ -10,9 +10,11 @@ import type {
   MinesUpgradeCostRecord,
   BeachUpgradeCostRecord,
   DeepMinesUpgradeCostRecord,
+  ForestDarkUpgradeCostRecord,
 } from '../types';
 
 import ForestImageSrc from '@assets/locations/Forest.png';
+import ForestDarkImageSrc from '@assets/locations/Forest_dark.png';
 import MinesImageSrc from '@assets/locations/Mines.png';
 import DeepMinesImageSrc from '@assets/locations/Deep_Mines.png';
 import BeachImageSrc from '@assets/locations/Beach.png';
@@ -21,6 +23,10 @@ import ForgeImageSrc from '@assets/locations/Forge.png';
 import GateToTheFutureImageSrc from '@assets/locations/Gate_to_the_future.png';
 
 const FOREST_UPGRADE_COST: ForestUpgradeCostRecord = {
+  '1': {},
+};
+
+const FOREST_DARK_UPGRADE_COST: ForestDarkUpgradeCostRecord = {
   '1': {},
 };
 
@@ -47,15 +53,18 @@ const FORGE_UPGRADE_COST: ForgeUpgradeCostRecord = {
 const MARKET_UPGRADE_COST: MarketUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 60,
-    stone: 45,
+    wood: 50,
+    hardwood: 15,
+    stone: 20,
+    sand: 15,
   },
 };
 
 const GATE_TO_THE_FUTURE_UPGRADE_COST: GateToTheFutureUpgradeCostRecord = {
   '0': {},
   '1': {
-    wood: 400,
+    wood: 250,
+    hardwood: 200,
     stone: 200,
     ironOre: 140,
     sand: 500,
@@ -65,6 +74,7 @@ const GATE_TO_THE_FUTURE_UPGRADE_COST: GateToTheFutureUpgradeCostRecord = {
 
 export const BUILDING_UPGRADE_COST: Record<BuildingName, BuildingUpgradeCostRecord> = {
   forest: FOREST_UPGRADE_COST,
+  forestDark: FOREST_DARK_UPGRADE_COST,
   mines: MINES_UPGRADE_COST,
   deepMines: DEEP_MINES_UPGRADE_COST,
   beach: BEACH_UPGRADE_COST,
@@ -77,6 +87,12 @@ export const FOREST_INFO: BuildingInfo = {
   imageSrc: ForestImageSrc,
   title: 'buildings.forest.title',
   description: 'buildings.forest.description',
+} as const;
+
+export const FOREST_DARK_INFO: BuildingInfo = {
+  imageSrc: ForestDarkImageSrc,
+  title: 'buildings.forestDark.title',
+  description: 'buildings.forestDark.description',
 } as const;
 
 export const MINES_INFO: BuildingInfo = {
@@ -117,6 +133,7 @@ export const GATE_TO_THE_FUTURE_INFO: BuildingInfo = {
 
 export const BUILDING_INFOS: BuildingInfos = {
   forest: FOREST_INFO,
+  forestDark: FOREST_DARK_INFO,
   mines: MINES_INFO,
   deepMines: DEEP_MINES_INFO,
   beach: BEACH_INFO,

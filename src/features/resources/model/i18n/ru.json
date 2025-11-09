@@ -1,6 +1,7 @@
 {
   "resources": {
     "wood": { "title": "Дерево" },
+    "hardwood": { "title": "Твердое дерево" },
     "stone": { "title": "Камень" },
     "ironOre": { "title": "Железная руда" },
     "sand": { "title": "Песок" },

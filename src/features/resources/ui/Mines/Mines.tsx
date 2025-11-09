@@ -29,18 +29,16 @@ export const Mines = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <FlippableCard animationStatus={animationStatus} animationDurationMs={animationDurationMs}>
-        <DeckResourceCard
-          onClick={cardSide === 'front' ? mineStone : mineIron}
-          buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}
-          InstrumentIconComponent={PickaxeIcon}
-          resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'ironOre'].imageSrc}
-          resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
-          onRollCard={handleRollCard}
-          rollAnimationStatus={animationStatus}
-        />
-      </FlippableCard>
-    </div>
+    <FlippableCard animationStatus={animationStatus} animationDurationMs={animationDurationMs}>
+      <DeckResourceCard
+        onClick={cardSide === 'front' ? mineStone : mineIron}
+        buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}
+        InstrumentIconComponent={PickaxeIcon}
+        resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'ironOre'].imageSrc}
+        resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
+        onRollCard={handleRollCard}
+        rollAnimationStatus={animationStatus}
+      />
+    </FlippableCard>
   );
 };

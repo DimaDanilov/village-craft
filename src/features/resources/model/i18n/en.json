@@ -1,6 +1,7 @@
 {
   "resources": {
     "wood": { "title": "Wood" },
+    "hardwood": { "title": "Hardwood" },
     "stone": { "title": "Stone" },
     "ironOre": { "title": "Iron Ore" },
     "sand": { "title": "Sand" },

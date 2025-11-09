@@ -6,6 +6,7 @@ export type BuildingName = keyof BuildingState;
 export type BuildingCost = Partial<Record<ResourceName, number>>;
 
 export type ForestUpgradeCostRecord = Record<ForestLevel, BuildingCost>;
+export type ForestDarkUpgradeCostRecord = Record<ForestDarkLevel, BuildingCost>;
 export type MinesUpgradeCostRecord = Record<MinesLevel, BuildingCost>;
 export type DeepMinesUpgradeCostRecord = Record<DeepMinesLevel, BuildingCost>;
 export type BeachUpgradeCostRecord = Record<BeachLevel, BuildingCost>;
@@ -15,6 +16,7 @@ export type GateToTheFutureUpgradeCostRecord = Record<GateToTheFutureLevel, Buil
 
 export type BuildingUpgradeCostRecord =
   | ForestUpgradeCostRecord
+  | ForestDarkUpgradeCostRecord
   | MinesUpgradeCostRecord
   | DeepMinesUpgradeCostRecord
   | BeachUpgradeCostRecord
@@ -23,6 +25,7 @@ export type BuildingUpgradeCostRecord =
   | GateToTheFutureUpgradeCostRecord;
 
 export type ForestLevel = '1';
+export type ForestDarkLevel = '1';
 export type DeepMinesLevel = '1';
 export type MinesLevel = '1';
 export type BeachLevel = '1';
@@ -30,10 +33,14 @@ export type ForgeLevel = '0' | '1';
 export type MarketLevel = '0' | '1';
 export type GateToTheFutureLevel = '0' | '1';
 
-export type BuildingLevel = ForestLevel | MinesLevel | DeepMinesLevel | BeachLevel | ForgeLevel | MarketLevel | GateToTheFutureLevel;
+export type BuildingLevel = ForestLevel | ForestDarkLevel | MinesLevel | DeepMinesLevel | BeachLevel | ForgeLevel | MarketLevel | GateToTheFutureLevel;
 
 export interface ForestBuilding {
   level: ForestLevel;
+}
+
+export interface ForestDarkBuilding {
+  level: ForestDarkLevel;
 }
 
 export interface MinesBuilding {

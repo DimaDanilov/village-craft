@@ -16,15 +16,18 @@ const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   },
   '3': {
     wood: 20,
+    hardwood: 12,
     stone: 15,
   },
   '4': {
     wood: 80,
+    hardwood: 30,
     stone: 40,
     coins: 30,
   },
   '5': {
     wood: 110,
+    hardwood: 55,
     stone: 90,
     coins: 90,
   },
@@ -38,15 +41,17 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   },
   '3': {
     wood: 40,
+    hardwood: 12,
     stone: 15,
   },
   '4': {
     wood: 100,
+    hardwood: 30,
     stone: 45,
     coins: 45,
   },
   '5': {
-    wood: 130,
+    hardwood: 75,
     stone: 100,
     coins: 100,
   },
@@ -55,7 +60,7 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
 const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
   '1': {},
   '2': { wood: 30 },
-  '3': { stone: 35, coins: 70 },
+  '3': { hardwood: 20, stone: 35, coins: 70 },
   '4': { sand: 60, coins: 120 },
   '5': { stone: 60, sand: 120, coins: 150 },
 };
@@ -63,7 +68,7 @@ const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
 const AXE_INFO: InstrumentInfo = {
   title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
-  resourcesMined: ['wood'],
+  resourcesMined: ['wood', 'hardwood'],
   upgradeCost: AXE_UPGRADE_COST,
 } as const;
 

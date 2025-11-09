@@ -4,6 +4,7 @@ import type {
   BuildingName,
   DeepMinesBuilding,
   ForestBuilding,
+  ForestDarkBuilding,
   ForgeBuilding,
   GateToTheFutureBuilding,
   MarketBuilding,
@@ -15,6 +16,7 @@ import { BUILDING_UPGRADE_COST } from '..';
 
 export interface BuildingState {
   forest: ForestBuilding;
+  forestDark: ForestDarkBuilding;
   mines: MinesBuilding;
   deepMines: DeepMinesBuilding;
   beach: BeachBuilding;
@@ -31,6 +33,9 @@ export interface BuildingsState {
 const initialState: BuildingsState = {
   buildings: {
     forest: {
+      level: '1',
+    },
+    forestDark: {
       level: '1',
     },
     mines: {

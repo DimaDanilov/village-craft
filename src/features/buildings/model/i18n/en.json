@@ -4,6 +4,10 @@
       "title": "Forest",
       "description": "Nice place to chop wood with axe."
     },
+    "forestDark": {
+      "title": "Dark Forest",
+      "description": "Birds are not singing, very quiet and scary place."
+    },
     "mines": {
       "title": "Mines",
       "description": "Mine stone with your pickaxe."

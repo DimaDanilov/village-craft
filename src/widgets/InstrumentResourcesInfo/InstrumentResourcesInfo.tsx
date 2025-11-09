@@ -8,7 +8,10 @@ export const InstrumentResourcesInfo = () => {
       <div className="col-span-3 grid grid-cols-subgrid rounded-2xl border border-teal-400 overflow-hidden">
         <InstrumentCard instrumentName="axe" />
         <div className={`w-0.25 bg-teal-400`}></div>
-        <ResourceInfo resourceName="wood" />
+        <div>
+          <ResourceInfo resourceName="wood" />
+          <ResourceInfo resourceName="hardwood" />
+        </div>
       </div>
 
       {/* Row 2 */}
