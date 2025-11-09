@@ -17,7 +17,7 @@ export const InstrumentResourcesInfo = () => {
         <div className={`w-0.25 bg-teal-400`}></div>
         <div>
           <ResourceInfo resourceName="stone" />
-          <ResourceInfo resourceName="iron" />
+          <ResourceInfo resourceName="ironOre" />
         </div>
       </div>
 

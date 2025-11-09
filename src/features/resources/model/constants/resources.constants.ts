@@ -1,10 +1,16 @@
 import WoodImageSrc from '@assets/resources/Wood.png';
 import StoneImageSrc from '@assets/resources/Stone.png';
-import IronImageSrc from '@assets/resources/Iron.png';
+import IronOreImageSrc from '@assets/resources/Iron_Ore.png';
 import SandImageSrc from '@assets/resources/Sand.png';
 import CoinsImageSrc from '@assets/resources/Coins.png';
 
-import type { IronMinedEfficiencyRecord, ResourceInfos, SandMinedEfficiencyRecord, StoneMinedEfficiencyRecord, WoodMinedEfficiencyRecord } from '../types';
+import type {
+  IronOreMinedEfficiencyRecord,
+  ResourceInfos,
+  SandMinedEfficiencyRecord,
+  StoneMinedEfficiencyRecord,
+  WoodMinedEfficiencyRecord,
+} from '../types';
 
 const WOOD_MINED_EFFICIENCY: WoodMinedEfficiencyRecord = {
   '1': 1,
@@ -22,12 +28,12 @@ const STONE_MINED_EFFICIENCY: StoneMinedEfficiencyRecord = {
   '5': 30,
 };
 
-const IRON_MINED_EFFICIENCY: IronMinedEfficiencyRecord = {
-  '1': 10,
-  '2': 30,
-  '3': 8,
-  '4': 14,
-  '5': 30,
+const IRON_ORE_MINED_EFFICIENCY: IronOreMinedEfficiencyRecord = {
+  '1': 1,
+  '2': 2,
+  '3': 4,
+  '4': 7,
+  '5': 12,
 };
 
 const SAND_MINED_EFFICIENCY: SandMinedEfficiencyRecord = {
@@ -53,11 +59,11 @@ export const RESOURCE_INFOS: ResourceInfos = {
     resourceMinedByInstrumentLevel: STONE_MINED_EFFICIENCY,
     cost: 3,
   },
-  iron: {
-    title: 'resources.iron.title',
-    imageSrc: IronImageSrc,
+  ironOre: {
+    title: 'resources.ironOre.title',
+    imageSrc: IronOreImageSrc,
     instrumentMining: 'pickaxe',
-    resourceMinedByInstrumentLevel: IRON_MINED_EFFICIENCY,
+    resourceMinedByInstrumentLevel: IRON_ORE_MINED_EFFICIENCY,
     cost: 5,
   },
   sand: {

@@ -12,7 +12,7 @@ export interface StonePile {
   count: number;
 }
 
-export interface IronStack {
+export interface IronOreStack {
   count: number;
 }
 
@@ -26,13 +26,13 @@ export interface CoinsStorage {
 
 export type WoodMinedEfficiencyRecord = Record<AxeLevel, number>;
 export type StoneMinedEfficiencyRecord = Record<PickaxeLevel, number>;
-export type IronMinedEfficiencyRecord = Record<PickaxeLevel, number>;
+export type IronOreMinedEfficiencyRecord = Record<PickaxeLevel, number>;
 export type SandMinedEfficiencyRecord = Record<ShovelLevel, number>;
 
 export type InstrumentLevelEfficiencyRecord =
   | WoodMinedEfficiencyRecord
   | StoneMinedEfficiencyRecord
-  | IronMinedEfficiencyRecord
+  | IronOreMinedEfficiencyRecord
   | SandMinedEfficiencyRecord;
 
 interface ResourceInfo {

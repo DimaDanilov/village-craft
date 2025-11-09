@@ -16,14 +16,14 @@ export const Mines = () => {
   );
 
   const stoneMiningAmount = RESOURCE_INFOS.stone.resourceMinedByInstrumentLevel?.[pickAxeCurrentLevel] || 0;
-  const ironMiningAmount = RESOURCE_INFOS.iron.resourceMinedByInstrumentLevel?.[pickAxeCurrentLevel] || 0;
+  const ironMiningAmount = RESOURCE_INFOS.ironOre.resourceMinedByInstrumentLevel?.[pickAxeCurrentLevel] || 0;
 
   const mineStone = useCallback(() => {
     dispatch(mineResourcesWithInstrument('stone'));
   }, [dispatch]);
 
   const mineIron = useCallback(() => {
-    dispatch(mineResourcesWithInstrument('iron'));
+    dispatch(mineResourcesWithInstrument('ironOre'));
   }, [dispatch]);
 
   return (
@@ -33,7 +33,7 @@ export const Mines = () => {
           onClick={cardSide === 'front' ? mineStone : mineIron}
           buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}
           InstrumentIconComponent={PickaxeIcon}
-          resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'iron'].imageSrc}
+          resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'ironOre'].imageSrc}
           resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
           onRollCard={handleRollCard}
           rollAnimationStatus={animationStatus}
