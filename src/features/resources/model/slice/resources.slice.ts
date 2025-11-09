@@ -1,6 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { CoinsStorage, ResourceName, ResourceNameToSell, SandPile, StonePile, WoodPile } from '../types';
+import type {
+  CoinsStorage,
+  HardwoodPile,
+  IronOreStack,
+  ResourceName,
+  ResourceNameToSell,
+  SandPile,
+  StonePile,
+  WoodPile,
+} from '../types';
 import { selectAllResources, selectResourceCount, selectResourcesError } from '../selectors';
 import { isSellAvailable } from '../tools';
 import type { InstrumentCost } from '@features/instruments/model';
@@ -9,7 +18,9 @@ import { RESOURCE_INFOS } from '../constants';
 
 export interface ResourceState {
   wood: WoodPile;
+  hardwood: HardwoodPile;
   stone: StonePile;
+  ironOre: IronOreStack;
   sand: SandPile;
   coins: CoinsStorage;
 }
@@ -24,7 +35,13 @@ const initialState: ResourcesState = {
     wood: {
       count: 0,
     },
+    hardwood: {
+      count: 0,
+    },
     stone: {
+      count: 0,
+    },
+    ironOre: {
       count: 0,
     },
     sand: {

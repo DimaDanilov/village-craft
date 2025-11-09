@@ -13,7 +13,7 @@ export const InstrumentCard = ({ instrumentName }: InstrumentCardProps) => {
   );
 
   return (
-    <div className={`flex flex-row w-full h-12 items-center ${DECK_CARD_RESOURCE_PALETTE.bgColorClassName}`}>
+    <div className={`flex flex-row w-full h-full items-center ${DECK_CARD_RESOURCE_PALETTE.bgColorClassName}`}>
       <div className="w-10 h-10 m-1 p-1 bg-white flex justify-center rounded-2xl">
         <img src={INSTRUMENT_INFOS[instrumentName].imageSrc} alt="Instrument Image" />
       </div>

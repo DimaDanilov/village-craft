@@ -2,39 +2,12 @@ import AxeImageSrc from '@assets/instruments/Axe.png';
 import PickaxeImageSrc from '@assets/instruments/Pickaxe.png';
 import ShovelImageSrc from '@assets/instruments/Shovel.png';
 import type {
-  AxeLevelEfficiencyRecord,
   AxeUpgradeCostRecord,
   InstrumentInfo,
   InstrumentInfos,
-  PickaxeLevelEfficiencyRecord,
   PickaxeUpgradeCostRecord,
-  ShovelLevelEfficiencyRecord,
   ShovelUpgradeCostRecord,
 } from '../types';
-
-const AXE_LEVEL_EFFICIENCY: AxeLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 5,
-  '3': 10,
-  '4': 16,
-  '5': 40,
-};
-
-const PICKAXE_LEVEL_EFFICIENCY: PickaxeLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 3,
-  '3': 8,
-  '4': 14,
-  '5': 30,
-};
-
-const SHOVEL_LEVEL_EFFICIENCY: ShovelLevelEfficiencyRecord = {
-  '1': 1,
-  '2': 12,
-  '3': 18,
-  '4': 30,
-  '5': 90,
-};
 
 const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   '1': {},
@@ -43,15 +16,18 @@ const AXE_UPGRADE_COST: AxeUpgradeCostRecord = {
   },
   '3': {
     wood: 20,
+    hardwood: 12,
     stone: 15,
   },
   '4': {
     wood: 80,
+    hardwood: 30,
     stone: 40,
     coins: 30,
   },
   '5': {
     wood: 110,
+    hardwood: 55,
     stone: 90,
     coins: 90,
   },
@@ -65,15 +41,17 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
   },
   '3': {
     wood: 40,
+    hardwood: 12,
     stone: 15,
   },
   '4': {
     wood: 100,
+    hardwood: 30,
     stone: 45,
     coins: 45,
   },
   '5': {
-    wood: 130,
+    hardwood: 75,
     stone: 100,
     coins: 100,
   },
@@ -82,7 +60,7 @@ const PICKAXE_UPGRADE_COST: PickaxeUpgradeCostRecord = {
 const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
   '1': {},
   '2': { wood: 30 },
-  '3': { stone: 35, coins: 70 },
+  '3': { hardwood: 20, stone: 35, coins: 70 },
   '4': { sand: 60, coins: 120 },
   '5': { stone: 60, sand: 120, coins: 150 },
 };
@@ -90,24 +68,21 @@ const SHOVEL_UPGRADE_COST: ShovelUpgradeCostRecord = {
 const AXE_INFO: InstrumentInfo = {
   title: 'instruments.axe.title',
   imageSrc: AxeImageSrc,
-  resourceMined: 'wood',
-  levelEfficiency: AXE_LEVEL_EFFICIENCY,
+  resourcesMined: ['wood', 'hardwood'],
   upgradeCost: AXE_UPGRADE_COST,
 } as const;
 
 const PICKAXE_INFO: InstrumentInfo = {
   title: 'instruments.pickaxe.title',
   imageSrc: PickaxeImageSrc,
-  resourceMined: 'stone',
-  levelEfficiency: PICKAXE_LEVEL_EFFICIENCY,
+  resourcesMined: ['stone', 'ironOre'],
   upgradeCost: PICKAXE_UPGRADE_COST,
 } as const;
 
 const SHOVEL_INFO: InstrumentInfo = {
   title: 'instruments.shovel.title',
   imageSrc: ShovelImageSrc,
-  resourceMined: 'sand',
-  levelEfficiency: SHOVEL_LEVEL_EFFICIENCY,
+  resourcesMined: ['sand'],
   upgradeCost: SHOVEL_UPGRADE_COST,
 };
 

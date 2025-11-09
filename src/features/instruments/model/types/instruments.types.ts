@@ -3,15 +3,6 @@ import type { InstrumentState } from '../slice';
 
 export type InstrumentName = keyof InstrumentState;
 
-export type AxeLevelEfficiencyRecord = Record<AxeLevel, number>;
-export type PickaxeLevelEfficiencyRecord = Record<PickaxeLevel, number>;
-export type ShovelLevelEfficiencyRecord = Record<ShovelLevel, number>;
-
-export type InstrumentLevelEfficiencyRecord =
-  | AxeLevelEfficiencyRecord
-  | PickaxeLevelEfficiencyRecord
-  | ShovelLevelEfficiencyRecord;
-
 export type InstrumentCost = Partial<Record<ResourceName, number>>;
 
 export type AxeUpgradeCostRecord = Record<AxeLevel, InstrumentCost>;
@@ -39,9 +30,8 @@ export interface ShovelInstrument {
 export interface InstrumentInfo {
   title: `instruments.${InstrumentName}.title`;
   imageSrc: string;
-  resourceMined: ResourceName;
+  resourcesMined: ResourceName[];
   upgradeCost: InstrumentUpgradeCostRecord;
-  levelEfficiency: InstrumentLevelEfficiencyRecord;
 }
 
 export type InstrumentInfos = Record<InstrumentName, InstrumentInfo>;

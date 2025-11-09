@@ -4,25 +4,41 @@ import { useCallback } from 'react';
 import PickaxeIcon from '@assets/icons/Pickaxe.svg?react';
 import { DeckResourceCard } from '@features/buildings/ui';
 import { BUILDING_INFOS } from '@features/buildings/model';
-import { INSTRUMENT_INFOS, instrumentsSlice } from '@features/instruments/model';
+import { instrumentsSlice } from '@features/instruments/model';
+import { FlippableCard, useFlippableCard } from '@features/buildings/ui/FlippableCard';
 
 export const Mines = () => {
   const dispatch = useAppDispatch();
-  
+  const { cardSide, animationStatus, animationDurationMs, handleRollCard } = useFlippableCard({
+    animationDurationMs: 1000,
+  });
+
   const pickAxeCurrentLevel = useAppSelector((state) =>
     instrumentsSlice.selectors.selectInstrumentLevel(state, 'pickaxe'),
   );
-  const stoneMiningAmount = INSTRUMENT_INFOS.pickaxe.levelEfficiency[pickAxeCurrentLevel];
 
-  const mineStone = useCallback(() => dispatch(mineResourcesWithInstrument('stone')), [dispatch]);
+  const stoneMiningAmount = RESOURCE_INFOS.stone.resourceMinedByInstrumentLevel?.[pickAxeCurrentLevel] || 0;
+  const ironMiningAmount = RESOURCE_INFOS.ironOre.resourceMinedByInstrumentLevel?.[pickAxeCurrentLevel] || 0;
+
+  const mineStone = useCallback(() => {
+    dispatch(mineResourcesWithInstrument('stone'));
+  }, [dispatch]);
+
+  const mineIron = useCallback(() => {
+    dispatch(mineResourcesWithInstrument('ironOre'));
+  }, [dispatch]);
 
   return (
-    <DeckResourceCard
-      onClick={mineStone}
-      buildingInfo={BUILDING_INFOS.mines}
-      InstrumentIconComponent={PickaxeIcon}
-      resourceImageSrc={RESOURCE_INFOS.stone.imageSrc}
-      resourceMiningAmount={stoneMiningAmount}
-    />
+    <FlippableCard animationStatus={animationStatus} animationDurationMs={animationDurationMs}>
+      <DeckResourceCard
+        onClick={cardSide === 'front' ? mineStone : mineIron}
+        buildingInfo={BUILDING_INFOS[cardSide === 'front' ? 'mines' : 'deepMines']}
+        InstrumentIconComponent={PickaxeIcon}
+        resourceImageSrc={RESOURCE_INFOS[cardSide === 'front' ? 'stone' : 'ironOre'].imageSrc}
+        resourceMiningAmount={cardSide === 'front' ? stoneMiningAmount : ironMiningAmount}
+        onRollCard={handleRollCard}
+        rollAnimationStatus={animationStatus}
+      />
+    </FlippableCard>
   );
 };

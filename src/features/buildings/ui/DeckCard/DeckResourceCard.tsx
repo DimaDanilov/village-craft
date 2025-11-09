@@ -1,8 +1,9 @@
 import type { BuildingInfo } from '@features/buildings/model';
 import { DECK_CARD_RESOURCE_PALETTE, DECK_CARD_SERVICE_PALETTE } from './constants';
-import { useCallback } from 'react';
+import { useCallback, type MouseEvent } from 'react';
 import { useExecuteFunctionAfterTimer, useProgress } from '@shared/hooks';
 import { useTranslation } from 'react-i18next';
+import CircleArrowIcon from '@assets/icons/CircleArrow.svg?react';
 
 interface DeckResourceCardProps {
   onClick: () => void;
@@ -10,6 +11,8 @@ interface DeckResourceCardProps {
   resourceImageSrc: string;
   resourceMiningAmount: number;
   InstrumentIconComponent: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  onRollCard?: () => void;
+  rollAnimationStatus?: false | 'firstHalf' | 'secondHalf';
 }
 
 const TIMER_DURATION = 1400;
@@ -21,9 +24,20 @@ export const DeckResourceCard = ({
   resourceImageSrc,
   resourceMiningAmount,
   InstrumentIconComponent,
+  onRollCard,
+  rollAnimationStatus,
 }: DeckResourceCardProps) => {
   const { textColorClassName, iconStrokeColorClassName } = DECK_CARD_RESOURCE_PALETTE;
   const { title, description, imageSrc } = buildingInfo;
+
+  const isCardRolling = !!rollAnimationStatus;
+  const handleRollClick = useCallback(
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      onRollCard?.();
+    },
+    [onRollCard],
+  );
 
   const { t } = useTranslation('Buildings');
   const { progress, launchProgress } = useProgress({ totalTimeMs: TIMER_DURATION, frequencyMs: TIMER_FREQUENCY });
@@ -55,12 +69,21 @@ export const DeckResourceCard = ({
       )}
 
       <div className="flex flex-col justify-between h-full">
-        <div className="mx-3">
+        <div className="flex flex-col gap-2 mx-3">
           <h2
             className={`w-fit px-2 pb-1 mx-auto rounded-b-xl text-lg font-semibold text-center ${textColorClassName} bg-white`}
           >
             {t(title)}
           </h2>
+          {onRollCard && (
+            <button
+              className="self-end cursor-pointer rounded-lg hover:bg-amber-600/70 p-0.5 transition ease-in-out"
+              onClick={handleRollClick}
+              disabled={isCardRolling}
+            >
+              <CircleArrowIcon width={28} />
+            </button>
+          )}
         </div>
         <div className="flex flex-col gap-1 mx-3 mb-3">
           <div className="grid grid-cols-[1fr_2fr_1fr] gap-2 items-end">
