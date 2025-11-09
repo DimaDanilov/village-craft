@@ -1,7 +1,7 @@
 import WoodImageSrc from '@assets/resources/Wood.png';
 import HardwoodImageSrc from '@assets/resources/Hardwood.png';
 import StoneImageSrc from '@assets/resources/Stone.png';
-import IronOreImageSrc from '@assets/resources/Iron_Ore.png';
+import IronOreImageSrc from '@assets/resources/Iron_ore.png';
 import SandImageSrc from '@assets/resources/Sand.png';
 import CoinsImageSrc from '@assets/resources/Coins.png';
 
